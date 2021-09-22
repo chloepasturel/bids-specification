@@ -1,0 +1,1466 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://bids-specification.readthedocs.io/en/stable/99-appendices/09-entities.html">
+      
+      <link rel="icon" href="../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.8">
+    
+    
+      
+        <title>Entities - Brain Imaging Data Structure v1.6.1-dev</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.92558b1b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#appendix-ix-entities" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Brain Imaging Data Structure v1.6.1-dev" class="md-header__button md-logo" aria-label="Brain Imaging Data Structure v1.6.1-dev" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Brain Imaging Data Structure v1.6.1-dev
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Entities
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Brain Imaging Data Structure v1.6.1-dev" class="md-nav__button md-logo" aria-label="Brain Imaging Data Structure v1.6.1-dev" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    Brain Imaging Data Structure v1.6.1-dev
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      <label class="md-nav__link" for="__nav_1">
+        The BIDS Specification
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The BIDS Specification" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          The BIDS Specification
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-introduction.html" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-common-principles.html" class="md-nav__link">
+        Common principles
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-modality-agnostic-files.html" class="md-nav__link">
+        Modality agnostic files
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      <label class="md-nav__link" for="__nav_1_4">
+        Modality specific files
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Modality specific files" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Modality specific files
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/01-magnetic-resonance-imaging-data.html" class="md-nav__link">
+        Magnetic Resonance Imaging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/02-magnetoencephalography.html" class="md-nav__link">
+        Magnetoencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/03-electroencephalography.html" class="md-nav__link">
+        Electroencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/04-intracranial-electroencephalography.html" class="md-nav__link">
+        Intracranial Electroencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/05-task-events.html" class="md-nav__link">
+        Task events
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/06-physiological-and-other-continuous-recordings.html" class="md-nav__link">
+        Physiological and other continuous recordings
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/07-behavioral-experiments.html" class="md-nav__link">
+        Behavioral experiments (with no neural recordings)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/08-genetic-descriptor.html" class="md-nav__link">
+        Genetic Descriptor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/09-positron-emission-tomography.html" class="md-nav__link">
+        Positron Emission Tomography
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" >
+      
+      <label class="md-nav__link" for="__nav_1_5">
+        Derivatives
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Derivatives" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Derivatives
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/01-introduction.html" class="md-nav__link">
+        BIDS Derivatives
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/02-common-data-types.html" class="md-nav__link">
+        Common data types and metadata
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/03-imaging.html" class="md-nav__link">
+        Imaging data types
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-longitudinal-and-multi-site-studies.html" class="md-nav__link">
+        Longitudinal and multi-site studies
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-extensions.html" class="md-nav__link">
+        BIDS Extension Proposals
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_8" type="checkbox" id="__nav_1_8" checked>
+      
+      <label class="md-nav__link" for="__nav_1_8">
+        Appendix
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Appendix" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-contributors.html" class="md-nav__link">
+        Contributors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-licenses.html" class="md-nav__link">
+        Licenses
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-hed.html" class="md-nav__link">
+        Hierarchical Event Descriptors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-entity-table.html" class="md-nav__link">
+        Entity table
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-units.html" class="md-nav__link">
+        Units
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-meg-file-formats.html" class="md-nav__link">
+        MEG file formats
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-meg-systems.html" class="md-nav__link">
+        MEG systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-coordinate-systems.html" class="md-nav__link">
+        Coordinate systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Entities
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="09-entities.html" class="md-nav__link md-nav__link--active">
+        Entities
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sub" class="md-nav__link">
+    sub
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ses" class="md-nav__link">
+    ses
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample" class="md-nav__link">
+    sample
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task" class="md-nav__link">
+    task
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acq" class="md-nav__link">
+    acq
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ce" class="md-nav__link">
+    ce
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trc" class="md-nav__link">
+    trc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rec" class="md-nav__link">
+    rec
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dir" class="md-nav__link">
+    dir
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    run
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mod" class="md-nav__link">
+    mod
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#echo" class="md-nav__link">
+    echo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flip" class="md-nav__link">
+    flip
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inv" class="md-nav__link">
+    inv
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mt" class="md-nav__link">
+    mt
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part" class="md-nav__link">
+    part
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recording" class="md-nav__link">
+    recording
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proc" class="md-nav__link">
+    proc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#space" class="md-nav__link">
+    space
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#split" class="md-nav__link">
+    split
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#res" class="md-nav__link">
+    res
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#den" class="md-nav__link">
+    den
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#label" class="md-nav__link">
+    label
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#desc" class="md-nav__link">
+    desc
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-file-collections.html" class="md-nav__link">
+        File collections
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-qmri.html" class="md-nav__link">
+        Quantitative MRI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-arterial-spin-labeling.html" class="md-nav__link">
+        Arterial Spin Labeling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-cross-modality-correspondence.html" class="md-nav__link">
+        Cross modality correspondence
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGES.html" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        The BIDS Starter Kit
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The BIDS Starter Kit" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          The BIDS Starter Kit
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit" class="md-nav__link">
+        GitHub repository
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit/wiki/Tutorials" class="md-nav__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit/wiki" class="md-nav__link">
+        Wiki
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sub" class="md-nav__link">
+    sub
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ses" class="md-nav__link">
+    ses
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample" class="md-nav__link">
+    sample
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task" class="md-nav__link">
+    task
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acq" class="md-nav__link">
+    acq
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ce" class="md-nav__link">
+    ce
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trc" class="md-nav__link">
+    trc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rec" class="md-nav__link">
+    rec
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dir" class="md-nav__link">
+    dir
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    run
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mod" class="md-nav__link">
+    mod
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#echo" class="md-nav__link">
+    echo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flip" class="md-nav__link">
+    flip
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inv" class="md-nav__link">
+    inv
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mt" class="md-nav__link">
+    mt
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part" class="md-nav__link">
+    part
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recording" class="md-nav__link">
+    recording
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proc" class="md-nav__link">
+    proc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#space" class="md-nav__link">
+    space
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#split" class="md-nav__link">
+    split
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#res" class="md-nav__link">
+    res
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#den" class="md-nav__link">
+    den
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#label" class="md-nav__link">
+    label
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#desc" class="md-nav__link">
+    desc
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="appendix-ix-entities"><a class="toclink" href="#appendix-ix-entities">Appendix IX: Entities</a></h1>
+<p>This section compiles the entities (key-value pairs) described throughout this
+specification, and describes each.</p>
+<p>A general introduction to entities is given in the section on
+<a href="../02-common-principles.html#file-name-structure">file name structure</a>.</p>
+<p>The ordering of entities and whether it is allowed, OPTIONAL, or REQUIRED for
+each is given in the <a href="04-entity-table.html">Entity Table</a>.</p>
+<!--
+  This section is autogenerated based on the src/schema.  DO NOT EDIT DIRECTLY.
+  Follow https://github.com/bids-standard/bids-specification/blob/master/CONTRIBUTING.md#updating-the-schema
+-->
+
+<h2 id="sub"><a class="toclink" href="#sub">sub</a></h2>
+<p>Full name: Subject</p>
+<p>Format: <code>sub-&lt;label&gt;</code></p>
+<p>Definition: A person or animal participating in the study.</p>
+<h2 id="ses"><a class="toclink" href="#ses">ses</a></h2>
+<p>Full name: Session</p>
+<p>Format: <code>ses-&lt;label&gt;</code></p>
+<p>Definition: A logical grouping of neuroimaging and behavioral data consistent across
+subjects.
+Session can (but doesn't have to) be synonymous to a visit in a
+longitudinal study.
+In general, subjects will stay in the scanner during one session.
+However, for example, if a subject has to leave the scanner room and then
+be re-positioned on the scanner bed, the set of MRI acquisitions will still
+be considered as a session and match sessions acquired in other subjects.
+Similarly, in situations where different data types are obtained over
+several visits (for example fMRI on one day followed by DWI the day after)
+those can be grouped in one session.
+Defining multiple sessions is appropriate when several identical or similar
+data acquisitions are planned and performed on all -or most- subjects,
+often in the case of some intervention between sessions
+(for example, training).</p>
+<h2 id="sample"><a class="toclink" href="#sample">sample</a></h2>
+<p>Full name: Sample</p>
+<p>Format: <code>sample-&lt;label&gt;</code></p>
+<p>Definition: A sample pertaining to a subject such as tissue, primary cell
+or cell-free sample.
+The <code>sample-&lt;label&gt;</code> key/value pair is used to distinguish between different
+samples from the same subject.
+The label MUST be unique per subject and is RECOMMENDED to be unique
+throughout the dataset.</p>
+<h2 id="task"><a class="toclink" href="#task">task</a></h2>
+<p>Full name: Task</p>
+<p>Format: <code>task-&lt;label&gt;</code></p>
+<p>Definition: Each task has a unique label that MUST only consist of letters and/or
+numbers (other characters, including spaces and underscores, are not
+allowed).
+Those labels MUST be consistent across subjects and sessions.</p>
+<h2 id="acq"><a class="toclink" href="#acq">acq</a></h2>
+<p>Full name: Acquisition</p>
+<p>Format: <code>acq-&lt;label&gt;</code></p>
+<p>Definition: The <code>acq-&lt;label&gt;</code> key/value pair corresponds to a custom label the
+user MAY use to distinguish a different set of parameters used for
+acquiring the same modality.
+For example this should be used when a study includes two T1w images - one
+full brain low resolution and and one restricted field of view but high
+resolution.
+In such case two files could have the following names:
+<code>sub-01_acq-highres_T1w.nii.gz</code> and <code>sub-01_acq-lowres_T1w.nii.gz</code>, however
+the user is free to choose any other label than highres and lowres as long
+as they are consistent across subjects and sessions.
+In case different sequences are used to record the same modality
+(for example, RARE and FLASH for T1w)
+this field can also be used to make that distinction.
+At what level of detail to make the distinction (for example,
+just between RARE and FLASH, or between RARE, FLASH, and FLASHsubsampled)
+remains at the discretion of the researcher.</p>
+<h2 id="ce"><a class="toclink" href="#ce">ce</a></h2>
+<p>Full name: Contrast Enhancing Agent</p>
+<p>Format: <code>ce-&lt;label&gt;</code></p>
+<p>Definition: The <code>ce-&lt;label&gt;</code> key/value can be used to distinguish
+sequences using different contrast enhanced images.
+The label is the name of the contrast agent.
+The key <code>ContrastBolusIngredient</code> MAY also be added in the JSON file,
+with the same label.</p>
+<h2 id="trc"><a class="toclink" href="#trc">trc</a></h2>
+<p>Full name: Tracer</p>
+<p>Format: <code>trc-&lt;label&gt;</code></p>
+<p>Definition: The <code>trc-&lt;label&gt;</code> key/value can be used to distinguish
+sequences using different tracers.
+The key <code>TracerName</code> MUST also be included in the associated JSON file,
+although the label may be different.</p>
+<h2 id="rec"><a class="toclink" href="#rec">rec</a></h2>
+<p>Full name: Reconstruction</p>
+<p>Format: <code>rec-&lt;label&gt;</code></p>
+<p>Definition: The <code>rec-&lt;label&gt;</code> key/value can be used to distinguish
+different reconstruction algorithms (for example ones using motion
+correction).</p>
+<h2 id="dir"><a class="toclink" href="#dir">dir</a></h2>
+<p>Full name: Phase-Encoding Direction</p>
+<p>Format: <code>dir-&lt;label&gt;</code></p>
+<p>Definition: The <code>dir-&lt;label&gt;</code> key/value can be set to an arbitrary alphanumeric label
+(for example, <code>dir-LR</code> or <code>dir-AP</code>) to distinguish different phase-encoding
+directions.</p>
+<h2 id="run"><a class="toclink" href="#run">run</a></h2>
+<p>Full name: Run</p>
+<p>Format: <code>run-&lt;index&gt;</code></p>
+<p>Definition: If several scans with the same acquisition parameters are acquired in the same session,
+they MUST be indexed with the <a href="09-entities.html#run"><code>run-&lt;index&gt;</code></a> entity:
+<code>_run-1</code>, <code>_run-2</code>, <code>_run-3</code>, and so on (only nonnegative integers are allowed as
+run labels).</p>
+<p>If different entities apply,
+such as a different session indicated by <a href="09-entities.html#ses"><code>ses-&lt;label&gt;</code></a>,
+or different acquisition parameters indicated by
+<a href="09-entities.html#acq"><code>acq-&lt;label&gt;</code></a>,
+then <code>run</code> is not needed to distinguish the scans and MAY be omitted.</p>
+<h2 id="mod"><a class="toclink" href="#mod">mod</a></h2>
+<p>Full name: Corresponding Modality</p>
+<p>Format: <code>mod-&lt;label&gt;</code></p>
+<p>Definition: The <code>mod-&lt;label&gt;</code> key/value pair corresponds to modality label for defacing
+masks, for example, T1w, inplaneT1, referenced by a defacemask image.
+For example, <code>sub-01_mod-T1w_defacemask.nii.gz</code>.</p>
+<h2 id="echo"><a class="toclink" href="#echo">echo</a></h2>
+<p>Full name: Echo</p>
+<p>Format: <code>echo-&lt;index&gt;</code></p>
+<p>Definition: If files belonging to an entity-linked file collection are acquired at different
+echo times, the <code>_echo-&lt;index&gt;</code> key/value pair MUST be used to distinguish
+individual files.
+This entity represents the <code>EchoTime</code> metadata field. Please note that the <code>&lt;index&gt;</code>
+denotes the number/index (in the form of a nonnegative integer), not the
+<code>EchoTime</code> value which needs to be stored in the field <code>EchoTime</code> of the separate
+JSON file.</p>
+<h2 id="flip"><a class="toclink" href="#flip">flip</a></h2>
+<p>Full name: Flip Angle</p>
+<p>Format: <code>flip-&lt;index&gt;</code></p>
+<p>Definition: If files belonging to an entity-linked file collection are acquired at different
+flip angles, the <code>_flip-&lt;index&gt;</code> key/value pair MUST be used to distinguish
+individual files.
+This entity represents the <code>FlipAngle</code> metadata field. Please note that the <code>&lt;index&gt;</code>
+denotes the number/index (in the form of a nonnegative integer), not the <code>FlipAngle</code>
+value which needs to be stored in the field <code>FlipAngle</code> of the separate JSON file.</p>
+<h2 id="inv"><a class="toclink" href="#inv">inv</a></h2>
+<p>Full name: Inversion Time</p>
+<p>Format: <code>inv-&lt;index&gt;</code></p>
+<p>Definition: If files belonging to an entity-linked file collection are acquired at different
+inversion times, the <code>_inv-&lt;index&gt;</code> key/value pair MUST be used to distinguish
+individual files.
+This entity represents the <code>InversionTime</code> metadata field. Please note that the <code>&lt;index&gt;</code>
+denotes the number/index (in the form of a nonnegative integer), not the <code>InversionTime</code>
+value which needs to be stored in the field <code>InversionTime</code> of the separate JSON file.</p>
+<h2 id="mt"><a class="toclink" href="#mt">mt</a></h2>
+<p>Full name: Magnetization Transfer</p>
+<p>Format: <code>mt-&lt;label&gt;</code></p>
+<p>Allowed values: <code>on</code>, <code>off</code></p>
+<p>Definition: If files belonging to an entity-linked file collection are acquired at different
+magnetization transfer (MT) states, the <code>_mt-&lt;label&gt;</code> key/value pair MUST be used to
+distinguish individual files.
+This entity represents the <code>MTState</code> metadata field. Allowed label values for this
+entity are <code>on</code> and <code>off</code>, for images acquired in presence and absence of an MT pulse,
+respectively.</p>
+<h2 id="part"><a class="toclink" href="#part">part</a></h2>
+<p>Full name: Part</p>
+<p>Format: <code>part-&lt;label&gt;</code></p>
+<p>Allowed values: <code>mag</code>, <code>phase</code>, <code>real</code>, <code>imag</code></p>
+<p>Definition: This entity is used to indicate which component of the complex
+representation of the MRI signal is represented in voxel data.
+The <code>part-&lt;label&gt;</code> key/value pair is associated with the DICOM Tag
+<code>0008, 9208</code>.
+Allowed label values for this entity are <code>phase</code>, <code>mag</code>, <code>real</code> and <code>imag</code>,
+which are typically used in <code>part-mag</code>/<code>part-phase</code> or
+<code>part-real</code>/<code>part-imag</code> pairs of files.</p>
+<p>Phase images MAY be in radians or in arbitrary units.
+The sidecar JSON file MUST include the units of the <code>phase</code> image.
+The possible options are <code>rad</code> or <code>arbitrary</code>.</p>
+<p>When there is only a magnitude image of a given type, the <code>part</code> key MAY be
+omitted.</p>
+<h2 id="recording"><a class="toclink" href="#recording">recording</a></h2>
+<p>Full name: Recording</p>
+<p>Format: <code>recording-&lt;label&gt;</code></p>
+<p>Definition: More than one continuous recording file can be included (with different
+sampling frequencies).
+In such case use different labels.
+For example: <code>_recording-contrast</code>, <code>_recording-saturation</code>.</p>
+<h2 id="proc"><a class="toclink" href="#proc">proc</a></h2>
+<p>Full name: Processed (on device)</p>
+<p>Format: <code>proc-&lt;label&gt;</code></p>
+<p>Definition: The proc label is analogous to rec for MR and denotes a variant of a file
+that was a result of particular processing performed on the device.
+This is useful for files produced in particular by Elekta’s MaxFilter
+(for example, sss, tsss, trans, quat or mc),
+which some installations impose to be run on raw data because of active
+shielding software corrections before the MEG data can actually be
+exploited.</p>
+<h2 id="space"><a class="toclink" href="#space">space</a></h2>
+<p>Full name: Space</p>
+<p>Format: <code>space-&lt;label&gt;</code></p>
+<p>Definition: The space entity can be used to indicate
+the way in which electrode positions are interpreted
+(for EEG/MEG/iEEG data) or
+the spatial reference to which a file has been aligned (for MRI data).
+The space <code>&lt;label&gt;</code> MUST be taken from one of the modality specific lists in
+<a href="08-coordinate-systems.html">Appendix VIII</a>.
+For example for iEEG data, the restricted keywords listed under
+<a href="08-coordinate-systems.html#ieeg-specific-coordinate-systems">iEEG Specific Coordinate Systems</a>
+are acceptable for <code>&lt;label&gt;</code>.</p>
+<p>For EEG/MEG/iEEG data, this entity can be applied to raw data, but
+for other data types, it is restricted to derivative data.</p>
+<h2 id="split"><a class="toclink" href="#split">split</a></h2>
+<p>Full name: Split</p>
+<p>Format: <code>split-&lt;index&gt;</code></p>
+<p>Definition: In the case of long data recordings that exceed a file size of 2Gb, the
+.fif files are conventionally split into multiple parts.
+Each of these files has an internal pointer to the next file.
+This is important when renaming these split recordings to the BIDS
+convention.</p>
+<p>Instead of a simple renaming, files should be read in and saved under their
+new names with dedicated tools like <a href="https://mne.tools/">MNE-Python</a>,
+which will ensure that not only the file names, but also the internal file
+pointers will be updated.
+It is RECOMMENDED that .fif files with multiple parts use the
+<code>split-&lt;index&gt;</code> entity to indicate each part.
+If there are multiple parts of a recording and the optional <code>scans.tsv</code> is provided,
+remember to list all files separately in <code>scans.tsv</code> and that the entries for the
+<code>acq_time</code> column in <code>scans.tsv</code> MUST all be identical, as described in
+<a href="../03-modality-agnostic-files.html#scans-file">Scans file</a>.</p>
+<h2 id="res"><a class="toclink" href="#res">res</a></h2>
+<p>Full name: Resolution</p>
+<p>Format: <code>res-&lt;label&gt;</code></p>
+<p>Definition: Resolution of regularly sampled N-dimensional data.
+MUST have a corresponding <code>Resolution</code> metadata field to provide
+interpretation.</p>
+<p>This entity is only applicable to derivative data.</p>
+<h2 id="den"><a class="toclink" href="#den">den</a></h2>
+<p>Full name: Density</p>
+<p>Format: <code>den-&lt;label&gt;</code></p>
+<p>Definition: Density of non-parametric surfaces.
+MUST have a corresponding <code>Density</code> metadata field to provide
+interpretation.</p>
+<p>This entity is only applicable to derivative data.</p>
+<h2 id="label"><a class="toclink" href="#label">label</a></h2>
+<p>Full name: Label</p>
+<p>Format: <code>label-&lt;label&gt;</code></p>
+<p>Definition: Tissue-type label, following a prescribed vocabulary.
+Applies to binary masks and probabilistic/partial volume segmentations
+that describe a single tissue type.</p>
+<p>This entity is only applicable to derivative data.</p>
+<h2 id="desc"><a class="toclink" href="#desc">desc</a></h2>
+<p>Full name: Description</p>
+<p>Format: <code>desc-&lt;label&gt;</code></p>
+<p>Definition: When necessary to distinguish two files that do not otherwise have a
+distinguishing entity, the <code>_desc-&lt;label&gt;</code> keyword-value SHOULD be used.</p>
+<p>This entity is only applicable to derivative data.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+--><!-- Application footer -->
+<footer class="md-footer">
+
+  <!-- Link to previous and/or next page --><div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+
+        <!-- Link to previous page --><a href="08-coordinate-systems.html"
+              title="Coordinate systems"
+              class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+              rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back
+                    md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">Previous</span>Coordinate systems</span>
+            </div>
+          </a><!-- Link to next page --><a href="10-file-collections.html"
+              title="File collections"
+              class="md-flex md-footer-nav__link md-footer-nav__link--next"
+              rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">Next</span>File collections</span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward
+                    md-footer-nav__button"></i>
+            </div>
+          </a></nav>
+    </div><!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">See the source code and discussion page on
+        <a href="https://github.com/bids-standard/bids-specification">GitHub</a>
+      </div>
+
+      <!-- Social links --></div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.94ec81fe.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.48dfec6c.min.js"></script>
+      
+        <script src="../js/jquery-3.6.0.min.js"></script>
+      
+    
+  </body>
+</html>

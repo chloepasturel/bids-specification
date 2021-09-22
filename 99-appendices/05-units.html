@@ -1,0 +1,1288 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://bids-specification.readthedocs.io/en/stable/99-appendices/05-units.html">
+      
+      <link rel="icon" href="../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.8">
+    
+    
+      
+        <title>Units - Brain Imaging Data Structure v1.6.1-dev</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.92558b1b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#appendix-v-units" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Brain Imaging Data Structure v1.6.1-dev" class="md-header__button md-logo" aria-label="Brain Imaging Data Structure v1.6.1-dev" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Brain Imaging Data Structure v1.6.1-dev
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Units
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Brain Imaging Data Structure v1.6.1-dev" class="md-nav__button md-logo" aria-label="Brain Imaging Data Structure v1.6.1-dev" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    Brain Imaging Data Structure v1.6.1-dev
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      <label class="md-nav__link" for="__nav_1">
+        The BIDS Specification
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The BIDS Specification" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          The BIDS Specification
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-introduction.html" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-common-principles.html" class="md-nav__link">
+        Common principles
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-modality-agnostic-files.html" class="md-nav__link">
+        Modality agnostic files
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      <label class="md-nav__link" for="__nav_1_4">
+        Modality specific files
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Modality specific files" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Modality specific files
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/01-magnetic-resonance-imaging-data.html" class="md-nav__link">
+        Magnetic Resonance Imaging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/02-magnetoencephalography.html" class="md-nav__link">
+        Magnetoencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/03-electroencephalography.html" class="md-nav__link">
+        Electroencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/04-intracranial-electroencephalography.html" class="md-nav__link">
+        Intracranial Electroencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/05-task-events.html" class="md-nav__link">
+        Task events
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/06-physiological-and-other-continuous-recordings.html" class="md-nav__link">
+        Physiological and other continuous recordings
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/07-behavioral-experiments.html" class="md-nav__link">
+        Behavioral experiments (with no neural recordings)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/08-genetic-descriptor.html" class="md-nav__link">
+        Genetic Descriptor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/09-positron-emission-tomography.html" class="md-nav__link">
+        Positron Emission Tomography
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" >
+      
+      <label class="md-nav__link" for="__nav_1_5">
+        Derivatives
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Derivatives" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Derivatives
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/01-introduction.html" class="md-nav__link">
+        BIDS Derivatives
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/02-common-data-types.html" class="md-nav__link">
+        Common data types and metadata
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/03-imaging.html" class="md-nav__link">
+        Imaging data types
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-longitudinal-and-multi-site-studies.html" class="md-nav__link">
+        Longitudinal and multi-site studies
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-extensions.html" class="md-nav__link">
+        BIDS Extension Proposals
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_8" type="checkbox" id="__nav_1_8" checked>
+      
+      <label class="md-nav__link" for="__nav_1_8">
+        Appendix
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Appendix" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-contributors.html" class="md-nav__link">
+        Contributors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-licenses.html" class="md-nav__link">
+        Licenses
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-hed.html" class="md-nav__link">
+        Hierarchical Event Descriptors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-entity-table.html" class="md-nav__link">
+        Entity table
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Units
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="05-units.html" class="md-nav__link md-nav__link--active">
+        Units
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unit-table" class="md-nav__link">
+    Unit table
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prefixes" class="md-nav__link">
+    Prefixes
+  </a>
+  
+    <nav class="md-nav" aria-label="Prefixes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiples" class="md-nav__link">
+    Multiples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submultiples" class="md-nav__link">
+    Submultiples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-meg-file-formats.html" class="md-nav__link">
+        MEG file formats
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-meg-systems.html" class="md-nav__link">
+        MEG systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-coordinate-systems.html" class="md-nav__link">
+        Coordinate systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-entities.html" class="md-nav__link">
+        Entities
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-file-collections.html" class="md-nav__link">
+        File collections
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-qmri.html" class="md-nav__link">
+        Quantitative MRI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-arterial-spin-labeling.html" class="md-nav__link">
+        Arterial Spin Labeling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-cross-modality-correspondence.html" class="md-nav__link">
+        Cross modality correspondence
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGES.html" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        The BIDS Starter Kit
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The BIDS Starter Kit" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          The BIDS Starter Kit
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit" class="md-nav__link">
+        GitHub repository
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit/wiki/Tutorials" class="md-nav__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit/wiki" class="md-nav__link">
+        Wiki
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unit-table" class="md-nav__link">
+    Unit table
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prefixes" class="md-nav__link">
+    Prefixes
+  </a>
+  
+    <nav class="md-nav" aria-label="Prefixes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiples" class="md-nav__link">
+    Multiples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submultiples" class="md-nav__link">
+    Submultiples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="appendix-v-units"><a class="toclink" href="#appendix-v-units">Appendix V: Units</a></h1>
+<p>As described in the <a href="../02-common-principles.html#units">Units</a>,
+the specification of units SHOULD follow the
+<a href="https://en.wikipedia.org/wiki/International_System_of_Units">International System of Units</a>
+(SI, abbreviated from the French Système international (d'unités)).</p>
+<p>The <a href="https://people.csail.mit.edu/jaffer/MIXF/CMIXF-12">CMIXF-12</a> convention
+for encoding units is RECOMMENDED to achieve maximum portability and limited
+variability of representation.
+If a CMIXF-12 representation of a unit is not possible, the unit can be declared
+as custom units and defined in an accompanying JSON file, as described in the
+<a href="../02-common-principles.html#units">units section</a>.
+Earlier versions of the BIDS standard listed the following Unicode symbols, and
+these are still included for backwards compatibility:</p>
+<ol>
+<li><a href="https://codepoints.net/U+03BC"><code>U+03BC</code> (μ)</a> or <a href="https://codepoints.net/U+00B5"><code>U+00B5</code> (µ)</a></li>
+<li><a href="https://codepoints.net/U+03A9"><code>U+03A9</code> (Ω)</a> or <a href="https://codepoints.net/U+2126"><code>U+2126</code> (Ω)</a></li>
+<li><a href="https://codepoints.net/U+00B0"><code>U+00B0</code> (°)</a></li>
+</ol>
+<p>Note that for the first two entries in this list, two characters are permissible
+for each, but the first character in each entry is preferred, per Unicode rules
+(see the section on "Duplicated Characters" on page 11 in the
+<a href="https://www.unicode.org/reports/tr25/">unicode report</a>).</p>
+<p>It is RECOMMENDED that units be CMIXF-12 compliant or among these five Unicode
+characters.
+Please note the appropriate upper- or lower- casing when using CMIXF-12.</p>
+<p>For cases that are unspecified by this appendix or the<a href="../02-common-principles.html#units">units section</a>,
+the <a href="https://people.csail.mit.edu/jaffer/MIXF/CMIXF-12">CMIXF-12</a> convention
+applies.</p>
+<p>You can use the <a href="https://github.com/sensein/cmixf">cmixf Python package</a> to
+check whether your formatting is compliant.</p>
+<p>Examples for CMIXF-12 (including the five unicode symbols mentioned above):</p>
+<ol>
+<li>
+<p>Different formatting of "micro Volts":</p>
+<ol>
+<li>RECOMMENDED: <code>uV</code> or <code>µV</code></li>
+<li>NOT RECOMMENDED: <code>microV</code>, <code>µvolt</code> or <code>1e-6V</code></li>
+</ol>
+</li>
+<li>
+<p>Combinations of units:</p>
+<ol>
+<li>RECOMMENDED: <code>V/us</code> for the <a href="https://en.wikipedia.org/wiki/Slew_rate">Slew rate</a></li>
+<li>NOT RECOMMENDED: <code>volts per microsecond</code></li>
+</ol>
+</li>
+</ol>
+<h2 id="unit-table"><a class="toclink" href="#unit-table">Unit table</a></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Unit name</strong></th>
+<th><strong>Unit symbol</strong></th>
+<th><strong>Quantity name</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>metre</td>
+<td>m</td>
+<td>length</td>
+</tr>
+<tr>
+<td>kilogram</td>
+<td>kg</td>
+<td>mass</td>
+</tr>
+<tr>
+<td>litre (liter)</td>
+<td>L</td>
+<td>volume</td>
+</tr>
+<tr>
+<td>second</td>
+<td>s</td>
+<td>time</td>
+</tr>
+<tr>
+<td>ampere</td>
+<td>A</td>
+<td>electric current</td>
+</tr>
+<tr>
+<td>kelvin</td>
+<td>K</td>
+<td>thermodynamic temperature</td>
+</tr>
+<tr>
+<td>mole</td>
+<td>mol</td>
+<td>amount of substance</td>
+</tr>
+<tr>
+<td>candela</td>
+<td>cd</td>
+<td>luminous intensity</td>
+</tr>
+<tr>
+<td>radian</td>
+<td>rad</td>
+<td>angle</td>
+</tr>
+<tr>
+<td>steradian</td>
+<td>sr</td>
+<td>solid angle</td>
+</tr>
+<tr>
+<td>hertz</td>
+<td>Hz</td>
+<td>frequency</td>
+</tr>
+<tr>
+<td>newton</td>
+<td>N</td>
+<td>force, weight</td>
+</tr>
+<tr>
+<td>pascal</td>
+<td>Pa</td>
+<td>pressure, stress</td>
+</tr>
+<tr>
+<td>joule</td>
+<td>J</td>
+<td>energy, work, heat</td>
+</tr>
+<tr>
+<td>watt</td>
+<td>W</td>
+<td>power, radiant flux</td>
+</tr>
+<tr>
+<td>coulomb</td>
+<td>C</td>
+<td>electric charge or quantity of electricity</td>
+</tr>
+<tr>
+<td>volt</td>
+<td>V</td>
+<td>voltage (electrical potential), emf</td>
+</tr>
+<tr>
+<td>farad</td>
+<td>F</td>
+<td>capacitance</td>
+</tr>
+<tr>
+<td>ohm</td>
+<td>Ohm</td>
+<td>resistance, impedance, reactance</td>
+</tr>
+<tr>
+<td>siemens</td>
+<td>S</td>
+<td>electrical conductance</td>
+</tr>
+<tr>
+<td>weber</td>
+<td>Wb</td>
+<td>magnetic flux</td>
+</tr>
+<tr>
+<td>tesla</td>
+<td>T</td>
+<td>magnetic flux density</td>
+</tr>
+<tr>
+<td>henry</td>
+<td>H</td>
+<td>inductance</td>
+</tr>
+<tr>
+<td>degree Celsius</td>
+<td>oC</td>
+<td>temperature relative to 273.15 K</td>
+</tr>
+<tr>
+<td>lumen</td>
+<td>lm</td>
+<td>luminous flux</td>
+</tr>
+<tr>
+<td>lux</td>
+<td>lx</td>
+<td>illuminance</td>
+</tr>
+<tr>
+<td>becquerel</td>
+<td>Bq</td>
+<td>radioactivity (decays per unit time)</td>
+</tr>
+<tr>
+<td>gray</td>
+<td>Gy</td>
+<td>absorbed dose (of ionizing radiation)</td>
+</tr>
+<tr>
+<td>sievert</td>
+<td>Sv</td>
+<td>equivalent dose (of ionizing radiation)</td>
+</tr>
+<tr>
+<td>katal</td>
+<td>kat</td>
+<td>catalytic activity</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prefixes"><a class="toclink" href="#prefixes">Prefixes</a></h2>
+<h3 id="multiples"><a class="toclink" href="#multiples">Multiples</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Prefix name</strong></th>
+<th><strong>Prefix symbol</strong></th>
+<th><strong>Factor</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.wikiwand.com/en/Deca-">deca</a></td>
+<td>da</td>
+<td>10<sup>1</sup></td>
+</tr>
+<tr>
+<td><a href="https://www.wikiwand.com/en/Hecto-">hecto</a></td>
+<td>h</td>
+<td>10<sup>2</sup></td>
+</tr>
+<tr>
+<td><a href="https://www.wikiwand.com/en/Kilo-">kilo</a></td>
+<td>k</td>
+<td>10<sup>3</sup></td>
+</tr>
+<tr>
+<td><a href="https://www.wikiwand.com/en/Mega-">mega</a></td>
+<td>M</td>
+<td>10<sup>6</sup></td>
+</tr>
+<tr>
+<td><a href="https://www.wikiwand.com/en/Giga-">giga</a></td>
+<td>G</td>
+<td>10<sup>9</sup></td>
+</tr>
+<tr>
+<td><a href="https://www.wikiwand.com/en/Tera-">tera</a></td>
+<td>T</td>
+<td>10<sup>12</sup></td>
+</tr>
+<tr>
+<td><a href="https://www.wikiwand.com/en/Peta-">peta</a></td>
+<td>P</td>
+<td>10<sup>15</sup></td>
+</tr>
+<tr>
+<td><a href="https://www.wikiwand.com/en/Exa-">exa</a></td>
+<td>E</td>
+<td>10<sup>18</sup></td>
+</tr>
+<tr>
+<td><a href="https://www.wikiwand.com/en/Zetta-">zetta</a></td>
+<td>Z</td>
+<td>10<sup>21</sup></td>
+</tr>
+<tr>
+<td><a href="https://www.wikiwand.com/en/Yotta-">yotta</a></td>
+<td>Y</td>
+<td>10<sup>24</sup></td>
+</tr>
+</tbody>
+</table>
+<h3 id="submultiples"><a class="toclink" href="#submultiples">Submultiples</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Prefix name</strong></th>
+<th><strong>Prefix symbol</strong></th>
+<th><strong>Factor</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.wikiwand.com/en/Deci-">deci</a></td>
+<td>d</td>
+<td>10<sup>-1</sup></td>
+</tr>
+<tr>
+<td><a href="https://www.wikiwand.com/en/Centi-">centi</a></td>
+<td>c</td>
+<td>10<sup>-2</sup></td>
+</tr>
+<tr>
+<td><a href="https://www.wikiwand.com/en/Milli-">milli</a></td>
+<td>m</td>
+<td>10<sup>-3</sup></td>
+</tr>
+<tr>
+<td><a href="https://www.wikiwand.com/en/Micro-">micro</a></td>
+<td>u</td>
+<td>10<sup>-6</sup></td>
+</tr>
+<tr>
+<td><a href="https://www.wikiwand.com/en/Nano-">nano</a></td>
+<td>n</td>
+<td>10<sup>-9</sup></td>
+</tr>
+<tr>
+<td><a href="https://www.wikiwand.com/en/Pico-">pico</a></td>
+<td>p</td>
+<td>10<sup>-12</sup></td>
+</tr>
+<tr>
+<td><a href="https://www.wikiwand.com/en/Femto-">femto</a></td>
+<td>f</td>
+<td>10<sup>-15</sup></td>
+</tr>
+<tr>
+<td><a href="https://www.wikiwand.com/en/Atto-">atto</a></td>
+<td>a</td>
+<td>10<sup>-18</sup></td>
+</tr>
+<tr>
+<td><a href="https://www.wikiwand.com/en/Zepto-">zepto</a></td>
+<td>z</td>
+<td>10<sup>-21</sup></td>
+</tr>
+<tr>
+<td><a href="https://www.wikiwand.com/en/Yocto-">yocto</a></td>
+<td>y</td>
+<td>10<sup>-24</sup></td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+--><!-- Application footer -->
+<footer class="md-footer">
+
+  <!-- Link to previous and/or next page --><div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+
+        <!-- Link to previous page --><a href="04-entity-table.html"
+              title="Entity table"
+              class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+              rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back
+                    md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">Previous</span>Entity table</span>
+            </div>
+          </a><!-- Link to next page --><a href="06-meg-file-formats.html"
+              title="MEG file formats"
+              class="md-flex md-footer-nav__link md-footer-nav__link--next"
+              rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">Next</span>MEG file formats</span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward
+                    md-footer-nav__button"></i>
+            </div>
+          </a></nav>
+    </div><!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">See the source code and discussion page on
+        <a href="https://github.com/bids-standard/bids-specification">GitHub</a>
+      </div>
+
+      <!-- Social links --></div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.94ec81fe.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.48dfec6c.min.js"></script>
+      
+        <script src="../js/jquery-3.6.0.min.js"></script>
+      
+    
+  </body>
+</html>

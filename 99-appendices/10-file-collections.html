@@ -1,0 +1,1116 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://bids-specification.readthedocs.io/en/stable/99-appendices/10-file-collections.html">
+      
+      <link rel="icon" href="../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.8">
+    
+    
+      
+        <title>File collections - Brain Imaging Data Structure v1.6.1-dev</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.92558b1b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#appendix-x-file-collections" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Brain Imaging Data Structure v1.6.1-dev" class="md-header__button md-logo" aria-label="Brain Imaging Data Structure v1.6.1-dev" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Brain Imaging Data Structure v1.6.1-dev
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              File collections
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Brain Imaging Data Structure v1.6.1-dev" class="md-nav__button md-logo" aria-label="Brain Imaging Data Structure v1.6.1-dev" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    Brain Imaging Data Structure v1.6.1-dev
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      <label class="md-nav__link" for="__nav_1">
+        The BIDS Specification
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The BIDS Specification" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          The BIDS Specification
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-introduction.html" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-common-principles.html" class="md-nav__link">
+        Common principles
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-modality-agnostic-files.html" class="md-nav__link">
+        Modality agnostic files
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      <label class="md-nav__link" for="__nav_1_4">
+        Modality specific files
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Modality specific files" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Modality specific files
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/01-magnetic-resonance-imaging-data.html" class="md-nav__link">
+        Magnetic Resonance Imaging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/02-magnetoencephalography.html" class="md-nav__link">
+        Magnetoencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/03-electroencephalography.html" class="md-nav__link">
+        Electroencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/04-intracranial-electroencephalography.html" class="md-nav__link">
+        Intracranial Electroencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/05-task-events.html" class="md-nav__link">
+        Task events
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/06-physiological-and-other-continuous-recordings.html" class="md-nav__link">
+        Physiological and other continuous recordings
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/07-behavioral-experiments.html" class="md-nav__link">
+        Behavioral experiments (with no neural recordings)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/08-genetic-descriptor.html" class="md-nav__link">
+        Genetic Descriptor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/09-positron-emission-tomography.html" class="md-nav__link">
+        Positron Emission Tomography
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" >
+      
+      <label class="md-nav__link" for="__nav_1_5">
+        Derivatives
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Derivatives" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Derivatives
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/01-introduction.html" class="md-nav__link">
+        BIDS Derivatives
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/02-common-data-types.html" class="md-nav__link">
+        Common data types and metadata
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/03-imaging.html" class="md-nav__link">
+        Imaging data types
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-longitudinal-and-multi-site-studies.html" class="md-nav__link">
+        Longitudinal and multi-site studies
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-extensions.html" class="md-nav__link">
+        BIDS Extension Proposals
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_8" type="checkbox" id="__nav_1_8" checked>
+      
+      <label class="md-nav__link" for="__nav_1_8">
+        Appendix
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Appendix" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-contributors.html" class="md-nav__link">
+        Contributors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-licenses.html" class="md-nav__link">
+        Licenses
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-hed.html" class="md-nav__link">
+        Hierarchical Event Descriptors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-entity-table.html" class="md-nav__link">
+        Entity table
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-units.html" class="md-nav__link">
+        Units
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-meg-file-formats.html" class="md-nav__link">
+        MEG file formats
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-meg-systems.html" class="md-nav__link">
+        MEG systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-coordinate-systems.html" class="md-nav__link">
+        Coordinate systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-entities.html" class="md-nav__link">
+        Entities
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          File collections
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="10-file-collections.html" class="md-nav__link md-nav__link--active">
+        File collections
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#magnetic-resonance-imaging" class="md-nav__link">
+    Magnetic Resonance Imaging
+  </a>
+  
+    <nav class="md-nav" aria-label="Magnetic Resonance Imaging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anatomy-imaging-data" class="md-nav__link">
+    Anatomy imaging data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fieldmap-data" class="md-nav__link">
+    Fieldmap data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-qmri.html" class="md-nav__link">
+        Quantitative MRI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-arterial-spin-labeling.html" class="md-nav__link">
+        Arterial Spin Labeling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-cross-modality-correspondence.html" class="md-nav__link">
+        Cross modality correspondence
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGES.html" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        The BIDS Starter Kit
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The BIDS Starter Kit" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          The BIDS Starter Kit
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit" class="md-nav__link">
+        GitHub repository
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit/wiki/Tutorials" class="md-nav__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit/wiki" class="md-nav__link">
+        Wiki
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#magnetic-resonance-imaging" class="md-nav__link">
+    Magnetic Resonance Imaging
+  </a>
+  
+    <nav class="md-nav" aria-label="Magnetic Resonance Imaging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anatomy-imaging-data" class="md-nav__link">
+    Anatomy imaging data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fieldmap-data" class="md-nav__link">
+    Fieldmap data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="appendix-x-file-collections"><a class="toclink" href="#appendix-x-file-collections">Appendix X: File collections</a></h1>
+<p>Here, some concrete use-cases of <a href="../02-common-principles.html#file-name-structure">entity-linked file collections</a> are listed using descriptive tables, organized by modality.</p>
+<p>The tables in this appendix catalog applications where the use of
+a file collection is REQUIRED.</p>
+<p>Certain entities interlink the files in a file collection through a metadata field.
+Unlike other common entities (for example <code>run</code>), they require an iteration over different
+values of the metadata fields they represent.
+Please keep the following list of linking entities up-to-date with the file collections
+included in this appendix:</p>
+<ul>
+<li>Magnetic Resonance Imaging<ul>
+<li><a href="09-entities.html#echo"><code>echo</code></a></li>
+<li><a href="09-entities.html#flip"><code>flip</code></a></li>
+<li><a href="09-entities.html#inv"><code>inv</code></a></li>
+<li><a href="09-entities.html#mt"><code>mt</code></a></li>
+<li><a href="09-entities.html#part"><code>part</code></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="magnetic-resonance-imaging"><a class="toclink" href="#magnetic-resonance-imaging">Magnetic Resonance Imaging</a></h2>
+<h3 id="anatomy-imaging-data"><a class="toclink" href="#anatomy-imaging-data">Anatomy imaging data</a></h3>
+<p>Template:
+<div class="highlight"><pre><span></span><code>sub-&lt;label&gt;/
+    [ses-&lt;label&gt;/]
+        anat/
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_echo-&lt;index&gt;[_part-&lt;label&gt;]_MEGRE.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_echo-&lt;index&gt;[_part-&lt;label&gt;]_MEGRE.nii[.gz]
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_echo-&lt;index&gt;[_part-&lt;label&gt;]_MESE.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_echo-&lt;index&gt;[_part-&lt;label&gt;]_MESE.nii[.gz]
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_flip-&lt;index&gt;[_part-&lt;label&gt;]_VFA.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_flip-&lt;index&gt;[_part-&lt;label&gt;]_VFA.nii[.gz]
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_inv-&lt;index&gt;[_part-&lt;label&gt;]_IRT1.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_inv-&lt;index&gt;[_part-&lt;label&gt;]_IRT1.nii[.gz]
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;][_flip-&lt;index&gt;]_inv-&lt;index&gt;[_part-&lt;label&gt;]_MP2RAGE.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;][_flip-&lt;index&gt;]_inv-&lt;index&gt;[_part-&lt;label&gt;]_MP2RAGE.nii[.gz]
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;]_flip-&lt;index&gt;_mt-&lt;label&gt;[_part-&lt;label&gt;]_MPM.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;]_flip-&lt;index&gt;_mt-&lt;label&gt;[_part-&lt;label&gt;]_MPM.nii[.gz]
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;]_flip-&lt;index&gt;_mt-&lt;label&gt;[_part-&lt;label&gt;]_MTS.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;]_flip-&lt;index&gt;_mt-&lt;label&gt;[_part-&lt;label&gt;]_MTS.nii[.gz]
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_mt-&lt;label&gt;[_part-&lt;label&gt;]_MTR.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_mt-&lt;label&gt;[_part-&lt;label&gt;]_MTR.nii[.gz]
+</code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th><strong>Suffix</strong></th>
+<th><strong>Linking entities</strong></th>
+<th><strong>Application</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VFA</td>
+<td>flip</td>
+<td>Variable flip angle</td>
+<td>The VFA method involves at least two spoiled gradient echo (SPGR) of steady-state free precession (SSFP) images acquired at different flip angles. Depending on the provided metadata fields and the sequence type, data may be eligible for DESPOT1, DESPOT2 and their variants (<a href="https://doi.org/10.1002/mrm.20314">Deoni et al. 2005</a>).</td>
+</tr>
+<tr>
+<td>IRT1</td>
+<td>inv, part</td>
+<td>Inversion recovery T1 mapping</td>
+<td>The IRT1 method involves multiple inversion recovery spin-echo images acquired at different inversion times (<a href="https://doi.org/10.1002/mrm.22497">Barral et al. 2010</a>).</td>
+</tr>
+<tr>
+<td>MP2RAGE</td>
+<td>flip, inv, echo, part</td>
+<td>Magnetization prepared two gradient echoes</td>
+<td>The MP2RAGE method is a special protocol that collects several images at different flip angles and inversion times to create a parametric T1map by combining the magnitude and phase images (<a href="https://doi.org/10.1016/j.neuroimage.2009.10.002">Marques et al. 2010</a>).</td>
+</tr>
+<tr>
+<td>MESE</td>
+<td>echo</td>
+<td>Multi-echo spin-echo</td>
+<td>The MESE method involves multiple spin echo images acquired at different echo times and is primarily used for T2 mapping. Please note that this suffix is not intended for the logical grouping of images acquired using an Echo Planar Imaging (EPI) readout.</td>
+</tr>
+<tr>
+<td>MEGRE</td>
+<td>echo</td>
+<td>Multi-echo gradient-echo</td>
+<td>Anatomical gradient echo images acquired at different echo times. Please note that this suffix is not intended for the logical grouping of images acquired using an Echo Planar Imaging (EPI) readout.</td>
+</tr>
+<tr>
+<td>MTR</td>
+<td>mt</td>
+<td>Magnetization transfer ratio</td>
+<td>This method is to calculate a semi-quantitative magnetization transfer ratio map.</td>
+</tr>
+<tr>
+<td>MTS</td>
+<td>flip, mt</td>
+<td>Magnetization transfer saturation</td>
+<td>This method is to calculate a semi-quantitative magnetization transfer saturation index map. The MTS method involves three sets of anatomical images that differ in terms of application of a magnetization transfer RF pulse (MTon or MToff) and flip angle (<a href="https://doi.org/10.1002/mrm.21732">Helms et al. 2008</a>).</td>
+</tr>
+<tr>
+<td>MPM</td>
+<td>flip, mt, echo, part</td>
+<td>Multi-parametric mapping</td>
+<td>The MPM approaches (a.k.a hMRI) involves the acquisition of highly-similar anatomical images that differ in terms of application of a magnetization transfer RF pulse (MTon or MToff), flip angle and (optionally) echo time and magnitue/phase parts (<a href="https://doi.org/10.3389/fnins.2013.00095">Weiskopf et al. 2013</a>). See <a href="https://owncloud.gwdg.de/index.php/s/iv2TOQwGy4FGDDZ">here</a> for suggested MPM acquisition protocols.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fieldmap-data"><a class="toclink" href="#fieldmap-data">Fieldmap data</a></h3>
+<p>Template:
+<div class="highlight"><pre><span></span><code>sub-&lt;label&gt;/
+    [ses-&lt;label&gt;/]
+        fmap/
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_flip-&lt;index&gt;[_inv-&lt;index&gt;][_part-&lt;label&gt;]_TB1DAM.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_flip-&lt;index&gt;[_inv-&lt;index&gt;][_part-&lt;label&gt;]_TB1DAM.nii[.gz]
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_echo-&lt;index&gt;_flip-&lt;index&gt;[_inv-&lt;index&gt;][_part-&lt;label&gt;]_TB1EPI.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_echo-&lt;index&gt;_flip-&lt;index&gt;[_inv-&lt;index&gt;][_part-&lt;label&gt;]_TB1EPI.nii[.gz]
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;][_flip-&lt;index&gt;][_inv-&lt;index&gt;][_part-&lt;label&gt;]_RB1COR.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;][_flip-&lt;index&gt;][_inv-&lt;index&gt;][_part-&lt;label&gt;]_RB1COR.nii[.gz]
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;][_flip-&lt;index&gt;][_inv-&lt;index&gt;][_part-&lt;label&gt;]_TB1AFI.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;][_flip-&lt;index&gt;][_inv-&lt;index&gt;][_part-&lt;label&gt;]_TB1AFI.nii[.gz]
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;][_flip-&lt;index&gt;][_inv-&lt;index&gt;][_part-&lt;label&gt;]_TB1RFM.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;][_flip-&lt;index&gt;][_inv-&lt;index&gt;][_part-&lt;label&gt;]_TB1RFM.nii[.gz]
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;][_flip-&lt;index&gt;][_inv-&lt;index&gt;][_part-&lt;label&gt;]_TB1TFL.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;][_flip-&lt;index&gt;][_inv-&lt;index&gt;][_part-&lt;label&gt;]_TB1TFL.nii[.gz]
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;]_flip-&lt;index&gt;_inv-&lt;index&gt;[_part-&lt;label&gt;]_TB1SRGE.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_ce-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;][_echo-&lt;index&gt;]_flip-&lt;index&gt;_inv-&lt;index&gt;[_part-&lt;label&gt;]_TB1SRGE.nii[.gz]
+</code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th><strong>Suffix</strong></th>
+<th><strong>Meta-data relevant entity</strong></th>
+<th><strong>Application</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TB1DAM</td>
+<td>flip</td>
+<td>Double-angle B1+ mapping</td>
+<td>The double-angle B1<sup>+</sup> method (<a href="https://doi.org/10.1006/jmra.1993.1133">Insko and Bolinger 1993</a>) is based on the calculation of the actual angles from signal ratios, collected by two acquisitions at different nominal excitation flip angles. Common sequence types for this application include spin echo and echo planar imaging.</td>
+</tr>
+<tr>
+<td>TB1EPI</td>
+<td>flip, echo</td>
+<td>B1<sup>+</sup> mapping with 3D EPI</td>
+<td>This B1<sup>+</sup> mapping method (<a href="https://doi.org/10.1002/mrm.21083">Jiru and Klose 2006</a>) is based on two EPI readouts to acquire spin echo (SE) and stimulated echo (STE) images at multiple flip angles in one sequence, used in the calculation of deviations from the nominal flip angle.</td>
+</tr>
+<tr>
+<td>TB1AFI</td>
+<td>Please see the <a href="11-qmri.html">qMRI appendix</a>.</td>
+<td>Actual Flip Angle Imaging (AFI)</td>
+<td>This method (<a href="https://doi.org/10.1002/mrm.21120">Yarnykh 2007</a>) calculates a B1<sup>+</sup> map from two images acquired at interleaved (two) TRs with identical RF pulses using a steady-state sequence.</td>
+</tr>
+<tr>
+<td>TB1TFL</td>
+<td>Please see the <a href="11-qmri.html">qMRI appendix</a>.</td>
+<td>Siemens <code>tfl_b1_map</code></td>
+<td>B1<sup>+</sup> data acquired using <code>tfl_b1_map</code> product sequence by Siemens based on the method by <a href="https://doi.org/10.1002/mrm.22423">Chung et al. (2010)</a>. The sequence generates one anatomical image and one scaled flip angle map.</td>
+</tr>
+<tr>
+<td>TB1RFM</td>
+<td>Please see the <a href="11-qmri.html">qMRI appendix</a>.</td>
+<td>Siemens <code>rf_map</code></td>
+<td>B1<sup>+</sup> data acquired using <code>rf_map</code> product sequence by Siemens.</td>
+</tr>
+<tr>
+<td>TB1SRGE</td>
+<td><code>flip</code>, <code>inv</code></td>
+<td>SA2RAGE</td>
+<td>Saturation-prepared with 2 rapid gradient echoes (SA2RAGE) uses a ratio of two saturation recovery images with different time delays, and a simulated look-up table to estimate B1+ (<a href="https://doi.org/10.1002/mrm.23145">Eggenschwiler et al. 2011</a>). This sequence can also be used in conjunction with MP2RAGE T1 mapping to iteratively improve B1+ and T1 map estimation (<a href="https://doi.org/10.1371/journal.pone.0069294">Marques &amp; Gruetter 2013</a>).</td>
+</tr>
+<tr>
+<td>RB1COR</td>
+<td>Please see the <a href="11-qmri.html">qMRI appendix</a>.</td>
+<td>B1<sup>-</sup> field correction</td>
+<td>Low resolution images acquired by the body coil (in the gantry of the scanner) and the head coil using identical acquisition parameters to generate a combined sensitivity map as described in <a href="https://doi.org/10.1002/mrm.26058">Papp et al. (2016)</a>.</td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+--><!-- Application footer -->
+<footer class="md-footer">
+
+  <!-- Link to previous and/or next page --><div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+
+        <!-- Link to previous page --><a href="09-entities.html"
+              title="Entities"
+              class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+              rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back
+                    md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">Previous</span>Entities</span>
+            </div>
+          </a><!-- Link to next page --><a href="11-qmri.html"
+              title="Quantitative MRI"
+              class="md-flex md-footer-nav__link md-footer-nav__link--next"
+              rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">Next</span>Quantitative MRI</span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward
+                    md-footer-nav__button"></i>
+            </div>
+          </a></nav>
+    </div><!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">See the source code and discussion page on
+        <a href="https://github.com/bids-standard/bids-specification">GitHub</a>
+      </div>
+
+      <!-- Social links --></div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.94ec81fe.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.48dfec6c.min.js"></script>
+      
+        <script src="../js/jquery-3.6.0.min.js"></script>
+      
+    
+  </body>
+</html>

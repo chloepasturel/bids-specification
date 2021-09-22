@@ -1,0 +1,1380 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://bids-specification.readthedocs.io/en/stable/99-appendices/08-coordinate-systems.html">
+      
+      <link rel="icon" href="../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.8">
+    
+    
+      
+        <title>Coordinate systems - Brain Imaging Data Structure v1.6.1-dev</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.92558b1b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#appendix-viii-coordinate-systems" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Brain Imaging Data Structure v1.6.1-dev" class="md-header__button md-logo" aria-label="Brain Imaging Data Structure v1.6.1-dev" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Brain Imaging Data Structure v1.6.1-dev
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Coordinate systems
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Brain Imaging Data Structure v1.6.1-dev" class="md-nav__button md-logo" aria-label="Brain Imaging Data Structure v1.6.1-dev" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    Brain Imaging Data Structure v1.6.1-dev
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      <label class="md-nav__link" for="__nav_1">
+        The BIDS Specification
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The BIDS Specification" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          The BIDS Specification
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-introduction.html" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-common-principles.html" class="md-nav__link">
+        Common principles
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-modality-agnostic-files.html" class="md-nav__link">
+        Modality agnostic files
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      <label class="md-nav__link" for="__nav_1_4">
+        Modality specific files
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Modality specific files" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Modality specific files
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/01-magnetic-resonance-imaging-data.html" class="md-nav__link">
+        Magnetic Resonance Imaging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/02-magnetoencephalography.html" class="md-nav__link">
+        Magnetoencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/03-electroencephalography.html" class="md-nav__link">
+        Electroencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/04-intracranial-electroencephalography.html" class="md-nav__link">
+        Intracranial Electroencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/05-task-events.html" class="md-nav__link">
+        Task events
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/06-physiological-and-other-continuous-recordings.html" class="md-nav__link">
+        Physiological and other continuous recordings
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/07-behavioral-experiments.html" class="md-nav__link">
+        Behavioral experiments (with no neural recordings)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/08-genetic-descriptor.html" class="md-nav__link">
+        Genetic Descriptor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/09-positron-emission-tomography.html" class="md-nav__link">
+        Positron Emission Tomography
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" >
+      
+      <label class="md-nav__link" for="__nav_1_5">
+        Derivatives
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Derivatives" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Derivatives
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/01-introduction.html" class="md-nav__link">
+        BIDS Derivatives
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/02-common-data-types.html" class="md-nav__link">
+        Common data types and metadata
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/03-imaging.html" class="md-nav__link">
+        Imaging data types
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-longitudinal-and-multi-site-studies.html" class="md-nav__link">
+        Longitudinal and multi-site studies
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-extensions.html" class="md-nav__link">
+        BIDS Extension Proposals
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_8" type="checkbox" id="__nav_1_8" checked>
+      
+      <label class="md-nav__link" for="__nav_1_8">
+        Appendix
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Appendix" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-contributors.html" class="md-nav__link">
+        Contributors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-licenses.html" class="md-nav__link">
+        Licenses
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-hed.html" class="md-nav__link">
+        Hierarchical Event Descriptors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-entity-table.html" class="md-nav__link">
+        Entity table
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-units.html" class="md-nav__link">
+        Units
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-meg-file-formats.html" class="md-nav__link">
+        MEG file formats
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-meg-systems.html" class="md-nav__link">
+        MEG systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Coordinate systems
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="08-coordinate-systems.html" class="md-nav__link md-nav__link--active">
+        Coordinate systems
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coordinate-systems-applicable-to-meg-eeg-and-ieeg" class="md-nav__link">
+    Coordinate Systems applicable to MEG, EEG, and iEEG
+  </a>
+  
+    <nav class="md-nav" aria-label="Coordinate Systems applicable to MEG, EEG, and iEEG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commonly-used-anatomical-landmarks-in-meg-eeg-and-ieeg-research" class="md-nav__link">
+    Commonly used anatomical landmarks in MEG, EEG, and iEEG research
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meg-specific-coordinate-systems" class="md-nav__link">
+    MEG Specific Coordinate Systems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eeg-specific-coordinate-systems" class="md-nav__link">
+    EEG Specific Coordinate Systems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ieeg-specific-coordinate-systems" class="md-nav__link">
+    iEEG Specific Coordinate Systems
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-based-coordinate-systems" class="md-nav__link">
+    Image-based Coordinate Systems
+  </a>
+  
+    <nav class="md-nav" aria-label="Image-based Coordinate Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standard-template-identifiers" class="md-nav__link">
+    Standard template identifiers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nonstandard-coordinate-system-identifiers" class="md-nav__link">
+    Nonstandard coordinate system identifiers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-template-coordinate-system-identifiers" class="md-nav__link">
+    Non-template coordinate system identifiers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-entities.html" class="md-nav__link">
+        Entities
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-file-collections.html" class="md-nav__link">
+        File collections
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-qmri.html" class="md-nav__link">
+        Quantitative MRI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-arterial-spin-labeling.html" class="md-nav__link">
+        Arterial Spin Labeling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-cross-modality-correspondence.html" class="md-nav__link">
+        Cross modality correspondence
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGES.html" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        The BIDS Starter Kit
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The BIDS Starter Kit" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          The BIDS Starter Kit
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit" class="md-nav__link">
+        GitHub repository
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit/wiki/Tutorials" class="md-nav__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit/wiki" class="md-nav__link">
+        Wiki
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coordinate-systems-applicable-to-meg-eeg-and-ieeg" class="md-nav__link">
+    Coordinate Systems applicable to MEG, EEG, and iEEG
+  </a>
+  
+    <nav class="md-nav" aria-label="Coordinate Systems applicable to MEG, EEG, and iEEG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commonly-used-anatomical-landmarks-in-meg-eeg-and-ieeg-research" class="md-nav__link">
+    Commonly used anatomical landmarks in MEG, EEG, and iEEG research
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meg-specific-coordinate-systems" class="md-nav__link">
+    MEG Specific Coordinate Systems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eeg-specific-coordinate-systems" class="md-nav__link">
+    EEG Specific Coordinate Systems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ieeg-specific-coordinate-systems" class="md-nav__link">
+    iEEG Specific Coordinate Systems
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-based-coordinate-systems" class="md-nav__link">
+    Image-based Coordinate Systems
+  </a>
+  
+    <nav class="md-nav" aria-label="Image-based Coordinate Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standard-template-identifiers" class="md-nav__link">
+    Standard template identifiers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nonstandard-coordinate-system-identifiers" class="md-nav__link">
+    Nonstandard coordinate system identifiers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-template-coordinate-system-identifiers" class="md-nav__link">
+    Non-template coordinate system identifiers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="appendix-viii-coordinate-systems"><a class="toclink" href="#appendix-viii-coordinate-systems">Appendix VIII: Coordinate systems</a></h1>
+<h2 id="introduction"><a class="toclink" href="#introduction">Introduction</a></h2>
+<p>To interpret a coordinate (x, y, z), it is required that you know (1) relative
+to which origin the coordinate is expressed, (2) the interpretation of the
+three axes, and (3) the units in which the numbers are expressed.
+This information is sometimes called the coordinate system.</p>
+<p>These letters help describe the coordinate system definition:</p>
+<ul>
+<li>A/P means anterior/posterior</li>
+<li>L/R means left/right</li>
+<li>S/I means superior/inferior</li>
+</ul>
+<p>For example: <code>RAS</code> means that the first dimension (X) points towards the right
+hand side of the head, the second dimension (Y) points towards the Anterior
+aspect of the head, and the third dimension (Z) points towards the top of the
+head.
+The directions are considered to be from the subject's perspective.
+For example, in the <code>RAS</code> coordinate system, a point to the subject's left
+will have a negative <code>x</code> value.</p>
+<p>Besides coordinate systems, defined by their origin and direction of the axes,
+BIDS defines "spaces" as an artificial frame of reference, created to describe
+different anatomies in a unifying manner (see for example,
+<a href="https://doi.org/10.1016/j.neuroimage.2012.01.024">doi:10.1016/j.neuroimage.2012.01.024</a>).</p>
+<p>The "space" and all coordinates expressed in this space are by design a
+transformation of the real world geometry, and nearly always different from the
+individual subject space that it stems from.
+An example is the
+Talairach-Tournoux space, which is constructed by piecewise linear scaling of an
+individual's brain to that of the Talairach-Tournoux 1988 atlas. In the
+Talairach-Tournoux space, the origin of the coordinate system is at the AC and
+units are expressed in mm.</p>
+<p>The coordinate systems below all relate to neuroscience and therefore to the
+head or brain coordinates.
+$Please be aware that all data acquisition starts with
+"device coordinates" (scanner), which does not have to be identical to the
+initial "file format coordinates" (DICOM), which are again different from the
+"head" coordinates (for example, NIFTI).
+Not only do device coordinate vary between
+hardware manufacturers, but also the head coordinates differ, mostly due to
+different conventions used in specific software packages developed by different
+(commercial or academic) groups.</p>
+<h2 id="coordinate-systems-applicable-to-meg-eeg-and-ieeg"><a class="toclink" href="#coordinate-systems-applicable-to-meg-eeg-and-ieeg">Coordinate Systems applicable to MEG, EEG, and iEEG</a></h2>
+<p>Generally, across the MEG, EEG, and iEEG modalities, the first two pieces of
+information for a coordinate system (origin and orientation) are specified in
+<code>&lt;CoordSysType&gt;CoordinateSystem</code>.
+The third piece of information for a coordinate system (units) are specified in
+<code>&lt;CoordSysType&gt;CoordinateUnits</code>.
+Here, <code>&lt;CoordSysType&gt;</code> can be one of of the following,
+depending on the data that is supposed to be documented:</p>
+<ul>
+<li><code>MEG</code></li>
+<li><code>EEG</code></li>
+<li><code>iEEG</code></li>
+<li><code>Fiducials</code></li>
+<li><code>AnatomicalLandmark</code></li>
+<li><code>HeadCoil</code></li>
+<li><code>DigitizedHeadPoints</code></li>
+</ul>
+<p>Allowed values for the <code>&lt;CoordSysType&gt;CoordinateSystem</code> field come from a list of
+restricted keywords, as listed in the sections below.</p>
+<p>Note that <code>Fiducials</code>, <code>AnatomicalLandmark</code>, <code>HeadCoil</code>, and <code>DigitizedHeadPoints</code>
+<code>CoordSysType</code>s share the restricted keywords with the data modality they are shared with.
+For example, if an <code>AnatomicalLandmark</code> field is shared as part of an EEG dataset,
+the EEG-specific coordinate systems apply.
+However, if it is shared as part of an MEG dataset,
+the MEG-specific coordinate systems apply.</p>
+<p>If no value from the list of restricted keywords fits, there is always the
+option to specify the value as follows:</p>
+<ul>
+<li><code>Other</code>: Use this for other coordinate systems and specify all
+    required details in the <code>&lt;CoordSysType&gt;CoordinateSystemDescription</code> field</li>
+</ul>
+<p>If you believe a specific coordinate system should be added to the list
+of restricted keywords for MEG, EEG, or iEEG, please open a new issue on the
+<a href="https://github.com/bids-standard/bids-specification/issues/new/choose">bids-standard/bids-specification GitHub repository</a>.</p>
+<p>Note that the short descriptions below may not capture all details.
+For detailed descriptions of the coordinate systems below, please see the
+<a href="https://www.fieldtriptoolbox.org/faq/how_are_the_different_head_and_mri_coordinate_systems_defined">FieldTrip webpage</a>.</p>
+<h3 id="commonly-used-anatomical-landmarks-in-meg-eeg-and-ieeg-research"><a class="toclink" href="#commonly-used-anatomical-landmarks-in-meg-eeg-and-ieeg-research">Commonly used anatomical landmarks in MEG, EEG, and iEEG research</a></h3>
+<p>In the documentation below we refer to anatomical landmarks such as the
+Left Pre Auricular point (LPA) and the Right Pre Auricular point (RPA),
+or the left and right Helix-Tragus Junction (LHJ, RHJ).</p>
+<p>These anatomical landmarks are commonly used in MEG, EEG, and iEEG research
+to define coordinate systems that capture digitized sensor positions.</p>
+<p>More information can be obtained from the FieldTrip webpage.</p>
+<ul>
+<li><a href="https://www.fieldtriptoolbox.org/faq/how_are_the_lpa_and_rpa_points_defined/">FAQ: LPA and RPA</a></li>
+<li><a href="https://www.fieldtriptoolbox.org/faq/how_should_i_report_the_positions_of_the_fiducial_points_on_the_head/">FAQ: Beyond LPA and RPA</a></li>
+</ul>
+<h3 id="meg-specific-coordinate-systems"><a class="toclink" href="#meg-specific-coordinate-systems">MEG Specific Coordinate Systems</a></h3>
+<p>Restricted keywords for the <code>&lt;CoordSysType&gt;CoordinateSystem</code> field in the
+<code>coordinatesystem.json</code> file for MEG datasets:</p>
+<ul>
+<li><code>CTF</code>: ALS orientation and the origin between the ears</li>
+<li><code>ElektaNeuromag</code>: RAS orientation and the origin between the ears</li>
+<li><code>4DBti</code>: ALS orientation and the origin between the ears</li>
+<li><code>KitYokogawa</code>: ALS orientation and the origin between the ears</li>
+<li><code>ChietiItab</code>: RAS orientation and the origin between the ears</li>
+<li>Any keyword from the list of <a href="#standard-template-identifiers">Standard template identifiers</a></li>
+</ul>
+<p>In the case that MEG was recorded simultaneously with EEG,
+the restricted keywords for
+<a href="#eeg-specific-coordinate-systems">EEG specific coordinate systems</a>
+can also be applied to MEG:</p>
+<ul>
+<li><code>CapTrak</code></li>
+<li><code>EEGLAB</code></li>
+<li><code>EEGLAB-HJ</code></li>
+</ul>
+<h3 id="eeg-specific-coordinate-systems"><a class="toclink" href="#eeg-specific-coordinate-systems">EEG Specific Coordinate Systems</a></h3>
+<p>Restricted keywords for the <code>&lt;CoordSysType&gt;CoordinateSystem</code> field in the
+<code>coordsystem.json</code> file for EEG datasets:</p>
+<ul>
+<li>
+<p><code>CapTrak</code>: RAS orientation and the origin approximately between LPA and RPA</p>
+</li>
+<li>
+<p><code>EEGLAB</code>: ALS orientation and the origin exactly between LPA and RPA.
+    For more information, see the
+    <a href="https://eeglab.org/tutorials/ConceptsGuide/coordinateSystem.html#eeglab-coordinate-system">EEGLAB wiki page</a>.</p>
+</li>
+<li>
+<p><code>EEGLAB-HJ</code>: ALS orientation and the origin exactly between LHJ and RHJ.
+    For more information, see the
+    <a href="https://eeglab.org/tutorials/ConceptsGuide/coordinateSystem.html#eeglab-hj-coordinate-system">EEGLAB wiki page</a>.</p>
+</li>
+<li>
+<p>Any keyword from the list of <a href="#standard-template-identifiers">Standard template identifiers</a></p>
+</li>
+</ul>
+<p>In the case that EEG was recorded simultaneously with MEG,
+the restricted keywords for
+<a href="#meg-specific-coordinate-systems">MEG specific coordinate systems</a>
+can also be applied to EEG:</p>
+<ul>
+<li><code>CTF</code></li>
+<li><code>ElektaNeuromag</code></li>
+<li><code>4DBti</code></li>
+<li><code>KitYokogawa</code></li>
+<li><code>ChietiItab</code></li>
+</ul>
+<h3 id="ieeg-specific-coordinate-systems"><a class="toclink" href="#ieeg-specific-coordinate-systems">iEEG Specific Coordinate Systems</a></h3>
+<p>Restricted keywords for the <code>&lt;CoordSysType&gt;CoordinateSystem</code> field in the
+<code>coordsystem.json</code> file for iEEG datasets:</p>
+<ul>
+<li>
+<p><code>Pixels</code>: If electrodes are localized in 2D space (only x and y are
+    specified and z is n/a), then the positions in this file must correspond to
+    the locations expressed in pixels on the photo/drawing/rendering of the
+    electrodes on the brain. In this case, coordinates must be (row,column)
+    pairs, with (0,0) corresponding to the upper left pixel and (N,0)
+    corresponding to the lower left pixel.</p>
+</li>
+<li>
+<p><code>ACPC</code>: The origin of the coordinate system is at the Anterior Commissure
+    and the negative y-axis is passing through the Posterior Commissure. The
+    positive z-axis is passing through a mid-hemispheric point in the superior
+    direction. The anatomical landmarks are determined in the individual's
+    anatomical scan and no scaling or deformations have been applied to the
+    individual's anatomical scan. For more information, see the
+    <a href="https://www.fieldtriptoolbox.org/faq/acpc/">ACPC site</a> on the FieldTrip
+    toolbox wiki.</p>
+</li>
+<li>
+<p><code>ScanRAS</code>: The origin of the coordinate system is the center of the
+    gradient coil for the corresponding T1w image of the subject, and the x-axis
+    increases left to right, the y-axis increases posterior to to anterior and
+    the z-axis increases inferior to superior. For more information see the
+    <a href="https://nipy.org/nibabel/coordinate_systems.html">Nipy Documentation</a>. It is
+    strongly encouraged to align the subject's T1w to ACPC so that the <code>ACPC</code>
+    coordinate system can be used. If the subject's T1w in the BIDS dataset
+    is not aligned to ACPC, <code>ScanRAS</code> should be used.</p>
+</li>
+<li>
+<p>Any keyword from the list of
+    <a href="#standard-template-identifiers">Standard template identifiers</a></p>
+</li>
+</ul>
+<h2 id="image-based-coordinate-systems"><a class="toclink" href="#image-based-coordinate-systems">Image-based Coordinate Systems</a></h2>
+<p>The transformation of the real world geometry to an artificial frame of
+reference is described in <code>&lt;CoordSysType&gt;CoordinateSystem</code>.
+Unless otherwise specified below, the origin is at the AC and the orientation of
+the axes is RAS.
+Unless specified explicitly in the sidecar file in the
+<code>&lt;CoordSysType&gt;CoordinateUnits</code> field, the units are assumed to be mm.</p>
+<h3 id="standard-template-identifiers"><a class="toclink" href="#standard-template-identifiers">Standard template identifiers</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Coordinate System</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ICBM452AirSpace</td>
+<td>Reference space defined by the "average of 452 T1-weighted MRIs of normal young adult brains" with "linear transforms of the subjects into the atlas space using a 12-parameter affine transformation" <a href="https://www.loni.usc.edu/research/atlases">https://www.loni.usc.edu/research/atlases</a></td>
+</tr>
+<tr>
+<td>ICBM452Warp5Space</td>
+<td>Reference space defined by the "average of 452 T1-weighted MRIs of normal young adult brains" "based on a 5th order polynomial transformation into the atlas space" <a href="https://www.loni.usc.edu/research/atlases">https://www.loni.usc.edu/research/atlases</a></td>
+</tr>
+<tr>
+<td>IXI549Space</td>
+<td>Reference space defined by the average of the "549 (...) subjects from the IXI dataset" linearly transformed to ICBM MNI 452.Used by SPM12. <a href="https://brain-development.org/">https://brain-development.org/</a></td>
+</tr>
+<tr>
+<td>fsaverage</td>
+<td>The <code>fsaverage</code> is a <strong>dual template</strong> providing both volumetric and surface coordinates references. The volumetric template corresponds to a FreeSurfer variant of <code>MNI305</code> space. The <code>fsaverage</code> atlas also defines a surface reference system (formerly described as fsaverage[3|4|5|6|sym]).</td>
+</tr>
+<tr>
+<td>fsaverageSym</td>
+<td>The <code>fsaverage</code> is a <strong>dual template</strong> providing both volumetric and surface coordinates references. The volumetric template corresponds to a FreeSurfer variant of <code>MNI305</code> space. The <code>fsaverageSym</code> atlas also defines a symmetric surface reference system (formerly described as <code>fsaveragesym</code>).</td>
+</tr>
+<tr>
+<td>fsLR</td>
+<td>The <code>fsLR</code> is a <strong>dual template</strong> providing both volumetric and surface coordinates references. The volumetric template corresponds to <code>MNI152NLin6Asym</code>. Surface templates are given at several sampling densities: 164k (used by HCP pipelines for 3T and 7T anatomical analysis), 59k (used by HCP pipelines for 7T MRI bold and DWI analysis), 32k (used by HCP pipelines for 3T MRI bold and DWI analysis), or 4k (used by HCP pipelines for MEG analysis) fsaverage_LR surface reconstructed from the T1w image.</td>
+</tr>
+<tr>
+<td>MNIColin27</td>
+<td>Average of 27 T1 scans of a single subject <a href="https://www.bic.mni.mcgill.ca/ServicesAtlases/Colin27Highres">https://www.bic.mni.mcgill.ca/ServicesAtlases/Colin27Highres</a></td>
+</tr>
+<tr>
+<td>MNI152Lin</td>
+<td>Also known as ICBM (version with linear coregistration) <a href="https://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152Lin">https://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152Lin</a></td>
+</tr>
+<tr>
+<td>MNI152NLin2009[a-c][Sym|Asym]</td>
+<td>Also known as ICBM (non-linear coregistration with 40 iterations, released in 2009). It comes in either three different flavours each in symmetric or asymmetric version. <a href="https://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009">https://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009</a></td>
+</tr>
+<tr>
+<td>MNI152NLin6Sym</td>
+<td>Also known as symmetric ICBM 6th generation (non-linear coregistration). Used by SPM99 - SPM8. <a href="https://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin6">https://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin6</a></td>
+</tr>
+<tr>
+<td>MNI152NLin6ASym</td>
+<td>A variation of <code>MNI152NLin6Sym</code> built by A. Janke that is released as the <em>MNI template</em> of FSL. Volumetric templates included with <a href="https://github.com/Washington-University/HCPpipelines/tree/master/global/templates">HCP-Pipelines</a> correspond to this template too. See <a href="https://doi.org/10.1016/j.neuroimage.2012.01.024">doi:10.1016/j.neuroimage.2012.01.024</a>.</td>
+</tr>
+<tr>
+<td>MNI305</td>
+<td>Also known as avg305.</td>
+</tr>
+<tr>
+<td>NIHPD</td>
+<td>Pediatric templates generated from the NIHPD sample. Available for different age groups (4.5–18.5 y.o., 4.5–8.5 y.o., 7–11 y.o., 7.5–13.5 y.o., 10–14 y.o., 13–18.5 y.o. This template also comes in either -symmetric or -asymmetric flavor. <a href="https://www.bic.mni.mcgill.ca/ServicesAtlases/NIHPD-obj1">https://www.bic.mni.mcgill.ca/ServicesAtlases/NIHPD-obj1</a></td>
+</tr>
+<tr>
+<td>OASIS30AntsOASISAnts</td>
+<td><a href="https://figshare.com/articles/ANTs_ANTsR_Brain_Templates/915436">https://figshare.com/articles/ANTs_ANTsR_Brain_Templates/915436</a></td>
+</tr>
+<tr>
+<td>OASIS30Atropos</td>
+<td><a href="https://mindboggle.info/data.html">https://mindboggle.info/data.html</a></td>
+</tr>
+<tr>
+<td>Talairach</td>
+<td>Piecewise linear scaling of the brain is implemented as described in TT88. <a href="http://talairach.org/">http://talairach.org/</a></td>
+</tr>
+<tr>
+<td>UNCInfant</td>
+<td>Infant Brain Atlases from Neonates to 1- and 2-year-olds. <a href="https://www.nitrc.org/projects/pediatricatlas">https://www.nitrc.org/projects/pediatricatlas</a></td>
+</tr>
+</tbody>
+</table>
+<p>The following template identifiers are retained for backwards compatibility
+of BIDS implementations.
+However, their use is <a href="../02-common-principles.html#definitions">DEPRECATED</a>.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Coordinate System</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>RECOMMENDED alternative identifier</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fsaverage[3|4|5|6|sym]</td>
+<td>Images were sampled to the FreeSurfer surface reconstructed from the subject’s T1w image, and registered to an fsaverage template</td>
+<td>fsaverage[Sym]</td>
+</tr>
+<tr>
+<td>UNCInfant[0|1|2]V[21|22|23]</td>
+<td>Infant Brain Atlases from Neonates to 1- and 2-year-olds. <a href="https://www.nitrc.org/projects/pediatricatlas">https://www.nitrc.org/projects/pediatricatlas</a></td>
+<td>UNCInfant</td>
+</tr>
+</tbody>
+</table>
+<h3 id="nonstandard-coordinate-system-identifiers"><a class="toclink" href="#nonstandard-coordinate-system-identifiers">Nonstandard coordinate system identifiers</a></h3>
+<p>The following template identifiers are RECOMMENDED for individual- and study-specific reference
+spaces.
+In order for these spaces to be interpretable, <code>SpatialReference</code> metadata MUST be provided, as
+described in <a href="../05-derivatives/02-common-data-types.html#common-file-level-metadata-fields">Common file level metadata fields</a>.</p>
+<p>In the case of multiple study templates, additional names may need to be defined.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Coordinate System</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>individual</td>
+<td>Participant specific anatomical space (for example derived from T1w and/or T2w images). This coordinate system requires specifying an additional, participant-specific file to be fully defined. In context of surfaces this space has been referred to as <code>fsnative</code>.</td>
+</tr>
+<tr>
+<td>study</td>
+<td>Custom space defined using a group/study-specific template. This coordinate system requires specifying an additional file to be fully defined.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="non-template-coordinate-system-identifiers"><a class="toclink" href="#non-template-coordinate-system-identifiers">Non-template coordinate system identifiers</a></h3>
+<p>The <code>scanner</code> coordinate system is implicit and assumed by default if the derivative filename does not define <strong>any</strong> <code>space-&lt;label&gt;</code>.
+Please note that <code>space-scanner</code> SHOULD NOT be used, it is mentioned in this specification to make its existence explicit.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Coordinate System</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>scanner</td>
+<td>The intrinsic coordinate system of the original image (the first entry of <code>RawSources</code>) after reconstruction and conversion to NIfTI or equivalent for the case of surfaces and dual volume/surface files.</td>
+</tr>
+</tbody>
+</table>
+<!-- Link Definitions -->
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+--><!-- Application footer -->
+<footer class="md-footer">
+
+  <!-- Link to previous and/or next page --><div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+
+        <!-- Link to previous page --><a href="07-meg-systems.html"
+              title="MEG systems"
+              class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+              rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back
+                    md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">Previous</span>MEG systems</span>
+            </div>
+          </a><!-- Link to next page --><a href="09-entities.html"
+              title="Entities"
+              class="md-flex md-footer-nav__link md-footer-nav__link--next"
+              rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">Next</span>Entities</span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward
+                    md-footer-nav__button"></i>
+            </div>
+          </a></nav>
+    </div><!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">See the source code and discussion page on
+        <a href="https://github.com/bids-standard/bids-specification">GitHub</a>
+      </div>
+
+      <!-- Social links --></div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.94ec81fe.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.48dfec6c.min.js"></script>
+      
+        <script src="../js/jquery-3.6.0.min.js"></script>
+      
+    
+  </body>
+</html>

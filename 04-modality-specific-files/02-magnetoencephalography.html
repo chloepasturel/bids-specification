@@ -1,0 +1,1969 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/02-magnetoencephalography.html">
+      
+      <link rel="icon" href="../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.8">
+    
+    
+      
+        <title>Magnetoencephalography - Brain Imaging Data Structure v1.6.1-dev</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.92558b1b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#magnetoencephalography" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Brain Imaging Data Structure v1.6.1-dev" class="md-header__button md-logo" aria-label="Brain Imaging Data Structure v1.6.1-dev" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Brain Imaging Data Structure v1.6.1-dev
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Magnetoencephalography
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Brain Imaging Data Structure v1.6.1-dev" class="md-nav__button md-logo" aria-label="Brain Imaging Data Structure v1.6.1-dev" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    Brain Imaging Data Structure v1.6.1-dev
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      <label class="md-nav__link" for="__nav_1">
+        The BIDS Specification
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The BIDS Specification" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          The BIDS Specification
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-introduction.html" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-common-principles.html" class="md-nav__link">
+        Common principles
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-modality-agnostic-files.html" class="md-nav__link">
+        Modality agnostic files
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" checked>
+      
+      <label class="md-nav__link" for="__nav_1_4">
+        Modality specific files
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Modality specific files" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Modality specific files
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-magnetic-resonance-imaging-data.html" class="md-nav__link">
+        Magnetic Resonance Imaging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Magnetoencephalography
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="02-magnetoencephalography.html" class="md-nav__link md-nav__link--active">
+        Magnetoencephalography
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#meg-recording-data" class="md-nav__link">
+    MEG recording data
+  </a>
+  
+    <nav class="md-nav" aria-label="MEG recording data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recording-eeg-simultaneously-with-meg" class="md-nav__link">
+    Recording EEG simultaneously with MEG
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sidecar-json-_megjson" class="md-nav__link">
+    Sidecar JSON (*_meg.json)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#channels-description-_channelstsv" class="md-nav__link">
+    Channels description (*_channels.tsv)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coordinate-system-json-_coordsystemjson" class="md-nav__link">
+    Coordinate System JSON (*_coordsystem.json)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#landmark-photos-_photojpg" class="md-nav__link">
+    Landmark photos (*_photo.jpg)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#head-shape-and-electrode-description-_headshapeext" class="md-nav__link">
+    Head shape and electrode description (*_headshape.&lt;ext&gt;)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#empty-room-meg-recordings" class="md-nav__link">
+    Empty-room MEG recordings
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-electroencephalography.html" class="md-nav__link">
+        Electroencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-intracranial-electroencephalography.html" class="md-nav__link">
+        Intracranial Electroencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-task-events.html" class="md-nav__link">
+        Task events
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-physiological-and-other-continuous-recordings.html" class="md-nav__link">
+        Physiological and other continuous recordings
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-behavioral-experiments.html" class="md-nav__link">
+        Behavioral experiments (with no neural recordings)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-genetic-descriptor.html" class="md-nav__link">
+        Genetic Descriptor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-positron-emission-tomography.html" class="md-nav__link">
+        Positron Emission Tomography
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" >
+      
+      <label class="md-nav__link" for="__nav_1_5">
+        Derivatives
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Derivatives" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Derivatives
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/01-introduction.html" class="md-nav__link">
+        BIDS Derivatives
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/02-common-data-types.html" class="md-nav__link">
+        Common data types and metadata
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/03-imaging.html" class="md-nav__link">
+        Imaging data types
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-longitudinal-and-multi-site-studies.html" class="md-nav__link">
+        Longitudinal and multi-site studies
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-extensions.html" class="md-nav__link">
+        BIDS Extension Proposals
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_8" type="checkbox" id="__nav_1_8" >
+      
+      <label class="md-nav__link" for="__nav_1_8">
+        Appendix
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Appendix" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/01-contributors.html" class="md-nav__link">
+        Contributors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/02-licenses.html" class="md-nav__link">
+        Licenses
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/03-hed.html" class="md-nav__link">
+        Hierarchical Event Descriptors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/04-entity-table.html" class="md-nav__link">
+        Entity table
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/05-units.html" class="md-nav__link">
+        Units
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/06-meg-file-formats.html" class="md-nav__link">
+        MEG file formats
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/07-meg-systems.html" class="md-nav__link">
+        MEG systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/08-coordinate-systems.html" class="md-nav__link">
+        Coordinate systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/09-entities.html" class="md-nav__link">
+        Entities
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/10-file-collections.html" class="md-nav__link">
+        File collections
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/11-qmri.html" class="md-nav__link">
+        Quantitative MRI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/12-arterial-spin-labeling.html" class="md-nav__link">
+        Arterial Spin Labeling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/13-cross-modality-correspondence.html" class="md-nav__link">
+        Cross modality correspondence
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGES.html" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        The BIDS Starter Kit
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The BIDS Starter Kit" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          The BIDS Starter Kit
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit" class="md-nav__link">
+        GitHub repository
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit/wiki/Tutorials" class="md-nav__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit/wiki" class="md-nav__link">
+        Wiki
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#meg-recording-data" class="md-nav__link">
+    MEG recording data
+  </a>
+  
+    <nav class="md-nav" aria-label="MEG recording data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recording-eeg-simultaneously-with-meg" class="md-nav__link">
+    Recording EEG simultaneously with MEG
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sidecar-json-_megjson" class="md-nav__link">
+    Sidecar JSON (*_meg.json)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#channels-description-_channelstsv" class="md-nav__link">
+    Channels description (*_channels.tsv)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coordinate-system-json-_coordsystemjson" class="md-nav__link">
+    Coordinate System JSON (*_coordsystem.json)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#landmark-photos-_photojpg" class="md-nav__link">
+    Landmark photos (*_photo.jpg)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#head-shape-and-electrode-description-_headshapeext" class="md-nav__link">
+    Head shape and electrode description (*_headshape.&lt;ext&gt;)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#empty-room-meg-recordings" class="md-nav__link">
+    Empty-room MEG recordings
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="magnetoencephalography"><a class="toclink" href="#magnetoencephalography">Magnetoencephalography</a></h1>
+<p>Support for Magnetoencephalography (MEG) was developed as a
+<a href="../07-extensions.html#bids-extension-proposals">BIDS Extension Proposal</a>.
+Please see <a href="../01-introduction.html#citing-bids">Citing BIDS</a>
+on how to appropriately credit this extension when referring to it in the
+context of the academic literature.</p>
+<h2 id="meg-recording-data"><a class="toclink" href="#meg-recording-data">MEG recording data</a></h2>
+<p>Template:
+<div class="highlight"><pre><span></span><code>sub-&lt;label&gt;/
+    [ses-&lt;label&gt;/]
+        meg/
+            sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_run-&lt;index&gt;][_proc-&lt;label&gt;][_split-&lt;index&gt;]_meg.&lt;extension&gt;
+            sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_run-&lt;index&gt;][_proc-&lt;label&gt;][_split-&lt;index&gt;]_meg.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_task-&lt;label&gt;][_acq-&lt;label&gt;][_space-&lt;label&gt;]_markers.mrk
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_task-&lt;label&gt;][_acq-&lt;label&gt;][_space-&lt;label&gt;]_markers.sqd
+            sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_run-&lt;index&gt;]_events.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_run-&lt;index&gt;]_events.tsv
+</code></pre></div></p>
+<p>Unprocessed MEG data MUST be stored in the native file format of the MEG
+instrument with which the data was collected.
+With the MEG specification of BIDS, we wish to promote the adoption of good
+practices in the management of scientific data.
+Hence, the emphasis is not to impose a new, generic data format for the
+modality, but rather to standardize the way data is stored in repositories.
+Further, there is currently no widely accepted standard file format for MEG, but
+major software applications, including free and open-source solutions for MEG
+data analysis, provide readers of such raw files.</p>
+<p>Some software readers may skip important metadata that is specific to MEG system
+manufacturers. It is therefore RECOMMENDED that users provide additional meta
+information extracted from the manufacturer raw data files in a sidecar JSON
+file. This allows for easy searching and indexing of key metadata elements
+without the need to parse files in proprietary data format. Other relevant files
+MAY be included alongside the MEG data; examples are provided below.</p>
+<p>This template is for MEG data of any kind, including but not limited to
+task-based, resting-state, and noise recordings.
+If multiple <em>Tasks</em> were performed within a single <em>Run</em>,
+the task description can be set to <code>task-multitask</code>.
+The <code>*_meg.json</code> file SHOULD contain details on the <em>Tasks</em>.</p>
+<p>Some manufacturers' data storage conventions use folders which contain data
+files of various nature: for example, CTF's <code>.ds</code> format, or BTi/4D's data folder.
+Yet other manufacturers split their files once they exceed a certain size
+limit.
+For example Neuromag/Elekta/Megin, which can produce several files
+for a single recording.
+Both <code>some_file.fif</code> and <code>some_file-1.fif</code> would belong to a single recording.
+In BIDS, the <a href="../99-appendices/09-entities.html#split"><code>split</code></a> entity is RECOMMENDED to deal
+with split files.
+If there are multiple parts of a recording and the optional <code>scans.tsv</code> is provided,
+remember to list all files separately in <code>scans.tsv</code> and that the entries for the
+<code>acq_time</code> column in <code>scans.tsv</code> MUST all be identical, as described in
+<a href="../03-modality-agnostic-files.html#scans-file">Scans file</a>.</p>
+<p>Another manufacturer-specific detail pertains to the KIT/Yokogawa/Ricoh system,
+which saves the MEG sensor coil positions in a separate file with two possible filename extensions  (<code>.sqd</code>, <code>.mrk</code>).
+For these files, the <code>markers</code> suffix MUST be used.
+For example: <code>sub-01_task-nback_markers.sqd</code></p>
+<p>Please refer to <a href="../99-appendices/06-meg-file-formats.html">Appendix VI</a>
+for general information on how to deal with such manufacturer specifics and to see more examples.</p>
+<p>The <a href="../99-appendices/09-entities.html#proc"><code>proc-&lt;label&gt;</code></a> entity is analogous to the
+<a href="../99-appendices/09-entities.html#rec"><code>rec-&lt;label&gt;</code></a> entity for MRI,
+and denotes a variant of a file that was a result of particular processing performed on the device.
+This is useful for files produced in particular by Elekta's MaxFilter
+(for example, sss, tsss, trans, quat, mc),
+which some installations impose to be run on raw data prior to analysis.
+Such processing steps are needed for example because of active shielding software corrections
+that have to be performed to before the MEG data can actually be exploited.</p>
+<h3 id="recording-eeg-simultaneously-with-meg"><a class="toclink" href="#recording-eeg-simultaneously-with-meg">Recording EEG simultaneously with MEG</a></h3>
+<p>Note that if EEG is recorded with a separate amplifier,
+it SHOULD be stored separately under a new <code>/eeg</code> data type
+(see <a href="03-electroencephalography.html">the EEG specification</a>).</p>
+<p>If however EEG is recorded simultaneously <strong>with the same MEG system</strong>,
+it MAY be stored under the <code>/meg</code> data type.
+In that case, it SHOULD have the same sampling frequency as MEG (see <code>SamplingFrequency</code> field below).
+Furthermore, the EEG sensor coordinates SHOULD be specified using MEG-specific coordinate
+systems (see <a href="#coordinate-system-json-_coordsystemjson">coordinates section</a> below and <a href="../99-appendices/08-coordinate-systems.html">Appendix VIII</a>).</p>
+<h3 id="sidecar-json-_megjson"><a class="toclink" href="#sidecar-json-_megjson">Sidecar JSON (<code>*_meg.json</code>)</a></h3>
+<p>Generic fields MUST be present:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TaskName</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Name of the task. No two tasks should have the same name. The task label included in the file name is derived from this TaskName field by removing all non-alphanumeric (<code>[a-zA-Z0-9]</code>) characters. For example <code>TaskName</code> <code>"faces n-back"</code> will correspond to task label <code>facesnback</code>.  A RECOMMENDED convention is to name resting state task using labels beginning with <code>rest</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>SHOULD be present: For consistency between studies and institutions, we
+encourage users to extract the values of these fields from the actual raw data.
+Whenever possible, please avoid using ad-hoc wording.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>InstitutionName</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>The name of the institution in charge of the equipment that produced the measurements.</td>
+</tr>
+<tr>
+<td>InstitutionAddress</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>The address of the institution in charge of the equipment that produced the measurements.</td>
+</tr>
+<tr>
+<td>InstitutionalDepartmentName</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>The department in the institution in charge of the equipment that produced the measurements.</td>
+</tr>
+<tr>
+<td>Manufacturer</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Manufacturer of the equipment that produced the measurements.  For MEG scanners, this must be one of: <code>"CTF"</code>, <code>"Elekta/Neuromag"</code>, <code>"BTi/4D"</code>, <code>"KIT/Yokogawa"</code>, <code>"ITAB"</code>, <code>"KRISS"</code>, <code>"Other"</code>. See <a href="/99-appendices/07-meg-systems.html">Appendix VII</a> for preferred names.</td>
+</tr>
+<tr>
+<td>ManufacturersModelName</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Manufacturer's model name of the equipment that produced the measurements.  See <a href="/99-appendices/07-meg-systems.html">Appendix VII</a> for preferred names.</td>
+</tr>
+<tr>
+<td>SoftwareVersions</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Manufacturer's designation of software version of the equipment that produced the measurements.</td>
+</tr>
+<tr>
+<td>TaskDescription</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Longer description of the task.</td>
+</tr>
+<tr>
+<td>Instructions</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Text of the instructions given to participants before the recording.  This is especially important in context of resting state recordings and distinguishing between eyes open and eyes closed paradigms.</td>
+</tr>
+<tr>
+<td>CogAtlasID</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td><a href="/02-common-principles.html#uniform-resource-indicator">URI</a> of the corresponding <a href="https://www.cognitiveatlas.org/">Cognitive Atlas</a> Task term.</td>
+</tr>
+<tr>
+<td>CogPOID</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td><a href="/02-common-principles.html#uniform-resource-indicator">URI</a> of the corresponding <a href="http://www.cogpo.org/">CogPO</a> term.</td>
+</tr>
+<tr>
+<td>DeviceSerialNumber</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>The serial number of the equipment that produced the measurements. A pseudonym can also be used to prevent the equipment from being identifiable, so long as each pseudonym is unique within the dataset.</td>
+</tr>
+</tbody>
+</table>
+<p>Specific MEG fields MUST be present:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SamplingFrequency</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Sampling frequency (in Hz) of all the data in the recording, regardless of their type (for example, <code>2400</code>).  The sampling frequency of data channels that deviate from the main sampling frequency SHOULD be specified in the <code>channels.tsv</code> file.</td>
+</tr>
+<tr>
+<td>PowerLineFrequency</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a> or <code>"n/a"</code></td>
+<td>Frequency (in Hz) of the power grid at the geographical location of the instrument (for example, <code>50</code> or <code>60</code>).</td>
+</tr>
+<tr>
+<td>DewarPosition</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Position of the dewar during the MEG scan: <code>"upright"</code>, <code>"supine"</code> or <code>"degrees"</code> of angle from vertical: for example on CTF systems, <code>"upright=15°, supine=90°"</code>.</td>
+</tr>
+<tr>
+<td>SoftwareFilters</td>
+<td>REQUIRED</td>
+<td><a href="https://www.json.org/json-en.html">object</a> of <a href="https://www.json.org/json-en.html">objects</a> or <code>"n/a"</code></td>
+<td><a href="https://www.json.org/json-en.html">Object</a> of temporal software filters applied, or <code>"n/a"</code> if the data is not available. Each key:value pair in the JSON object is a name of the filter and an object in which its parameters are defined as key:value pairs (for example, <code>{"Anti-aliasing filter": {"half-amplitude cutoff (Hz)": 500, "Roll-off": "6dB/Octave"}}</code>).</td>
+</tr>
+<tr>
+<td>DigitizedLandmarks</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">boolean</a></td>
+<td><code>true</code> or <code>false</code> value indicating whether anatomical landmark points (fiducials) are contained within this recording.</td>
+</tr>
+<tr>
+<td>DigitizedHeadPoints</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">boolean</a></td>
+<td><code>true</code> or <code>false</code> value indicating whether head points outlining the scalp/face surface are contained within this recording.</td>
+</tr>
+</tbody>
+</table>
+<p>SHOULD be present:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MEGChannelCount</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">integer</a></td>
+<td>Number of MEG channels (for example, 275).</td>
+</tr>
+<tr>
+<td>MEGREFChannelCount</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">integer</a></td>
+<td>Number of MEG reference channels (for example, 23). For systems without such channels (for example, Neuromag Vectorview), <code>MEGREFChannelCount</code> should be set to <code>0</code>.</td>
+</tr>
+<tr>
+<td>EEGChannelCount</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">integer</a></td>
+<td>Number of EEG channels recorded simultaneously (for example, <code>21</code>).</td>
+</tr>
+<tr>
+<td>ECOGChannelCount</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">integer</a></td>
+<td>Number of ECoG channels.</td>
+</tr>
+<tr>
+<td>SEEGChannelCount</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">integer</a></td>
+<td>Number of SEEG channels.</td>
+</tr>
+<tr>
+<td>EOGChannelCount</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">integer</a></td>
+<td>Number of EOG channels.</td>
+</tr>
+<tr>
+<td>ECGChannelCount</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">integer</a></td>
+<td>Number of ECG channels.</td>
+</tr>
+<tr>
+<td>EMGChannelCount</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">integer</a></td>
+<td>Number of EMG channels.</td>
+</tr>
+<tr>
+<td>MiscChannelCount</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">integer</a></td>
+<td>Number of miscellaneous analog channels for auxiliary signals.</td>
+</tr>
+<tr>
+<td>TriggerChannelCount</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">integer</a></td>
+<td>Number of channels for digital (TTL bit level) triggers.</td>
+</tr>
+<tr>
+<td>RecordingDuration</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Length of the recording in seconds (for example, <code>3600</code>).</td>
+</tr>
+<tr>
+<td>RecordingType</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Defines whether the recording is <code>"continuous"</code>, <code>"discontinuous"</code> or <code>"epoched"</code>, where <code>"epoched"</code> is limited to time windows about events of interest (for example, stimulus presentations or subject responses).</td>
+</tr>
+<tr>
+<td>EpochLength</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Duration of individual epochs in seconds (for example, <code>1</code>) in case of epoched data. If recording was continuous or discontinuous, leave out the field.</td>
+</tr>
+<tr>
+<td>ContinuousHeadLocalization</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">boolean</a></td>
+<td><code>true</code> or <code>false</code> value indicating whether continuous head localisation was performed.</td>
+</tr>
+<tr>
+<td>HeadCoilFrequency</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a> or <a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">numbers</a></td>
+<td>List of frequencies (in Hz) used by the head localisation coils ('HLC' in CTF systems, 'HPI' in Elekta, 'COH' in BTi/4D) that track the subject's head position in the MEG helmet (for example, <code>[293, 307, 314, 321]</code>).</td>
+</tr>
+<tr>
+<td>MaxMovement</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Maximum head movement (in mm) detected during the recording, as measured by the head localisation coils (for example, 4.8).</td>
+</tr>
+<tr>
+<td>SubjectArtefactDescription</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Freeform description of the observed subject artefact and its possible cause (for example, <code>"Vagus Nerve Stimulator"</code>, <code>"non-removable implant"</code>). If this field is set to <code>"n/a"</code>, it will be interpreted as absence of major source of artifacts except cardiac and blinks.</td>
+</tr>
+<tr>
+<td>AssociatedEmptyRoom</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">strings</a> or <a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Relative path in BIDS folder structure to empty-room file associated with the subject’s MEG recording. The path needs to use forward slashes instead of backward slashes (for example, "sub-emptyroom/ses-/meg/sub-emptyroom_ses-_task-noise_run-_meg.ds").</td>
+</tr>
+<tr>
+<td>HardwareFilters</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.json.org/json-en.html">object</a> of <a href="https://www.json.org/json-en.html">objects</a> or <code>"n/a"</code></td>
+<td>Object of temporal hardware filters applied, or "n/a" if the data is not available. Each key:value pair in the JSON object is a name of the filter and an object in which its parameters are defined as key:value pairs. For example, <code>{"Highpass RC filter": {"Half amplitude cutoff (Hz)": 0.0159, "Roll-off": "6dB/Octave"}}</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Specific EEG fields
+(if recorded with MEG, see <a href="#recording-eeg-simultaneously-with-meg">Recording EEG simultaneously with MEG</a>
+SHOULD be present:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EEGPlacementScheme</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Placement scheme of EEG electrodes. Either the name of a standardized placement system (for example, <code>"10-20"</code>) or a list of standardized electrode names (for example, <code>["Cz", "Pz"]</code>).</td>
+</tr>
+<tr>
+<td>CapManufacturer</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Name of the cap manufacturer (for example, <code>"EasyCap"</code>).</td>
+</tr>
+<tr>
+<td>CapManufacturersModelName</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Manufacturer's designation of the EEG cap model (for example, <code>"actiCAP 64 Ch Standard-2"</code>).</td>
+</tr>
+<tr>
+<td>EEGReference</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>General description of the reference scheme used and (when applicable) of location of the reference electrode in the raw recordings (for example, <code>"left mastoid"</code>, <code>"Cz"</code>, <code>"CMS"</code>). If different channels have a different reference, this field should have a general description and the channel specific reference should be defined in the <code>channels.tsv</code> file.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;InstitutionName&quot;</span><span class="p">:</span> <span class="s2">&quot;Stanford University&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;InstitutionAddress&quot;</span><span class="p">:</span> <span class="s2">&quot;450 Serra Mall, Stanford, CA 94305-2004, USA&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;Manufacturer&quot;</span><span class="p">:</span> <span class="s2">&quot;CTF&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;ManufacturersModelName&quot;</span><span class="p">:</span> <span class="s2">&quot;CTF-275&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;DeviceSerialNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;11035&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;SoftwareVersions&quot;</span><span class="p">:</span> <span class="s2">&quot;Acq 5.4.2-linux-20070507&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;PowerLineFrequency&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+   <span class="nt">&quot;SamplingFrequency&quot;</span><span class="p">:</span> <span class="mi">2400</span><span class="p">,</span>
+   <span class="nt">&quot;MEGChannelCount&quot;</span><span class="p">:</span> <span class="mi">270</span><span class="p">,</span>
+   <span class="nt">&quot;MEGREFChannelCount&quot;</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span>
+   <span class="nt">&quot;EEGChannelCount&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+   <span class="nt">&quot;EOGChannelCount&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+   <span class="nt">&quot;ECGChannelCount&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+   <span class="nt">&quot;EMGChannelCount&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+     <span class="nt">&quot;DewarPosition&quot;</span><span class="p">:</span> <span class="s2">&quot;upright&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;SoftwareFilters&quot;</span><span class="p">:</span> <span class="p">{</span>
+     <span class="nt">&quot;SpatialCompensation&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;GradientOrder&quot;</span><span class="p">:</span> <span class="s2">&quot;3rd&quot;</span><span class="p">}</span>
+   <span class="p">},</span>
+   <span class="nt">&quot;RecordingDuration&quot;</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
+   <span class="nt">&quot;RecordingType&quot;</span><span class="p">:</span> <span class="s2">&quot;continuous&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;EpochLength&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+   <span class="nt">&quot;TaskName&quot;</span><span class="p">:</span> <span class="s2">&quot;rest&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;ContinuousHeadLocalization&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="nt">&quot;HeadCoilFrequency&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1470</span><span class="p">,</span><span class="mi">1530</span><span class="p">,</span><span class="mi">1590</span><span class="p">],</span>
+   <span class="nt">&quot;DigitizedLandmarks&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="nt">&quot;DigitizedHeadPoints&quot;</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Note that the date and time information SHOULD be stored in the Study key file
+(<code>scans.tsv</code>), see <a href="../03-modality-agnostic-files.html#scans-file">Scans file</a>.
+Date time information MUST be expressed as indicated in <a href="../02-common-principles.html#units">Units</a></p>
+<h2 id="channels-description-_channelstsv"><a class="toclink" href="#channels-description-_channelstsv">Channels description (<code>*_channels.tsv</code>)</a></h2>
+<p>Template:
+<div class="highlight"><pre><span></span><code>sub-&lt;label&gt;/
+    [ses-&lt;label&gt;/]
+        meg/
+            sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_run-&lt;index&gt;][_proc-&lt;label&gt;]_channels.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_run-&lt;index&gt;][_proc-&lt;label&gt;]_channels.tsv
+</code></pre></div></p>
+<p>This file is RECOMMENDED as it provides easily searchable information across
+BIDS datasets for for example, general curation, response to queries or batch
+analysis.
+To avoid confusion, the channels SHOULD be listed in the order they
+appear in the MEG data file.
+Missing values MUST be indicated with <code>n/a</code>.</p>
+<p>The columns of the Channels description table stored in <code>*_channels.tsv</code> are:</p>
+<p>MUST be present <strong>in this specific order</strong>:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Column name</strong></th>
+<th><strong>Requirement level</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>REQUIRED</td>
+<td>Channel name (for example, MRT012, MEG023).</td>
+</tr>
+<tr>
+<td>type</td>
+<td>REQUIRED</td>
+<td>Type of channel; MUST use the channel types listed below. Note that the type MUST be in upper-case.</td>
+</tr>
+<tr>
+<td>units</td>
+<td>REQUIRED</td>
+<td>Physical unit of the value represented in this channel, for example, <code>V</code> for Volt, or <code>fT/cm</code> for femto Tesla per centimeter (see <a href="../02-common-principles.html#units">Units</a>).</td>
+</tr>
+</tbody>
+</table>
+<p>SHOULD be present:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Column name</strong></th>
+<th><strong>Requirement level</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>description</td>
+<td>OPTIONAL</td>
+<td>Brief free-text description of the channel, or other information of interest. See examples below.</td>
+</tr>
+<tr>
+<td>sampling_frequency</td>
+<td>OPTIONAL</td>
+<td>Sampling rate of the channel in Hz.</td>
+</tr>
+<tr>
+<td>low_cutoff</td>
+<td>OPTIONAL</td>
+<td>Frequencies used for the high-pass filter applied to the channel in Hz. If no high-pass filter applied, use <code>n/a</code>.</td>
+</tr>
+<tr>
+<td>high_cutoff</td>
+<td>OPTIONAL</td>
+<td>Frequencies used for the low-pass filter applied to the channel in Hz. If no low-pass filter applied, use <code>n/a</code>. Note that hardware anti-aliasing in A/D conversion of all MEG/EEG electronics applies a low-pass filter; specify its frequency here if applicable.</td>
+</tr>
+<tr>
+<td>notch</td>
+<td>OPTIONAL</td>
+<td>Frequencies used for the notch filter applied to the channel, in Hz. If no notch filter applied, use <code>n/a</code>.</td>
+</tr>
+<tr>
+<td>software_filters</td>
+<td>OPTIONAL</td>
+<td>List of temporal and/or spatial software filters applied (for example, "SSS", <code>"SpatialCompensation"</code>). Note that parameters should be defined in the general MEG sidecar .json file. Indicate <code>n/a</code> in the absence of software filters applied.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>OPTIONAL</td>
+<td>Data quality observed on the channel <code>(good/bad)</code>. A channel is considered <code>bad</code> if its data quality is compromised by excessive noise. Description of noise type SHOULD be provided in <code>[status_description]</code>.</td>
+</tr>
+<tr>
+<td>status_description</td>
+<td>OPTIONAL</td>
+<td>Freeform text description of noise or artifact affecting data quality on the channel. It is meant to explain why the channel was declared bad in <code>[status]</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code>name type units description sampling_frequency low_cutoff high_cutoff notch software_filters status
+UDIO001 TRIG V analogue trigger 1200 0.1 300 0 n/a good
+MLC11 MEGGRADAXIAL T sensor 1st-order grad 1200 0 n/a 50 SSS bad
+</code></pre></div>
+<p>Restricted keyword list for field <code>type</code>.
+Note that upper-case is REQUIRED:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Keyword</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MEGMAG</td>
+<td>MEG magnetometer</td>
+</tr>
+<tr>
+<td>MEGGRADAXIAL</td>
+<td>MEG axial gradiometer</td>
+</tr>
+<tr>
+<td>MEGGRADPLANAR</td>
+<td>MEG planargradiometer</td>
+</tr>
+<tr>
+<td>MEGREFMAG</td>
+<td>MEG reference magnetometer</td>
+</tr>
+<tr>
+<td>MEGREFGRADAXIAL</td>
+<td>MEG reference axial gradiometer</td>
+</tr>
+<tr>
+<td>MEGREFGRADPLANAR</td>
+<td>MEG reference planar gradiometer</td>
+</tr>
+<tr>
+<td>MEGOTHER</td>
+<td>Any other type of MEG sensor</td>
+</tr>
+<tr>
+<td>EEG</td>
+<td>Electrode channel</td>
+</tr>
+<tr>
+<td>ECOG</td>
+<td>Electrode channel</td>
+</tr>
+<tr>
+<td>SEEG</td>
+<td>Electrode channel</td>
+</tr>
+<tr>
+<td>DBS</td>
+<td>Electrode channel</td>
+</tr>
+<tr>
+<td>VEOG</td>
+<td>Vertical EOG (electrooculogram)</td>
+</tr>
+<tr>
+<td>HEOG</td>
+<td>Horizontal EOG</td>
+</tr>
+<tr>
+<td>EOG</td>
+<td>Generic EOG channel</td>
+</tr>
+<tr>
+<td>ECG</td>
+<td>ElectroCardioGram (heart)</td>
+</tr>
+<tr>
+<td>EMG</td>
+<td>ElectroMyoGram (muscle)</td>
+</tr>
+<tr>
+<td>TRIG</td>
+<td>System Triggers</td>
+</tr>
+<tr>
+<td>AUDIO</td>
+<td>Audio signal</td>
+</tr>
+<tr>
+<td>PD</td>
+<td>Photodiode</td>
+</tr>
+<tr>
+<td>EYEGAZE</td>
+<td>Eye Tracker gaze</td>
+</tr>
+<tr>
+<td>PUPIL</td>
+<td>Eye Tracker pupil diameter</td>
+</tr>
+<tr>
+<td>MISC</td>
+<td>Miscellaneous</td>
+</tr>
+<tr>
+<td>SYSCLOCK</td>
+<td>System time showing elapsed time since trial started</td>
+</tr>
+<tr>
+<td>ADC</td>
+<td>Analog to Digital input</td>
+</tr>
+<tr>
+<td>DAC</td>
+<td>Digital to Analog output</td>
+</tr>
+<tr>
+<td>HLU</td>
+<td>Measured position of head and head coils</td>
+</tr>
+<tr>
+<td>FITERR</td>
+<td>Fit error signal from each head localization coil</td>
+</tr>
+<tr>
+<td>OTHER</td>
+<td>Any other type of channel</td>
+</tr>
+</tbody>
+</table>
+<p>Example of free text for field <code>description</code>:</p>
+<ul>
+<li>stimulus, response, vertical EOG, horizontal EOG, skin conductance, sats,
+    intracranial, eyetracker</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code>name type units description
+VEOG VEOG V vertical EOG
+FDI EMG V left first dorsal interosseous
+UDIO001 TRIG V analog trigger signal
+UADC001 AUDIO V envelope of audio signal presented to participant
+</code></pre></div>
+<h2 id="coordinate-system-json-_coordsystemjson"><a class="toclink" href="#coordinate-system-json-_coordsystemjson">Coordinate System JSON (<code>*_coordsystem.json</code>)</a></h2>
+<p>Template:
+<div class="highlight"><pre><span></span><code>sub-&lt;label&gt;/
+    [ses-&lt;label&gt;/]
+        meg/
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;]_coordsystem.json
+</code></pre></div></p>
+<p>OPTIONAL. A JSON document specifying the coordinate system(s) used for the MEG,
+EEG, head localization coils, and anatomical landmarks.</p>
+<p>MEG and EEG sensors:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MEGCoordinateSystem</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Defines the coordinate system for the MEG sensors. See <a href="/99-appendices/08-coordinate-systems.html">Appendix VIII</a> for a list of restricted keywords for coordinate systems. If <code>"Other"</code>, provide definition of the coordinate system in <code>MEGCoordinateSystemDescription</code>.</td>
+</tr>
+<tr>
+<td>MEGCoordinateUnits</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Units of the coordinates of <code>MEGCoordinateSystem</code>. MUST be <code>"m"</code>, <code>"cm"</code>, or <code>"mm"</code>.</td>
+</tr>
+<tr>
+<td>MEGCoordinateSystemDescription</td>
+<td>OPTIONAL, but REQUIRED if <code>MEGCoordinateSystem</code> is <code>Other</code></td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Free-form text description of the coordinate system. May also include a link to a documentation page or paper describing the system in greater detail.</td>
+</tr>
+<tr>
+<td>EEGCoordinateSystem</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Defines the coordinate system for the EEG sensors.<br>See <a href="/99-appendices/08-coordinate-systems.html">Appendix VIII</a> for a list of restricted keywords for coordinate systems. If <code>"Other"</code>, provide definition of the coordinate system in <code>EEGCoordinateSystemDescription</code>.  See <a href="/04-modality-specific-files/02-magnetoencephalography.html#recording-eeg-simultaneously-with-meg">Recording EEG simultaneously with MEG</a>. Preferably the same as the <code>MEGCoordinateSystem</code>.</td>
+</tr>
+<tr>
+<td>EEGCoordinateUnits</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Units of the coordinates of <code>EEGCoordinateSystem</code>. MUST be <code>"m"</code>, <code>"cm"</code>, or <code>"mm"</code>.</td>
+</tr>
+<tr>
+<td>EEGCoordinateSystemDescription</td>
+<td>OPTIONAL, but REQUIRED if <code>EEGCoordinateSystem</code> is <code>Other</code></td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Free-form text description of the coordinate system. May also include a link to a documentation page or paper describing the system in greater detail.  See <a href="/04-modality-specific-files/02-magnetoencephalography.html#recording-eeg-simultaneously-with-meg">Recording EEG simultaneously with MEG</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>Head localization coils:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HeadCoilCoordinates</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.json.org/json-en.html">object</a> of <a href="https://www.w3schools.com/js/js_json_arrays.asp">arrays</a></td>
+<td>Key:value pairs describing head localization coil labels and their coordinates, interpreted following the <code>HeadCoilCoordinateSystem</code> (for example, <code>{"NAS": [12.7,21.3,13.9], "LPA": [5.2,11.3,9.6], "RPA": [20.2,11.3,9.1]}</code>). Note that coils are not always placed at locations that have a known anatomical name (for example, for Elekta, Yokogawa systems); in that case generic labels can be used (for example, <code>{"coil1": [12.2,21.3,12.3], "coil2": [6.7,12.3,8.6], "coil3": [21.9,11.0,8.1]}</code>). Each array MUST contain three numeric values corresponding to x, y, and z axis of the coordinate system in that exact order.</td>
+</tr>
+<tr>
+<td>HeadCoilCoordinateSystem</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Defines the coordinate system for the head coils. See <a href="/99-appendices/08-coordinate-systems.html">Appendix VIII</a> for a list of restricted keywords for coordinate systems. If <code>"Other"</code>, provide definition of the coordinate system in <code>HeadCoilCoordinateSystemDescription</code>.</td>
+</tr>
+<tr>
+<td>HeadCoilCoordinateUnits</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Units of the coordinates of <code>HeadCoilCoordinateSystem</code>. MUST be <code>"m"</code>, <code>"cm"</code>, or <code>"mm"</code>.</td>
+</tr>
+<tr>
+<td>HeadCoilCoordinateSystemDescription</td>
+<td>OPTIONAL, but REQUIRED if <code>HeadCoilCoordinateSystem</code> is <code>Other</code></td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Free-form text description of the coordinate system. May also include a link to a documentation page or paper describing the system in greater detail.</td>
+</tr>
+</tbody>
+</table>
+<p>Digitized head points:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DigitizedHeadPoints</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">boolean</a></td>
+<td><code>true</code> or <code>false</code> value indicating whether head points outlining the scalp/face surface are contained within this recording.</td>
+</tr>
+<tr>
+<td>DigitizedHeadPointsCoordinateSystem</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Defines the coordinate system for the digitized head points. See <a href="/99-appendices/08-coordinate-systems.html">Appendix VIII</a> for a list of restricted keywords for coordinate systems. If <code>"Other"</code>, provide definition of the coordinate system in <code>DigitizedHeadPointsCoordinateSystemDescription</code>.</td>
+</tr>
+<tr>
+<td>DigitizedHeadPointsCoordinateUnits</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Units of the coordinates of <code>DigitizedHeadPointsCoordinateSystem</code>. MUST be <code>"m"</code>, <code>"cm"</code>, or <code>"mm"</code>.</td>
+</tr>
+<tr>
+<td>DigitizedHeadPointsCoordinateSystemDescription</td>
+<td>OPTIONAL, but REQUIRED if <code>DigitizedHeadPointsCoordinateSystem</code> is <code>Other</code></td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Free-form text description of the coordinate system. May also include a link to a documentation page or paper describing the system in greater detail.</td>
+</tr>
+</tbody>
+</table>
+<p>Anatomical MRI:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IntendedFor</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a> or <a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">strings</a></td>
+<td>The paths to files for which the associated file is intended to be used. Contains one or more filenames with paths relative to the participant subfolder. Paths need to use forward slashes instead of backward slashes, regardless of operating system.  This is used to identify the structural MRI(s), possibly of different types if a list is specified, to be used with the MEG recording.</td>
+</tr>
+</tbody>
+</table>
+<p>Anatomical landmarks:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AnatomicalLandmarkCoordinates</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.json.org/json-en.html">object</a> of <a href="https://www.w3schools.com/js/js_json_arrays.asp">arrays</a></td>
+<td>Key:value pairs of the labels and 3-D digitized locations of anatomical landmarks, interpreted following the <code>AnatomicalLandmarkCoordinateSystem</code> (for example, <code>{"NAS": [12.7,21.3,13.9], "LPA": [5.2,11.3,9.6], "RPA": [20.2,11.3,9.1]}</code>. Each array MUST contain three numeric values corresponding to x, y, and z axis of the coordinate system in that exact order.</td>
+</tr>
+<tr>
+<td>AnatomicalLandmarkCoordinateSystem</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Defines the coordinate system for the anatomical landmarks. See <a href="/99-appendices/08-coordinate-systems.html">Appendix VIII</a> for a list of restricted keywords for coordinate systems. If <code>"Other"</code>, provide definition of the coordinate system in <code>AnatomicalLandmarkCoordinateSystemDescription</code>.  Preferably the same as the <code>MEGCoordinateSystem</code>.</td>
+</tr>
+<tr>
+<td>AnatomicalLandmarkCoordinateUnits</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Units of the coordinates of <code>AnatomicalLandmarkCoordinateSystem</code>. MUST be <code>"m"</code>, <code>"cm"</code>, or <code>"mm"</code>.</td>
+</tr>
+<tr>
+<td>AnatomicalLandmarkCoordinateSystemDescription</td>
+<td>OPTIONAL, but REQUIRED if <code>AnatomicalLandmarkCoordinateSystem</code> is <code>Other</code></td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Free-form text description of the coordinate system. May also include a link to a documentation page or paper describing the system in greater detail.</td>
+</tr>
+</tbody>
+</table>
+<p>It is also RECOMMENDED that the MRI voxel coordinates of the actual anatomical
+landmarks for co-registration of MEG with structural MRI are stored in the
+<code>AnatomicalLandmarkCoordinates</code> field in the JSON sidecar of the corresponding
+T1w MRI anatomical data of the subject seen in the MEG session
+(see <a href="01-magnetic-resonance-imaging-data.html#anatomy-imaging-data">Anatomy Imaging Data</a>).</p>
+<p>For example: <code>"sub-01/ses-mri/anat/sub-01_ses-mri_acq-mprage_T1w.json"</code></p>
+<p>In principle, these locations are those of absolute anatomical markers. However,
+the marking of NAS, LPA and RPA is more ambiguous than that of for example, AC and PC.
+This may result in some variability in their 3-D digitization from session to
+session, even for the same participant. The solution would be to use only one
+T1w file and populate the <code>AnatomicalLandmarkCoordinates</code> field with
+session-specific labels for example, "NAS-session1": <code>[127,213,139]</code>,"NAS-session2":
+<code>[123,220,142]</code>.</p>
+<p>Fiducials information:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FiducialsDescription</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Free-form text description of how the fiducials such as vitamin-E capsules were placed relative to anatomical landmarks, and how the position of the fiducials were measured (for example, both with Polhemus and with T1w MRI).</td>
+</tr>
+</tbody>
+</table>
+<p>For more information on the definition of anatomical landmarks, please visit:
+<a href="http://www.fieldtriptoolbox.org/faq/how_are_the_lpa_and_rpa_points_defined">http://www.fieldtriptoolbox.org/faq/how_are_the_lpa_and_rpa_points_defined</a></p>
+<p>For more information on typical coordinate systems for MEG-MRI coregistration:
+<a href="http://www.fieldtriptoolbox.org/faq/how_are_the_different_head_and_mri_coordinate_systems_defined">http://www.fieldtriptoolbox.org/faq/how_are_the_different_head_and_mri_coordinate_systems_defined</a>,
+or:
+<a href="http://neuroimage.usc.edu/brainstorm/CoordinateSystems">http://neuroimage.usc.edu/brainstorm/CoordinateSystems</a></p>
+<h2 id="landmark-photos-_photojpg"><a class="toclink" href="#landmark-photos-_photojpg">Landmark photos (<code>*_photo.jpg</code>)</a></h2>
+<p>Photos of the anatomical landmarks and/or head localization coils
+(<code>*_photo.jpg</code>)</p>
+<p>Template:
+<div class="highlight"><pre><span></span><code>sub-&lt;label&gt;/
+    [ses-&lt;label&gt;/]
+        meg/
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;]_photo.jpg
+</code></pre></div></p>
+<p>Photos of the anatomical landmarks and/or head localization coils on the
+subject’s head are RECOMMENDED. If the coils are not placed at the location of
+actual anatomical landmarks, these latter may be marked with a piece of felt-tip
+taped to the skin. Please note that the photos may need to be cropped or blurred
+to conceal identifying features prior to sharing, depending on the terms of the
+consent given by the participant.</p>
+<p>The <a href="../99-appendices/09-entities.html#acq"><code>acq-&lt;label&gt;</code></a> entity can be used to indicate acquisition of different photos of
+the same face (or other body part in different angles to show, for example, the
+location of the nasion (NAS) as opposed to the right periauricular point (RPA)).</p>
+<p>Example of the NAS fiducial placed between the eyebrows, rather than at the
+actual anatomical nasion: <code>sub-0001_ses-001_acq-NAS_photo.jpg</code></p>
+<p><img alt="placement of NAS fiducial" src="images/sub-0001_ses-001_acq-NAS_photo.jpg" title="placement of NAS fiducial" /></p>
+<h2 id="head-shape-and-electrode-description-_headshapeext"><a class="toclink" href="#head-shape-and-electrode-description-_headshapeext">Head shape and electrode description (<code>*_headshape.&lt;ext&gt;</code>)</a></h2>
+<p>Template:
+<div class="highlight"><pre><span></span><code>sub-&lt;label&gt;/
+    [ses-&lt;label&gt;/]
+        meg/
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;]_headshape.&lt;extension&gt;
+</code></pre></div></p>
+<p>This file is RECOMMENDED.</p>
+<p>The 3-D locations of points that describe the head shape and/or EEG
+electrode locations can be digitized and stored in separate files. The
+<a href="../99-appendices/09-entities.html#acq"><code>acq-&lt;label&gt;</code></a> entity can be used when more than one type of digitization in done for
+a session, for example when the head points are in a separate file from the EEG
+locations. These files are stored in the specific format of the 3-D digitizer’s
+manufacturer (see <a href="../99-appendices/06-meg-file-formats.html">Appendix VI</a>).</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code>└─ sub-control01/
+   └─ ses-01/
+      ├─ sub-control01_ses-01_acq-HEAD_headshape.pos 
+      └─ sub-control01_ses-01_acq-ECG_headshape.pos 
+</code></pre></div>
+<p>Note that the <code>*_headshape</code> file(s) is shared by all the runs and tasks in a
+session. If the subject needs to be taken out of the scanner and the head-shape
+has to be updated, then for MEG it could be considered to be a new session.</p>
+<h2 id="empty-room-meg-recordings"><a class="toclink" href="#empty-room-meg-recordings">Empty-room MEG recordings</a></h2>
+<p>Empty-room MEG recordings capture the environmental and recording system's
+noise.
+In the context of BIDS it is RECOMMENDED to perform an empty-room recording for
+each experimental session.
+It is RECOMMENDED to store the empty-room recording inside a subject folder
+named <code>sub-emptyroom</code>.
+The label for the <a href="../99-appendices/09-entities.html#task"><code>task-&lt;label&gt;</code></a> entity in the empty-room recording SHOULD be
+set to <code>noise</code>.
+If a <a href="../99-appendices/09-entities.html#ses"><code>session-&lt;label&gt;</code></a> entity is present, its label SHOULD be the date of the
+empty-room recording in the format <code>YYYYMMDD</code>, that is <code>ses-YYYYMMDD</code>.
+The <code>scans.tsv</code> file containing the date and time of the acquisition SHOULD
+also be included.
+The rationale is that this naming scheme will allow users to easily retrieve the
+empty-room recording that best matches a particular experimental session, based
+on date and time of the recording.
+It should be possible to query empty-room recordings just like usual subject
+recordings, hence all metadata sidecar files (such as the <code>channels.tsv</code>) file
+SHOULD be present as well.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code>├─ sub-control01/
+├─ sub-control02/
+└─ sub-emptyroom/
+   └─ ses-20170801/
+      ├─ sub-emptyroom_ses-20170801_scans.tsv 
+      └─ meg/
+         ├─ sub-emptyroom_ses-20170801_task-noise_meg.ds 
+         ├─ sub-emptyroom_ses-20170801_task-noise_meg.json 
+         └─ sub-emptyroom_ses-20170801_task-noise_channels.tsv 
+</code></pre></div>
+<!-- Link Definitions -->
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+--><!-- Application footer -->
+<footer class="md-footer">
+
+  <!-- Link to previous and/or next page --><div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+
+        <!-- Link to previous page --><a href="01-magnetic-resonance-imaging-data.html"
+              title="Magnetic Resonance Imaging"
+              class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+              rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back
+                    md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">Previous</span>Magnetic Resonance Imaging</span>
+            </div>
+          </a><!-- Link to next page --><a href="03-electroencephalography.html"
+              title="Electroencephalography"
+              class="md-flex md-footer-nav__link md-footer-nav__link--next"
+              rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">Next</span>Electroencephalography</span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward
+                    md-footer-nav__button"></i>
+            </div>
+          </a></nav>
+    </div><!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">See the source code and discussion page on
+        <a href="https://github.com/bids-standard/bids-specification">GitHub</a>
+      </div>
+
+      <!-- Social links --></div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.94ec81fe.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.48dfec6c.min.js"></script>
+      
+        <script src="../js/jquery-3.6.0.min.js"></script>
+      
+    
+  </body>
+</html>

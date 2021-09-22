@@ -1,0 +1,2012 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/04-intracranial-electroencephalography.html">
+      
+      <link rel="icon" href="../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.8">
+    
+    
+      
+        <title>Intracranial Electroencephalography - Brain Imaging Data Structure v1.6.1-dev</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.92558b1b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#intracranial-electroencephalography" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Brain Imaging Data Structure v1.6.1-dev" class="md-header__button md-logo" aria-label="Brain Imaging Data Structure v1.6.1-dev" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Brain Imaging Data Structure v1.6.1-dev
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Intracranial Electroencephalography
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Brain Imaging Data Structure v1.6.1-dev" class="md-nav__button md-logo" aria-label="Brain Imaging Data Structure v1.6.1-dev" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    Brain Imaging Data Structure v1.6.1-dev
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      <label class="md-nav__link" for="__nav_1">
+        The BIDS Specification
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The BIDS Specification" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          The BIDS Specification
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-introduction.html" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-common-principles.html" class="md-nav__link">
+        Common principles
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-modality-agnostic-files.html" class="md-nav__link">
+        Modality agnostic files
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" checked>
+      
+      <label class="md-nav__link" for="__nav_1_4">
+        Modality specific files
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Modality specific files" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Modality specific files
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-magnetic-resonance-imaging-data.html" class="md-nav__link">
+        Magnetic Resonance Imaging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-magnetoencephalography.html" class="md-nav__link">
+        Magnetoencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-electroencephalography.html" class="md-nav__link">
+        Electroencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Intracranial Electroencephalography
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="04-intracranial-electroencephalography.html" class="md-nav__link md-nav__link--active">
+        Intracranial Electroencephalography
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ieeg-recording-data" class="md-nav__link">
+    iEEG recording data
+  </a>
+  
+    <nav class="md-nav" aria-label="iEEG recording data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terminology-electrodes-vs-channels" class="md-nav__link">
+    Terminology: Electrodes vs. Channels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sidecar-json-_ieegjson" class="md-nav__link">
+    Sidecar JSON (*_ieeg.json)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#channels-description-_channelstsv" class="md-nav__link">
+    Channels description (*_channels.tsv)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#electrode-description-_electrodestsv" class="md-nav__link">
+    Electrode description (*_electrodes.tsv)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coordinate-system-json-_coordsystemjson" class="md-nav__link">
+    Coordinate System JSON (*_coordsystem.json)
+  </a>
+  
+    <nav class="md-nav" aria-label="Coordinate System JSON (*_coordsystem.json)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recommended-3d-coordinate-systems" class="md-nav__link">
+    Recommended 3D coordinate systems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allowed-2d-coordinate-systems" class="md-nav__link">
+    Allowed 2D coordinate systems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-coordinate-systems" class="md-nav__link">
+    Multiple coordinate systems
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#photos-of-the-electrode-positions-_photojpg" class="md-nav__link">
+    Photos of the electrode positions (*_photo.jpg)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#electrical-stimulation" class="md-nav__link">
+    Electrical stimulation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-task-events.html" class="md-nav__link">
+        Task events
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-physiological-and-other-continuous-recordings.html" class="md-nav__link">
+        Physiological and other continuous recordings
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-behavioral-experiments.html" class="md-nav__link">
+        Behavioral experiments (with no neural recordings)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-genetic-descriptor.html" class="md-nav__link">
+        Genetic Descriptor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-positron-emission-tomography.html" class="md-nav__link">
+        Positron Emission Tomography
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" >
+      
+      <label class="md-nav__link" for="__nav_1_5">
+        Derivatives
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Derivatives" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Derivatives
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/01-introduction.html" class="md-nav__link">
+        BIDS Derivatives
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/02-common-data-types.html" class="md-nav__link">
+        Common data types and metadata
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/03-imaging.html" class="md-nav__link">
+        Imaging data types
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-longitudinal-and-multi-site-studies.html" class="md-nav__link">
+        Longitudinal and multi-site studies
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-extensions.html" class="md-nav__link">
+        BIDS Extension Proposals
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_8" type="checkbox" id="__nav_1_8" >
+      
+      <label class="md-nav__link" for="__nav_1_8">
+        Appendix
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Appendix" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/01-contributors.html" class="md-nav__link">
+        Contributors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/02-licenses.html" class="md-nav__link">
+        Licenses
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/03-hed.html" class="md-nav__link">
+        Hierarchical Event Descriptors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/04-entity-table.html" class="md-nav__link">
+        Entity table
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/05-units.html" class="md-nav__link">
+        Units
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/06-meg-file-formats.html" class="md-nav__link">
+        MEG file formats
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/07-meg-systems.html" class="md-nav__link">
+        MEG systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/08-coordinate-systems.html" class="md-nav__link">
+        Coordinate systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/09-entities.html" class="md-nav__link">
+        Entities
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/10-file-collections.html" class="md-nav__link">
+        File collections
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/11-qmri.html" class="md-nav__link">
+        Quantitative MRI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/12-arterial-spin-labeling.html" class="md-nav__link">
+        Arterial Spin Labeling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/13-cross-modality-correspondence.html" class="md-nav__link">
+        Cross modality correspondence
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGES.html" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        The BIDS Starter Kit
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The BIDS Starter Kit" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          The BIDS Starter Kit
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit" class="md-nav__link">
+        GitHub repository
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit/wiki/Tutorials" class="md-nav__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit/wiki" class="md-nav__link">
+        Wiki
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ieeg-recording-data" class="md-nav__link">
+    iEEG recording data
+  </a>
+  
+    <nav class="md-nav" aria-label="iEEG recording data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terminology-electrodes-vs-channels" class="md-nav__link">
+    Terminology: Electrodes vs. Channels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sidecar-json-_ieegjson" class="md-nav__link">
+    Sidecar JSON (*_ieeg.json)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#channels-description-_channelstsv" class="md-nav__link">
+    Channels description (*_channels.tsv)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#electrode-description-_electrodestsv" class="md-nav__link">
+    Electrode description (*_electrodes.tsv)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coordinate-system-json-_coordsystemjson" class="md-nav__link">
+    Coordinate System JSON (*_coordsystem.json)
+  </a>
+  
+    <nav class="md-nav" aria-label="Coordinate System JSON (*_coordsystem.json)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recommended-3d-coordinate-systems" class="md-nav__link">
+    Recommended 3D coordinate systems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allowed-2d-coordinate-systems" class="md-nav__link">
+    Allowed 2D coordinate systems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-coordinate-systems" class="md-nav__link">
+    Multiple coordinate systems
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#photos-of-the-electrode-positions-_photojpg" class="md-nav__link">
+    Photos of the electrode positions (*_photo.jpg)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#electrical-stimulation" class="md-nav__link">
+    Electrical stimulation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="intracranial-electroencephalography"><a class="toclink" href="#intracranial-electroencephalography">Intracranial Electroencephalography</a></h1>
+<p>Support Intracranial Electroencephalography (iEEG) was developed as a
+<a href="../07-extensions.html#bids-extension-proposals">BIDS Extension Proposal</a>.
+Please see <a href="../01-introduction.html#citing-bids">Citing BIDS</a>
+on how to appropriately credit this extension when referring to it in the
+context of the academic literature.</p>
+<h2 id="ieeg-recording-data"><a class="toclink" href="#ieeg-recording-data">iEEG recording data</a></h2>
+<p>Template:
+<div class="highlight"><pre><span></span><code>sub-&lt;label&gt;/
+    [ses-&lt;label&gt;/]
+        ieeg/
+            sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_run-&lt;index&gt;]_ieeg.&lt;extension&gt;
+            sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_run-&lt;index&gt;]_ieeg.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_run-&lt;index&gt;]_events.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_run-&lt;index&gt;]_events.tsv
+</code></pre></div></p>
+<p>The iEEG community uses a variety of formats for storing raw data, and there is
+no single standard that all researchers agree on. For BIDS, iEEG data MUST be
+stored in one of the following formats:</p>
+<ul>
+<li>
+<p><a href="https://www.edfplus.info/">European data format</a>
+    (including <a href="https://www.edfplus.info/specs/edfplus.html"><code>edf+</code></a>;
+    each recording consisting of a <code>.edf</code> file)</p>
+</li>
+<li>
+<p><a href="https://www.brainproducts.com/productdetails.php?id=21&amp;tab=5">BrainVision Core Data Format</a>
+    (Each recording consisting of a  <code>.vhdr</code>, <code>.vmrk</code>, <code>.eeg</code> file triplet)</p>
+</li>
+<li>
+<p>The format used by the MATLAB toolbox <a href="https://sccn.ucsd.edu/eeglab">EEGLAB</a>
+    (Each recording consisting of a <code>.set</code> file with an optional <code>.fdt</code> file)</p>
+</li>
+<li>
+<p><a href="https://nwb-schema.readthedocs.io">Neurodata Without Borders</a>
+    (Each recording consisting of a <code>.nwb</code> file)</p>
+</li>
+<li>
+<p><a href="https://msel.mayo.edu/files/codes/MEF%203%20Specification.pdf">MEF3</a>
+    (Each recording consisting of a <code>.mefd</code> directory)</p>
+</li>
+</ul>
+<p>It is RECOMMENDED to use the European data format, or the BrainVision data
+format. It is furthermore discouraged to use the other accepted formats over
+these RECOMMENDED formats, particularly because there are conversion scripts
+available in most commonly used programming languages to convert data into the
+RECOMMENDED formats.</p>
+<p>Future versions of BIDS may extend this list of supported file formats. File
+formats for future consideration MUST have open access documentation, MUST have
+open source implementation for both reading and writing in at least two
+programming languages and SHOULD be widely supported in multiple software
+packages. Other formats that may be considered in the future should have a clear
+added advantage over the existing formats and should have wide adoption in the
+BIDS community.</p>
+<p>The data format in which the data was originally stored is especially valuable
+in case conversion elicits the loss of crucial metadata specific to
+manufacturers and specific iEEG systems. We also encourage users to provide
+additional meta information extracted from the manufacturer-specific data files
+in the sidecar JSON file. Other relevant files MAY be included alongside the
+original iEEG data in the <a href="../02-common-principles.html#source-vs-raw-vs-derived-data"><code>/sourcedata</code> directory</a>.</p>
+<p>Note the RecordingType, which depends on whether the data stream on disk is interrupted or not.
+Continuous data is by definition 1 segment without interruption.
+Epoched data consists of multiple segments that all have the same length
+(for example, corresponding to trials) and that have gaps in between.
+Discontinuous data consists of multiple segments of different length,
+for example due to a pause in the acquisition.</p>
+<h3 id="terminology-electrodes-vs-channels"><a class="toclink" href="#terminology-electrodes-vs-channels">Terminology: Electrodes vs. Channels</a></h3>
+<p>For proper documentation of iEEG recording metadata it is important to
+understand the difference between electrode and channel: an iEEG electrode
+is placed on or in the brain, whereas a channel is the combination of the analog
+differential amplifier and analog-to-digital converter that result in a
+potential (voltage) difference that is stored in the iEEG dataset. We employ the
+following short definitions:</p>
+<ul>
+<li>
+<p>Electrode = A single point of contact between the acquisition system and the
+    recording site (for example, scalp, neural tissue, ...). Multiple electrodes can be
+    organized as arrays, grids, leads, strips, probes, shafts, caps (for EEG),
+    and so forth.</p>
+</li>
+<li>
+<p>Channel = A single analog-to-digital converter in the recording system that
+    regularly samples the value of a transducer, which results in the signal
+    being represented as a time series in the digitized data. This can be
+    connected to two electrodes (to measure the potential difference between
+    them), a magnetic field or magnetic gradient sensor, temperature sensor,
+    accelerometer, and so forth.</p>
+</li>
+</ul>
+<p>Although the <em>reference</em> and <em>ground</em> electrodes are often referred to as
+channels, they are in most common iEEG systems not recorded by themselves.
+Therefore they are not represented as channels in the data. The type of
+referencing for all channels and optionally the location of the reference
+electrode and the location of the ground electrode MAY be specified.</p>
+<h3 id="sidecar-json-_ieegjson"><a class="toclink" href="#sidecar-json-_ieegjson">Sidecar JSON (<code>*_ieeg.json</code>)</a></h3>
+<p>For consistency between studies and institutions, we encourage users to extract
+the values of metadata fields from the actual raw data. Whenever possible,
+please avoid using ad hoc wording.</p>
+<p>Generic fields MUST be present:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TaskName</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Name of the task. No two tasks should have the same name. The task label included in the file name is derived from this TaskName field by removing all non-alphanumeric (<code>[a-zA-Z0-9]</code>) characters. For example <code>TaskName</code> <code>"faces n-back"</code> will correspond to task label <code>facesnback</code>.  A RECOMMENDED convention is to name resting state task using labels beginning with <code>rest</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the <code>TaskName</code> field does not have to be a "behavioral task" that subjects perform, but can reflect some information about the conditions present when the data was acquired (for example, <code>"rest"</code>, <code>"sleep"</code>, or <code>"seizure"</code>).</p>
+<p>SHOULD be present: For consistency between studies and institutions, we
+encourage users to extract the values of these fields from the actual raw data.
+Whenever possible, please avoid using ad hoc wording.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>InstitutionName</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>The name of the institution in charge of the equipment that produced the measurements.</td>
+</tr>
+<tr>
+<td>InstitutionAddress</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>The address of the institution in charge of the equipment that produced the measurements.</td>
+</tr>
+<tr>
+<td>InstitutionalDepartmentName</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>The department in the institution in charge of the equipment that produced the measurements.</td>
+</tr>
+<tr>
+<td>Manufacturer</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Manufacturer of the equipment that produced the measurements.  For example, <code>"TDT"</code>, <code>"Blackrock"</code>.</td>
+</tr>
+<tr>
+<td>ManufacturersModelName</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Manufacturer's model name of the equipment that produced the measurements.</td>
+</tr>
+<tr>
+<td>SoftwareVersions</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Manufacturer's designation of software version of the equipment that produced the measurements.</td>
+</tr>
+<tr>
+<td>TaskDescription</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Longer description of the task.</td>
+</tr>
+<tr>
+<td>Instructions</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Text of the instructions given to participants before the recording.  This is especially important in context of resting state recordings and distinguishing between eyes open and eyes closed paradigms.</td>
+</tr>
+<tr>
+<td>CogAtlasID</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td><a href="/02-common-principles.html#uniform-resource-indicator">URI</a> of the corresponding <a href="https://www.cognitiveatlas.org/">Cognitive Atlas</a> Task term.</td>
+</tr>
+<tr>
+<td>CogPOID</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td><a href="/02-common-principles.html#uniform-resource-indicator">URI</a> of the corresponding <a href="http://www.cogpo.org/">CogPO</a> term.</td>
+</tr>
+<tr>
+<td>DeviceSerialNumber</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>The serial number of the equipment that produced the measurements. A pseudonym can also be used to prevent the equipment from being identifiable, so long as each pseudonym is unique within the dataset.</td>
+</tr>
+</tbody>
+</table>
+<p>Specific iEEG fields MUST be present:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iEEGReference</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>General description of the reference scheme used and (when applicable) of location of the reference electrode in the raw recordings (for example, <code>"left mastoid"</code>, <code>"bipolar"</code>, <code>"T01"</code> for electrode with name T01, <code>"intracranial electrode on top of a grid, not included with data"</code>, <code>"upside down electrode"</code>). If different channels have a different reference, this field should have a general description and the channel specific reference should be defined in the channels.tsv file.</td>
+</tr>
+<tr>
+<td>SamplingFrequency</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Sampling frequency (in Hz) of all the data in the recording, regardless of their type (for example, <code>2400</code>).  The sampling frequency of data channels that deviate from the main sampling frequency SHOULD be specified in the <code>channels.tsv</code> file.</td>
+</tr>
+<tr>
+<td>PowerLineFrequency</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a> or <code>"n/a"</code></td>
+<td>Frequency (in Hz) of the power grid at the geographical location of the instrument (for example, <code>50</code> or <code>60</code>).</td>
+</tr>
+<tr>
+<td>SoftwareFilters</td>
+<td>REQUIRED</td>
+<td><a href="https://www.json.org/json-en.html">object</a> of <a href="https://www.json.org/json-en.html">objects</a> or <code>"n/a"</code></td>
+<td><a href="https://www.json.org/json-en.html">Object</a> of temporal software filters applied, or <code>"n/a"</code> if the data is not available. Each key:value pair in the JSON object is a name of the filter and an object in which its parameters are defined as key:value pairs (for example, <code>{"Anti-aliasing filter": {"half-amplitude cutoff (Hz)": 500, "Roll-off": "6dB/Octave"}}</code>).</td>
+</tr>
+</tbody>
+</table>
+<p>Specific iEEG fields SHOULD be present:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DCOffsetCorrection</td>
+<td><a href="/02-common-principles.html#definitions">DEPRECATED</a></td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>A description of the method (if any) used to correct for a DC offset. If the method used was subtracting the mean value for each channel, use "mean".</td>
+</tr>
+<tr>
+<td>HardwareFilters</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.json.org/json-en.html">object</a> of <a href="https://www.json.org/json-en.html">objects</a> or <code>"n/a"</code></td>
+<td>Object of temporal hardware filters applied, or "n/a" if the data is not available. Each key:value pair in the JSON object is a name of the filter and an object in which its parameters are defined as key:value pairs. For example, <code>{"Highpass RC filter": {"Half amplitude cutoff (Hz)": 0.0159, "Roll-off": "6dB/Octave"}}</code>.</td>
+</tr>
+<tr>
+<td>ElectrodeManufacturer</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Can be used if all electrodes are of the same manufacturer (for example, <code>"AD-TECH"</code>, <code>"DIXI"</code>). If electrodes of different manufacturers are used, please use the corresponding table in the <code>_electrodes.tsv</code> file.</td>
+</tr>
+<tr>
+<td>ElectrodeManufacturersModelName</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>If different electrode types are used, please use the corresponding table in the <code>_electrodes.tsv</code> file.</td>
+</tr>
+<tr>
+<td>ECOGChannelCount</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">integer</a></td>
+<td>Number of ECoG channels.</td>
+</tr>
+<tr>
+<td>SEEGChannelCount</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">integer</a></td>
+<td>Number of SEEG channels.</td>
+</tr>
+<tr>
+<td>EEGChannelCount</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">integer</a></td>
+<td>Number of EEG channels recorded simultaneously (for example, <code>21</code>).</td>
+</tr>
+<tr>
+<td>EOGChannelCount</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">integer</a></td>
+<td>Number of EOG channels.</td>
+</tr>
+<tr>
+<td>ECGChannelCount</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">integer</a></td>
+<td>Number of ECG channels.</td>
+</tr>
+<tr>
+<td>EMGChannelCount</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">integer</a></td>
+<td>Number of EMG channels.</td>
+</tr>
+<tr>
+<td>MiscChannelCount</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">integer</a></td>
+<td>Number of miscellaneous analog channels for auxiliary signals.</td>
+</tr>
+<tr>
+<td>TriggerChannelCount</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">integer</a></td>
+<td>Number of channels for digital (TTL bit level) triggers.</td>
+</tr>
+<tr>
+<td>RecordingDuration</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Length of the recording in seconds (for example, <code>3600</code>).</td>
+</tr>
+<tr>
+<td>RecordingType</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Defines whether the recording is <code>"continuous"</code>, <code>"discontinuous"</code> or <code>"epoched"</code>, where <code>"epoched"</code> is limited to time windows about events of interest (for example, stimulus presentations or subject responses).</td>
+</tr>
+<tr>
+<td>EpochLength</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Duration of individual epochs in seconds (for example, <code>1</code>) in case of epoched data. If recording was continuous or discontinuous, leave out the field.</td>
+</tr>
+<tr>
+<td>iEEGGround</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Description of the location of the ground electrode (<code>"placed on right mastoid (M2)"</code>).</td>
+</tr>
+<tr>
+<td>iEEGPlacementScheme</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Freeform description of the placement of the iEEG electrodes. Left/right/bilateral/depth/surface (for example, <code>"left frontal grid and bilateral hippocampal depth"</code> or <code>"surface strip and STN depth"</code> or <code>"clinical indication bitemporal, bilateral temporal strips and left grid"</code>).</td>
+</tr>
+<tr>
+<td>iEEGElectrodeGroups</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Field to describe the way electrodes are grouped into strips, grids or depth probes. For example, <code>"grid1: 10x8 grid on left temporal pole, strip2: 1x8 electrode strip on xxx"</code>.</td>
+</tr>
+<tr>
+<td>SubjectArtefactDescription</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Freeform description of the observed subject artefact and its possible cause (for example, <code>"Vagus Nerve Stimulator"</code>, <code>"non-removable implant"</code>). If this field is set to <code>"n/a"</code>, it will be interpreted as absence of major source of artifacts except cardiac and blinks.</td>
+</tr>
+</tbody>
+</table>
+<p>Specific iEEG fields MAY be present:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ElectricalStimulation</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">boolean</a></td>
+<td>Boolean field to specify if electrical stimulation was done during the recording (options are <code>true</code> or <code>false</code>). Parameters for event-like stimulation should be specified in the events.tsv file.</td>
+</tr>
+<tr>
+<td>ElectricalStimulationParameters</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Free form description of stimulation parameters, such as frequency or shape. Specific onsets can be specified in the events.tsv file. Specific shapes can be described here in freeform text.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;TaskName&quot;</span><span class="p">:</span><span class="s2">&quot;visual&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;InstitutionName&quot;</span><span class="p">:</span><span class="s2">&quot;Stanford Hospital and Clinics&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;InstitutionAddress&quot;</span><span class="p">:</span><span class="s2">&quot;300 Pasteur Dr, Stanford, CA 94305&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;Manufacturer&quot;</span><span class="p">:</span><span class="s2">&quot;Tucker Davis Technologies&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;ManufacturersModelName&quot;</span><span class="p">:</span><span class="s2">&quot;n/a&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;TaskDescription&quot;</span><span class="p">:</span><span class="s2">&quot;visual gratings and noise patterns&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;Instructions&quot;</span><span class="p">:</span><span class="s2">&quot;look at the dot in the center of the screen and press the button when it changes color&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;iEEGReference&quot;</span><span class="p">:</span><span class="s2">&quot;left mastoid&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;SamplingFrequency&quot;</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span>
+  <span class="nt">&quot;PowerLineFrequency&quot;</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span>
+  <span class="nt">&quot;SoftwareFilters&quot;</span><span class="p">:</span><span class="s2">&quot;n/a&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;HardwareFilters&quot;</span><span class="p">:{</span><span class="nt">&quot;Highpass RC filter&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;Half amplitude cutoff (Hz)&quot;</span><span class="p">:</span> <span class="mf">0.0159</span><span class="p">,</span> <span class="nt">&quot;Roll-off&quot;</span><span class="p">:</span> <span class="s2">&quot;6dBOctave&quot;</span><span class="p">}},</span>
+  <span class="nt">&quot;ElectrodeManufacturer&quot;</span><span class="p">:</span><span class="s2">&quot;AdTech&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;ECOGChannelCount&quot;</span><span class="p">:</span><span class="mi">120</span><span class="p">,</span>
+  <span class="nt">&quot;SEEGChannelCount&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+  <span class="nt">&quot;EEGChannelCount&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+  <span class="nt">&quot;EOGChannelCount&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+  <span class="nt">&quot;ECGChannelCount&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+  <span class="nt">&quot;EMGChannelCount&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+  <span class="nt">&quot;MiscChannelCount&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+  <span class="nt">&quot;TriggerChannelCount&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+  <span class="nt">&quot;RecordingDuration&quot;</span><span class="p">:</span><span class="mf">233.639</span><span class="p">,</span>
+  <span class="nt">&quot;RecordingType&quot;</span><span class="p">:</span><span class="s2">&quot;continuous&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;iEEGGround&quot;</span><span class="p">:</span><span class="s2">&quot;placed on the right mastoid&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;iEEGPlacementScheme&quot;</span><span class="p">:</span><span class="s2">&quot;right occipital temporal surface&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;ElectricalStimulation&quot;</span><span class="p">:</span><span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Note that the date and time information SHOULD be stored in the Study key file
+(<a href="../03-modality-agnostic-files.html#scans-file"><code>scans.tsv</code></a>).
+Date time information MUST be expressed as indicated in <a href="../02-common-principles.html#units">Units</a></p>
+<h2 id="channels-description-_channelstsv"><a class="toclink" href="#channels-description-_channelstsv">Channels description (<code>*_channels.tsv</code>)</a></h2>
+<p>Template:
+<div class="highlight"><pre><span></span><code>sub-&lt;label&gt;/
+    [ses-&lt;label&gt;/]
+        ieeg/
+            sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_run-&lt;index&gt;]_channels.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_acq-&lt;label&gt;][_run-&lt;index&gt;]_channels.tsv
+</code></pre></div></p>
+<p>A channel represents one time series recorded with the recording system (for
+example, there can be a bipolar channel, recorded from two electrodes or contact
+points on the tissue).
+Although this information can often be extracted from the iEEG recording,
+listing it in a simple <code>.tsv</code> document makes it easy to browse or search (for example,
+searching for recordings with a sampling frequency of &gt;=1000 Hz).
+Hence, the channels.tsv is RECOMMENDED.
+Channels SHOULD appear in the table in the same order they do in the iEEG data
+file.
+Any number of additional columns may be provided to provide additional
+information about the channels.
+Note that electrode positions SHOULD NOT be added to this file but to
+<code>*_electrodes.tsv</code>.</p>
+<p>The columns of the Channels description table stored in <code>*_channels.tsv</code> are:</p>
+<p>MUST be present <strong>in this specific order</strong>:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Column name</strong></th>
+<th><strong>Requirement level</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>REQUIRED</td>
+<td>Label of the channel. The label must correspond to _electrodes.tsv name and all ieeg type channels are required to have a position. The reference channel name MAY be provided in the reference column.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>REQUIRED</td>
+<td>Type of channel, see below for adequate keywords in this field. Note that the type MUST be in upper case.</td>
+</tr>
+<tr>
+<td>units</td>
+<td>REQUIRED</td>
+<td>Physical unit of the value represented in this channel, for example, <code>V</code> for Volt, or <code>fT/cm</code> for femto Tesla per centimeter (see <a href="../02-common-principles.html#units">Units</a>).</td>
+</tr>
+<tr>
+<td>low_cutoff</td>
+<td>REQUIRED</td>
+<td>Frequencies used for the low pass filter applied to the channel in Hz. If no low pass filter was applied, use <code>n/a</code>. Note that anti-alias is a low pass filter, specify its frequencies here if applicable.</td>
+</tr>
+<tr>
+<td>high_cutoff</td>
+<td>REQUIRED</td>
+<td>Frequencies used for the high pass filter applied to the channel in Hz. If no high pass filter applied, use <code>n/a</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>SHOULD be present:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Column name</strong></th>
+<th><strong>Requirement level</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reference</td>
+<td>OPTIONAL</td>
+<td>Specification of the reference (for example, 'mastoid', 'ElectrodeName01', 'intracranial', 'CAR', 'other', 'n/a'). If the channel is not an electrode channel (for example, a microphone channel) use <code>n/a</code>.</td>
+</tr>
+<tr>
+<td>group</td>
+<td>OPTIONAL</td>
+<td>Which group of channels (grid/strip/seeg/depth) this channel belongs to. This is relevant because one group has one cable-bundle and noise can be shared. This can be a name or number. Note that any groups specified in <code>_electrodes.tsv</code> must match those present here.</td>
+</tr>
+<tr>
+<td>sampling_frequency</td>
+<td>OPTIONAL</td>
+<td>Sampling rate of the channel in Hz.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>OPTIONAL</td>
+<td>Brief free-text description of the channel, or other information of interest (for example, position (for example, "left lateral temporal surface")).</td>
+</tr>
+<tr>
+<td>notch</td>
+<td>OPTIONAL</td>
+<td>Frequencies used for the notch filter applied to the channel, in Hz. If no notch filter applied, use n/a.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>OPTIONAL</td>
+<td>Data quality observed on the channel (good/bad). A channel is considered bad if its data quality is compromised by excessive noise. Description of noise type SHOULD be provided in <code>[status_description]</code>.</td>
+</tr>
+<tr>
+<td>status_description</td>
+<td>OPTIONAL</td>
+<td>Freeform text description of noise or artifact affecting data quality on the channel. It is meant to explain why the channel was declared bad in <code>[status]</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong> <code>sub-01_channels.tsv</code>:</p>
+<div class="highlight"><pre><span></span><code>name  type  units low_cutoff  high_cutoff status  status_description
+LT01  ECOG  uV    300         0.11        good    n/a
+LT02  ECOG  uV    300         0.11        bad     broken
+H01   SEEG  uV    300         0.11        bad     line_noise
+ECG1  ECG   uV    n/a         0.11        good    n/a
+TR1   TRIG  n/a   n/a         n/a         good    n/a
+</code></pre></div>
+<p>Restricted keyword list for field type in alphabetic order (shared with the MEG
+and EEG modality; however, only types that are common in iEEG data are listed here).
+Note that upper-case is REQUIRED:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Keyword</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EEG</td>
+<td>Electrode channel from electroencephalogram</td>
+</tr>
+<tr>
+<td>ECOG</td>
+<td>Electrode channel from electrocorticogram (intracranial)</td>
+</tr>
+<tr>
+<td>SEEG</td>
+<td>Electrode channel from stereo-electroencephalogram (intracranial)</td>
+</tr>
+<tr>
+<td>DBS</td>
+<td>Electrode channel from deep brain stimulation electrode (intracranial)</td>
+</tr>
+<tr>
+<td>VEOG</td>
+<td>Vertical EOG (electrooculogram)</td>
+</tr>
+<tr>
+<td>HEOG</td>
+<td>Horizontal EOG</td>
+</tr>
+<tr>
+<td>EOG</td>
+<td>Generic EOG channel if HEOG or VEOG information not available</td>
+</tr>
+<tr>
+<td>ECG</td>
+<td>ElectroCardioGram (heart)</td>
+</tr>
+<tr>
+<td>EMG</td>
+<td>ElectroMyoGram (muscle)</td>
+</tr>
+<tr>
+<td>TRIG</td>
+<td>System Triggers</td>
+</tr>
+<tr>
+<td>AUDIO</td>
+<td>Audio signal</td>
+</tr>
+<tr>
+<td>PD</td>
+<td>Photodiode</td>
+</tr>
+<tr>
+<td>EYEGAZE</td>
+<td>Eye Tracker gaze</td>
+</tr>
+<tr>
+<td>PUPIL</td>
+<td>Eye Tracker pupil diameter</td>
+</tr>
+<tr>
+<td>MISC</td>
+<td>Miscellaneous</td>
+</tr>
+<tr>
+<td>SYSCLOCK</td>
+<td>System time showing elapsed time since trial started</td>
+</tr>
+<tr>
+<td>ADC</td>
+<td>Analog to Digital input</td>
+</tr>
+<tr>
+<td>DAC</td>
+<td>Digital to Analog output</td>
+</tr>
+<tr>
+<td>REF</td>
+<td>Reference channel</td>
+</tr>
+<tr>
+<td>OTHER</td>
+<td>Any other type of channel</td>
+</tr>
+</tbody>
+</table>
+<p>Example of free-form text for field <code>description</code>:</p>
+<ul>
+<li>intracranial, stimulus, response, vertical EOG, skin conductance</li>
+</ul>
+<h2 id="electrode-description-_electrodestsv"><a class="toclink" href="#electrode-description-_electrodestsv">Electrode description (<code>*_electrodes.tsv</code>)</a></h2>
+<p>Template:
+<div class="highlight"><pre><span></span><code>sub-&lt;label&gt;/
+    [ses-&lt;label&gt;/]
+        ieeg/
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_space-&lt;label&gt;]_electrodes.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_space-&lt;label&gt;]_electrodes.tsv
+</code></pre></div></p>
+<p>File that gives the location, size and other properties of iEEG electrodes. Note
+that coordinates are expected in cartesian coordinates according to the
+<code>iEEGCoordinateSystem</code> and <code>iEEGCoordinateUnits</code> fields in
+<code>*_coordsystem.json</code>. If an <code>*_electrodes.tsv</code> file is specified, a
+<code>*_coordsystem.json</code> file MUST be specified as well.</p>
+<p>The optional <a href="../99-appendices/09-entities.html#space"><code>space-&lt;label&gt;</code></a> entity (<code>*[_space-&lt;label&gt;]_electrodes.tsv</code>) can be used to
+indicate the way in which electrode positions are interpreted.
+The space <code>&lt;label&gt;</code> MUST be taken from one of the modality specific lists in
+<a href="../99-appendices/08-coordinate-systems.html">Appendix VIII</a>.
+For example for iEEG data, the restricted keywords listed under
+<a href="../99-appendices/08-coordinate-systems.html#ieeg-specific-coordinate-systems">iEEG Specific Coordinate Systems</a>
+are acceptable for <code>&lt;label&gt;</code>.</p>
+<p>For examples:</p>
+<ul>
+<li>
+<p><code>_space-MNI152Lin</code> (electrodes are coregistred and scaled to a specific MNI
+    template)</p>
+</li>
+<li>
+<p><code>_space-Talairach</code> (electrodes are coregistred and scaled to Talairach
+    space)</p>
+</li>
+</ul>
+<p>When referring to the <code>*_electrodes.tsv</code> file in a certain <em>space</em> as defined
+above, the <a href="../99-appendices/09-entities.html#space"><code>space-&lt;label&gt;</code></a> of the accompanying <code>*_coordsystem.json</code> MUST
+correspond.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>└─ sub-01/
+   ├─ sub-01_space-Talairach_electrodes.tsv 
+   ├─ sub-01_space-Talairach_coordsystem.json 
+   └─ ... 
+</code></pre></div>
+<p>The order of the required columns in the <code>*_electrodes.tsv</code> file MUST be as
+listed below.</p>
+<p>MUST be present <strong>in this specific order</strong>:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Column name</strong></th>
+<th><strong>Requirement level</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>REQUIRED</td>
+<td>Name of the electrode contact point.</td>
+</tr>
+<tr>
+<td>x</td>
+<td>REQUIRED</td>
+<td>X position. The positions of the center of each electrode in xyz space. Units are specified in <code>space-&lt;label&gt;_coordsystem.json</code>.</td>
+</tr>
+<tr>
+<td>y</td>
+<td>REQUIRED</td>
+<td>Y position.</td>
+</tr>
+<tr>
+<td>z</td>
+<td>REQUIRED</td>
+<td>Z position. If electrodes are in 2D space this should be a column of <code>n/a</code> values.</td>
+</tr>
+<tr>
+<td>size</td>
+<td>REQUIRED</td>
+<td>Surface area of the electrode, units MUST be in <code>mm^2</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>SHOULD be present:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Column name</strong></th>
+<th><strong>Requirement level</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>material</td>
+<td>RECOMMENDED</td>
+<td>Material of the electrodes.</td>
+</tr>
+<tr>
+<td>manufacturer</td>
+<td>RECOMMENDED</td>
+<td>The manufacturer for each electrode. Can be used if electrodes were manufactured by more than one company.</td>
+</tr>
+<tr>
+<td>group</td>
+<td>RECOMMENDED</td>
+<td>The group that the electrode is a part of. Note that any group specified here should match a group specified in <code>_channels.tsv</code>.</td>
+</tr>
+<tr>
+<td>hemisphere</td>
+<td>RECOMMENDED</td>
+<td>The hemisphere in which the electrode is placed, one of <code>['L' or 'R']</code> (use capital).</td>
+</tr>
+</tbody>
+</table>
+<p>MAY be present:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Column name</strong></th>
+<th><strong>Requirement level</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>OPTIONAL</td>
+<td>Optional type of the electrode, for example, cup, ring, clip-on, wire, needle, ...</td>
+</tr>
+<tr>
+<td>impedance</td>
+<td>OPTIONAL</td>
+<td>Impedance of the electrode, units MUST be in <code>kOhm</code>.</td>
+</tr>
+<tr>
+<td>dimension</td>
+<td>OPTIONAL</td>
+<td>Size of the group (grid/strip/probe) that this electrode belongs to. Must be of form <code>[AxB]</code> with the smallest dimension first (for example, <code>[1x8]</code>).</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code>name  x   y    z    size   manufacturer
+LT01  19  -39  -16  2.3    Integra
+LT02  23  -40  -19  2.3    Integra
+H01   27  -42  -21  5      AdTech
+</code></pre></div>
+<h2 id="coordinate-system-json-_coordsystemjson"><a class="toclink" href="#coordinate-system-json-_coordsystemjson">Coordinate System JSON (<code>*_coordsystem.json</code>)</a></h2>
+<p>Template:
+<div class="highlight"><pre><span></span><code>sub-&lt;label&gt;/
+    [ses-&lt;label&gt;/]
+        ieeg/
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;][_space-&lt;label&gt;]_coordsystem.json
+</code></pre></div></p>
+<p>This <code>_coordsystem.json</code> file contains the coordinate system in which electrode
+positions are expressed. The associated MRI, CT, X-Ray, or operative photo can
+also be specified.</p>
+<p>General fields:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IntendedFor</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a> or <a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">strings</a></td>
+<td>The paths to files for which the associated file is intended to be used. Contains one or more filenames with paths relative to the participant subfolder. Paths need to use forward slashes instead of backward slashes, regardless of operating system.  If only a surface reconstruction is available, this should point to the surface reconstruction file. Note that this file should have the same coordinate system specified in <code>iEEGCoordinateSystem</code>. For example, <strong>T1</strong>: <code>'sub-&lt;label&gt;/ses-&lt;label&gt;/anat/sub-01_T1w.nii.gz'</code>  <strong>Surface</strong>: <code>'/derivatives/surfaces/sub-&lt;label&gt;/ses-&lt;label&gt;/anat/sub-01_desc-T1w_hemi-R_pial.surf.gii'</code> <strong>Operative photo</strong>: <code>'/sub-&lt;label&gt;/ses-&lt;label&gt;/ieeg/sub-0001_ses-01_acq-photo1_photo.jpg'</code> <strong>Talairach</strong>: <code>'/derivatives/surfaces/sub-Talairach/ses-01/anat/sub-Talairach_hemi-R_pial.surf.gii'</code></td>
+</tr>
+</tbody>
+</table>
+<p>Fields relating to the iEEG electrode positions:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iEEGCoordinateSystem</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Defines the coordinate system for the iEEG sensors. See <a href="/99-appendices/08-coordinate-systems.html">Appendix VIII</a> for a list of restricted keywords for coordinate systems. If <code>"Other"</code>, provide definition of the coordinate system in <code>iEEGCoordinateSystemDescription</code>. If positions correspond to pixel indices in a 2D image (of either a volume-rendering, surface-rendering, operative photo, or operative drawing), this MUST be <code>"Pixels"</code>. For more information, see the section on <a href="/04-modality-specific-files/04-intracranial-electroencephalography.html#allowed-2d-coordinate-systems">2D coordinate systems</a>.</td>
+</tr>
+<tr>
+<td>iEEGCoordinateUnits</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Units of the <code>*_electrodes.tsv</code>, MUST be <code>"m"</code>, <code>"mm"</code>, <code>"cm"</code> or <code>"pixels"</code>. MUST be <code>"pixels"</code> if <code>iEEGCoordinateSystem</code> is <code>Pixels</code>.</td>
+</tr>
+<tr>
+<td>iEEGCoordinateSystemDescription</td>
+<td>RECOMMENDED, but REQUIRED if <code>iEEGCoordinateSystem</code> is <code>"Other"</code></td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Free-form text description of the coordinate system. May also include a link to a documentation page or paper describing the system in greater detail.</td>
+</tr>
+<tr>
+<td>iEEGCoordinateProcessingDescription</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Has any post-processing (such as projection) been done on the electrode positions (for example, <code>"surface_projection"</code>, <code>"none"</code>).</td>
+</tr>
+<tr>
+<td>iEEGCoordinateProcessingReference</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>A reference to a paper that defines in more detail the method used to localize the electrodes and to post-process the electrode positions.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="recommended-3d-coordinate-systems"><a class="toclink" href="#recommended-3d-coordinate-systems">Recommended 3D coordinate systems</a></h3>
+<p>It is preferred that electrodes are localized in a 3D coordinate system (with
+respect to a pre- and/or post-operative anatomical MRI or CT scans or in a
+standard space as specified in BIDS <a href="../99-appendices/08-coordinate-systems.html">Appendix VIII</a>
+about preferred names of coordinate systems, such as ACPC).</p>
+<h3 id="allowed-2d-coordinate-systems"><a class="toclink" href="#allowed-2d-coordinate-systems">Allowed 2D coordinate systems</a></h3>
+<p>If electrodes are localized in 2D space (only x and y are specified and z is <code>"n/a"</code>),
+then the positions in this file MUST correspond to the locations expressed
+in pixels on the photo/drawing/rendering of the electrodes on the brain.
+In this case, <code>iEEGCoordinateSystem</code> MUST be defined as <code>"Pixels"</code>,
+and <code>iEEGCoordinateUnits</code> MUST be defined as <code>"pixels"</code>
+(note the difference in capitalization).
+Furthermore, the coordinates MUST be (row,column) pairs,
+with (0,0) corresponding to the upper left pixel and (N,0) corresponding to the lower left pixel.</p>
+<h3 id="multiple-coordinate-systems"><a class="toclink" href="#multiple-coordinate-systems">Multiple coordinate systems</a></h3>
+<p>If electrode positions are known in multiple coordinate systems (for example, MRI, CT
+and MNI), these spaces can be distinguished by the optional <a href="../99-appendices/09-entities.html#space"><code>space-&lt;label&gt;</code></a>
+field, see the <a href="#electrode-description-_electrodestsv"><code>*_electrodes.tsv</code>-section</a>
+for more information.
+Note that the <a href="../99-appendices/09-entities.html#space"><code>space-&lt;label&gt;</code></a> fields must correspond
+between <code>*_electrodes.tsv</code> and <code>*_coordsystem.json</code> if they refer to the same
+data.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;IntendedFor&quot;</span><span class="p">:</span> <span class="s2">&quot;/sub-01/ses-01/anat/sub-01_T1w.nii.gz&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;iEEGCoordinateSystem&quot;</span><span class="p">:</span> <span class="s2">&quot;ACPC&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;iEEGCoordinateUnits&quot;</span><span class="p">:</span> <span class="s2">&quot;mm&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;iEEGCoordinateSystemDescription&quot;</span><span class="p">:</span> <span class="s2">&quot;Coordinate system with the origin at anterior commissure (AC), negative y-axis going through the posterior commissure (PC), z-axis going to a mid-hemisperic point which lies superior to the AC-PC line, x-axis going to the right&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;iEEGCoordinateProcessingDescription&quot;</span><span class="p">:</span> <span class="s2">&quot;surface_projection&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;iEEGCoordinateProcessingReference&quot;</span><span class="p">:</span> <span class="s2">&quot;Hermes et al., 2010 JNeuroMeth&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="photos-of-the-electrode-positions-_photojpg"><a class="toclink" href="#photos-of-the-electrode-positions-_photojpg">Photos of the electrode positions (<code>*_photo.jpg</code>)</a></h2>
+<p>Template:
+<div class="highlight"><pre><span></span><code>sub-&lt;label&gt;/
+    [ses-&lt;label&gt;/]
+        ieeg/
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_acq-&lt;label&gt;]_photo.jpg
+</code></pre></div></p>
+<p>These can include photos of the electrodes on the brain surface, photos of
+anatomical features or landmarks (such as sulcal structure), and fiducials. Photos
+can also include an X-ray picture, a flatbed scan of a schematic drawing made
+during surgery, or screenshots of a brain rendering with electrode positions.
+The photos may need to be cropped and/or blurred to conceal identifying features
+or entirely omitted prior to sharing, depending on obtained consent.</p>
+<p>If there are photos of the electrodes, the <a href="../99-appendices/09-entities.html#acq"><code>acq-&lt;label&gt;</code></a> entity should be specified
+with:</p>
+<ul>
+<li>
+<p><code>*_photo.jpg</code> in case of an operative photo</p>
+</li>
+<li>
+<p><code>*_acq-xray#_photo.jpg</code> in case of an x-ray picture</p>
+</li>
+<li>
+<p><code>*_acq-drawing#_photo.jpg</code> in case of a drawing or sketch of electrode
+    placements</p>
+</li>
+<li>
+<p><code>*_acq-render#_photo.jpg</code> in case of a rendering</p>
+</li>
+</ul>
+<p>The <a href="../99-appendices/09-entities.html#ses"><code>ses-&lt;label&gt;</code></a> entity may be used to specify when the photo was taken.</p>
+<p>Example of the operative photo of ECoG electrodes (here is an annotated example in
+which electrodes and vasculature are marked, taken from Hermes et al.,
+JNeuroMeth 2010).</p>
+<div class="highlight"><pre><span></span><code>└─ sub-01/
+   └─ ses-0001/
+      ├─ sub-0001_ses-01_acq-photo1_photo.jpg 
+      ├─ sub-0001_ses-01_acq-photo2_photo.jpg 
+      └─ ... 
+</code></pre></div>
+<p><img alt="operative photo of ECoG electrodes" src="images/ieeg_electrodes1.png" title="operative photo of ECoG electrodes" /></p>
+<p>Below is an example of a volume rendering of the cortical surface with a
+superimposed subdural electrode implantation. This map is often provided by the</p>
+<p>EEG technician and provided to the epileptologists (for example, see Burneo JG et al.
+2014. <a href="https://doi.org/10.1016/j.clineuro.2014.03.020">doi:10.1016/j.clineuro.2014.03.020</a>).</p>
+<div class="highlight"><pre><span></span><code>    sub-0002_ses-01_acq-render_photo.jpg
+</code></pre></div>
+<p><img alt="volume rendering of the cortical surface" src="images/ieeg_electrodes2.png" title="volume rendering of the cortical surface" /></p>
+<h2 id="electrical-stimulation"><a class="toclink" href="#electrical-stimulation">Electrical stimulation</a></h2>
+<p>In case of electrical stimulation of brain tissue by passing current through the
+iEEG electrodes, and the electrical stimulation has an event structure (on-off,
+onset, duration), the <code>_events.tsv</code> file can contain the electrical stimulation
+parameters in addition to other events. Note that these can be intermixed with
+other task events. Electrical stimulation parameters can be described in columns
+called <code>electrical_stimulation_&lt;label&gt;</code>, with labels chosen by the researcher and
+optionally defined in more detail in an accompanying <code>_events.json</code> file (as
+per the main BIDS spec). Functions for complex stimulation patterns can, similar
+as when a video is presented, be stored in a folder in the <code>/stimuli/</code> folder.
+For example: <code>/stimuli/electrical_stimulation_functions/biphasic.tsv</code></p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code>onset duration trial_type             electrical_stimulation_type electrical_stimulation_site electrical_stimulation_current
+1.2   0.001    electrical_stimulation biphasic                    LT01-LT02                   0.005
+1.3   0.001    electrical_stimulation biphasic                    LT01-LT02                   0.005
+2.2   0.001    electrical_stimulation biphasic                    LT02-LT03                   0.005
+4.2   1        electrical_stimulation complex                     LT02-LT03                   n/a
+15.2  3        auditory_stimulus      n/a                         n/a                         n/a
+</code></pre></div>
+<!-- Link Definitions -->
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+--><!-- Application footer -->
+<footer class="md-footer">
+
+  <!-- Link to previous and/or next page --><div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+
+        <!-- Link to previous page --><a href="03-electroencephalography.html"
+              title="Electroencephalography"
+              class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+              rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back
+                    md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">Previous</span>Electroencephalography</span>
+            </div>
+          </a><!-- Link to next page --><a href="05-task-events.html"
+              title="Task events"
+              class="md-flex md-footer-nav__link md-footer-nav__link--next"
+              rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">Next</span>Task events</span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward
+                    md-footer-nav__button"></i>
+            </div>
+          </a></nav>
+    </div><!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">See the source code and discussion page on
+        <a href="https://github.com/bids-standard/bids-specification">GitHub</a>
+      </div>
+
+      <!-- Social links --></div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.94ec81fe.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.48dfec6c.min.js"></script>
+      
+        <script src="../js/jquery-3.6.0.min.js"></script>
+      
+    
+  </body>
+</html>

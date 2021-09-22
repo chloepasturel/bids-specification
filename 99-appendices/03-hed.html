@@ -1,0 +1,1131 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://bids-specification.readthedocs.io/en/stable/99-appendices/03-hed.html">
+      
+      <link rel="icon" href="../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.8">
+    
+    
+      
+        <title>Hierarchical Event Descriptors - Brain Imaging Data Structure v1.6.1-dev</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.92558b1b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#appendix-iii-hierarchical-event-descriptors" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Brain Imaging Data Structure v1.6.1-dev" class="md-header__button md-logo" aria-label="Brain Imaging Data Structure v1.6.1-dev" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Brain Imaging Data Structure v1.6.1-dev
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hierarchical Event Descriptors
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Brain Imaging Data Structure v1.6.1-dev" class="md-nav__button md-logo" aria-label="Brain Imaging Data Structure v1.6.1-dev" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    Brain Imaging Data Structure v1.6.1-dev
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      <label class="md-nav__link" for="__nav_1">
+        The BIDS Specification
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The BIDS Specification" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          The BIDS Specification
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-introduction.html" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-common-principles.html" class="md-nav__link">
+        Common principles
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-modality-agnostic-files.html" class="md-nav__link">
+        Modality agnostic files
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      <label class="md-nav__link" for="__nav_1_4">
+        Modality specific files
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Modality specific files" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Modality specific files
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/01-magnetic-resonance-imaging-data.html" class="md-nav__link">
+        Magnetic Resonance Imaging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/02-magnetoencephalography.html" class="md-nav__link">
+        Magnetoencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/03-electroencephalography.html" class="md-nav__link">
+        Electroencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/04-intracranial-electroencephalography.html" class="md-nav__link">
+        Intracranial Electroencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/05-task-events.html" class="md-nav__link">
+        Task events
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/06-physiological-and-other-continuous-recordings.html" class="md-nav__link">
+        Physiological and other continuous recordings
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/07-behavioral-experiments.html" class="md-nav__link">
+        Behavioral experiments (with no neural recordings)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/08-genetic-descriptor.html" class="md-nav__link">
+        Genetic Descriptor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-modality-specific-files/09-positron-emission-tomography.html" class="md-nav__link">
+        Positron Emission Tomography
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" >
+      
+      <label class="md-nav__link" for="__nav_1_5">
+        Derivatives
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Derivatives" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Derivatives
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/01-introduction.html" class="md-nav__link">
+        BIDS Derivatives
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/02-common-data-types.html" class="md-nav__link">
+        Common data types and metadata
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/03-imaging.html" class="md-nav__link">
+        Imaging data types
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-longitudinal-and-multi-site-studies.html" class="md-nav__link">
+        Longitudinal and multi-site studies
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-extensions.html" class="md-nav__link">
+        BIDS Extension Proposals
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_8" type="checkbox" id="__nav_1_8" checked>
+      
+      <label class="md-nav__link" for="__nav_1_8">
+        Appendix
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Appendix" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-contributors.html" class="md-nav__link">
+        Contributors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-licenses.html" class="md-nav__link">
+        Licenses
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Hierarchical Event Descriptors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="03-hed.html" class="md-nav__link md-nav__link--active">
+        Hierarchical Event Descriptors
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#annotating-each-event" class="md-nav__link">
+    Annotating each event
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotating-events-by-categories" class="md-nav__link">
+    Annotating events by categories
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotating-events-by-value-type" class="md-nav__link">
+    Annotating events by value type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    Best practices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hed-schema-and-hed-versions" class="md-nav__link">
+    HED schema and HED versions
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-entity-table.html" class="md-nav__link">
+        Entity table
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-units.html" class="md-nav__link">
+        Units
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-meg-file-formats.html" class="md-nav__link">
+        MEG file formats
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-meg-systems.html" class="md-nav__link">
+        MEG systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-coordinate-systems.html" class="md-nav__link">
+        Coordinate systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-entities.html" class="md-nav__link">
+        Entities
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-file-collections.html" class="md-nav__link">
+        File collections
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-qmri.html" class="md-nav__link">
+        Quantitative MRI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-arterial-spin-labeling.html" class="md-nav__link">
+        Arterial Spin Labeling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-cross-modality-correspondence.html" class="md-nav__link">
+        Cross modality correspondence
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGES.html" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        The BIDS Starter Kit
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The BIDS Starter Kit" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          The BIDS Starter Kit
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit" class="md-nav__link">
+        GitHub repository
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit/wiki/Tutorials" class="md-nav__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit/wiki" class="md-nav__link">
+        Wiki
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#annotating-each-event" class="md-nav__link">
+    Annotating each event
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotating-events-by-categories" class="md-nav__link">
+    Annotating events by categories
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotating-events-by-value-type" class="md-nav__link">
+    Annotating events by value type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    Best practices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hed-schema-and-hed-versions" class="md-nav__link">
+    HED schema and HED versions
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="appendix-iii-hierarchical-event-descriptors"><a class="toclink" href="#appendix-iii-hierarchical-event-descriptors">Appendix III: Hierarchical Event Descriptors</a></h1>
+<p>Hierarchical Event Descriptors (HED) are a controlled vocabulary of terms describing
+events in a machine-actionable form so that algorithms can use the information without
+manual recoding.
+HED was originally developed with EEG in mind, but is applicable to
+all behavioral experiments.</p>
+<p>Each level of a hierarchical tag is delimited with a forward slash (<code>/</code>).
+A HED string contains one or more HED tags separated by commas (<code>,</code>).
+Parentheses (brackets, <code>()</code>) group tags and enable specification of multiple items
+and their attributes in a single <strong>HED string</strong> (see section 2.4 in
+<a href="https://www.hedtags.org/hed-docs/HEDTaggingStrategyGuide.pdf">HED Tagging Strategy Guide</a>).
+For more information about HED and tools available to validate and match HED
+strings, please visit <a href="https://www.hedtags.org">www.hedtags.org</a>.
+Since dedicated fields already exist for the overall task classification in the
+sidecar JSON files (<code>CogAtlasID</code> and <code>CogPOID</code>), HED tags from the <code>Paradigm</code>
+HED subcategory should not be used to annotate events.</p>
+<h2 id="annotating-each-event"><a class="toclink" href="#annotating-each-event">Annotating each event</a></h2>
+<p>There are several ways to associate HED annotations with events within the BIDS
+framework.
+The most direct way is to use the <code>HED</code> column of the <code>*_events.tsv</code>
+file to annotate events.</p>
+<p>Example: An <code>*_events.tsv</code> annotated using HED tags for individual events.</p>
+<div class="highlight"><pre><span></span><code>onset  duration  HED
+1.1    n/a       Event/Category/Experimental stimulus, Event/Label/CrossFix,  Sensory presentation/Visual, Item/Object/2D Shape/Cross
+1.3    n/a       Event/Category/Participant response, Event/Label/ButtonPress, Action/Button press
+...
+</code></pre></div>
+<p>The direct approach requires that each line in the events file be annotated.
+Since there are typically thousands of events in each experiment,
+this method of annotation is not convenient unless the annotations are
+automatically generated.
+Usually annotations that appear in the <code>HED</code> column are specific to each individual event.
+Information that is common to groups of events can be annotated by category.
+Numerical values associated with each event can be annotated by value type.
+Annotating by category and by valuegreatly reduces the effort required to HED tag
+data and improves the clarity for data users.</p>
+<h2 id="annotating-events-by-categories"><a class="toclink" href="#annotating-events-by-categories">Annotating events by categories</a></h2>
+<p>In many experiments, the event instances fall into a much smaller number of
+categories, and often these categories are labeled with numerical codes or short names.
+This categorical information usually corresponds to one or more columns in <code>*_events.tsv</code>
+representing categorical values.
+Instead of tagging this information for each individual event,
+you can assign HED tags for each distinct categorical value
+in an accompanying <code>*_events.json</code> sidecar and allow the analysis tools to make
+the association with individual event instances during analysis.
+The column name in the <code>*_events.tsv</code> identifies the type of categorical variable.
+The following <code>*_events.tsv</code> file has one categorical variable called <code>mycodes</code> that
+takes on three possible values: <code>Fixation</code>, <code>Button</code>, and <code>Target</code>.</p>
+<p>Example: An <code>*_events.tsv</code> containing the <code>mycodes</code> categorical column.</p>
+<div class="highlight"><pre><span></span><code>onset  duration  mycodes
+1.1    n/a       Fixation
+1.3    n/a       Button
+1.8    n/a       Target
+...
+</code></pre></div>
+<p>Example: An accompanying <code>*_events.json</code> sidecar describing the <code>mycodes</code> categorical variable.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;mycodes&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="nt">&quot;LongName&quot;</span><span class="p">:</span> <span class="s2">&quot;Local event type names&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Main types of events that comprise a trial&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;Levels&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;Fixation&quot;</span><span class="p">:</span> <span class="s2">&quot;Fixation cross is displayed&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;Target&quot;</span><span class="p">:</span> <span class="s2">&quot;Target image appears&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;Button&quot;</span><span class="p">:</span> <span class="s2">&quot;Subject presses a button&quot;</span>
+       <span class="p">},</span>
+       <span class="nt">&quot;HED&quot;</span><span class="p">:</span> <span class="p">{</span>
+           <span class="nt">&quot;Fixation&quot;</span><span class="p">:</span> <span class="s2">&quot;Event/Category/Experimental stimulus, Event/Label/CrossFix,</span>
+<span class="s2">               Event/Description/A cross appears at screen center to serve as a fixation point,</span>
+<span class="s2">               Sensory presentation/Visual, Item/Object/2D Shape/Cross,</span>
+<span class="s2">               Attribute/Visual/Fixation point, Attribute/Visual/Rendering type/Screen,</span>
+<span class="s2">               Attribute/Location/Screen/Center&quot;</span><span class="p">,</span>
+           <span class="nt">&quot;Target&quot;</span><span class="p">:</span> <span class="s2">&quot;Event/Label/TargetImage, Event/Category/Experimental stimulus,</span>
+<span class="s2">               Event/Description/A white airplane as the RSVP target superimposed on a satellite image is displayed.,</span>
+<span class="s2">               Item/Object/Vehicle/Aircraft/Airplane, Participant/Effect/Cognitive/Target,</span>
+<span class="s2">               Sensory presentation/Visual/Rendering type/Screen/2D),</span>
+<span class="s2">               (Item/Natural scene/Aerial/Satellite,</span>
+<span class="s2">               Sensory presentation/Visual/Rendering type/Screen/2D)&quot;</span><span class="p">,</span>
+           <span class="nt">&quot;Button&quot;</span><span class="p">:</span> <span class="s2">&quot;Event/Category/Participant response, Event/Label/PressButton,</span>
+<span class="s2">               Event/Description/The participant presses the button as soon as the target is visible,</span>
+<span class="s2">               Action/Button press&quot;</span>
+        <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="annotating-events-by-value-type"><a class="toclink" href="#annotating-events-by-value-type">Annotating events by value type</a></h2>
+<p>Each column of <code>*_events.tsv</code> containing non-categorical values usually represents a
+particular type of data, for example the <code>speed</code> of a stimulus object across the
+screen or the file name of the stimulus image.
+These variables could be annotated in the HED column of <code>*_events.tsv</code>.
+However, that approach requires repeating the values appearing in the individual
+columns in the HED column.
+A better approach is to annotate the type of value contained in each of these
+columns in the <code>*_events.json</code> sidecar.
+Value variables are annotated in a manner similar to categorical values,
+except that the HED string must contain exactly one <code>#</code> specifying a placeholder
+for the actual column values.
+Tools are responsible for substituting the actual column values for the <code>#</code> during analysis.</p>
+<p>Example: An <code>*_events.tsv</code> containing a categorical column (<code>trial_type</code>) and two value
+columns (<code>response_time</code> and <code>stim_file</code>).</p>
+<div class="highlight"><pre><span></span><code>onset  duration  trial_type  response_time stim_file
+1.2    0.6       go          1.435         images/red_square.jpg
+5.6    0.6       stop        1.739         images/blue_square.jpg
+</code></pre></div>
+<p>Example: An accompanying <code>*_events.json</code> sidecar describing both categorical and value columns.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+   <span class="nt">&quot;trial_type&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="nt">&quot;LongName&quot;</span><span class="p">:</span> <span class="s2">&quot;Event category&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Indicator of type of action that is expected&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;Levels&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;go&quot;</span><span class="p">:</span> <span class="s2">&quot;A red square is displayed to indicate starting&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;stop&quot;</span><span class="p">:</span> <span class="s2">&quot;A blue square is displayed to indicate stopping&quot;</span><span class="p">,</span>
+       <span class="p">},</span>
+       <span class="nt">&quot;HED&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;go&quot;</span><span class="p">:</span> <span class="s2">&quot;Event/Category/Experimental stimulus, Event/Label/RedSquare,</span>
+<span class="s2">          Event/Description/A red square is displayed to indicate starting,</span>
+<span class="s2">          Sensory presentation/Visual, Item/Object/2D Shape/Square,</span>
+<span class="s2">          Attribute/Visual/Color/Red, Attribute/Visual/Rendering type/Screen,</span>
+<span class="s2">          Attribute/Location/Screen/Center&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;stop&quot;</span><span class="p">:</span> <span class="s2">&quot;Event/Category/Experimental stimulus, Event/Label/BlueSquare,</span>
+<span class="s2">          Event/Description/A blue square is displayed to indicate stopping,</span>
+<span class="s2">          Sensory presentation/Visual, Item/Object/2D Shape/Square,</span>
+<span class="s2">          Attribute/Visual/Color/Blue, Attribute/Visual/Rendering type/Screen,</span>
+<span class="s2">          Attribute/Location/Screen/Center&quot;</span><span class="p">,</span>
+       <span class="p">}</span>
+   <span class="p">},</span>
+   <span class="nt">&quot;response_time&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="nt">&quot;LongName&quot;</span><span class="p">:</span> <span class="s2">&quot;Response time after stimulus&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Time from stimulus presentation until subject presses button&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;Units&quot;</span><span class="p">:</span> <span class="s2">&quot;ms&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;HED&quot;</span><span class="p">:</span> <span class="s2">&quot;Attribute/Response start delay/# ms, Action/Button press&quot;</span>
+   <span class="p">},</span>
+   <span class="nt">&quot;stim_file&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="nt">&quot;LongName&quot;</span><span class="p">:</span> <span class="s2">&quot;Stimulus file name&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Relative path of the stimulus image file&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;HED&quot;</span><span class="p">:</span> <span class="s2">&quot;Attribute/File/#&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="best-practices"><a class="toclink" href="#best-practices">Best practices</a></h2>
+<p>Most studies will have event categorical variables and value variables that
+are common across many of the datasets in the study.
+You should try to annotate these columns in a <code>*_events.json</code> sidecar
+as high in the study hierarchy as possible to avoid duplicate annotations.
+Annotations that can be placed in sidecars are preferred to those placed
+directly in the HED column, because they are simpler, more compact, and
+less prone to inconsistent annotation.
+Downstream tools should not distinguish between tags specified using
+the explicit HED column and the categorical specifications, but should
+form the union before analysis.
+Further, the <a href="../02-common-principles.html#the-inheritance-principle">inheritance principle</a>
+applies, so the data dictionaries can appear higher in the BIDS hierarchy.</p>
+<p>You should try to annotate in as much detail as possible.
+The HED path structure makes it easy for analysis tools to extract tags
+at different levels of detail: For example a user can consider extracting
+events associated with 2D shapes for stimuli, ignoring the particular
+color or shape details for the stimuli.</p>
+<h2 id="hed-schema-and-hed-versions"><a class="toclink" href="#hed-schema-and-hed-versions">HED schema and HED versions</a></h2>
+<p>The HED vocabulary is specified by a HED schema,
+which delineates the allowed HED path strings.
+By default, BIDS uses the latest HED schema available in the
+<a href="https://github.com/hed-standard/hed-specification/tree/master/hedxml">hed-specification</a> repository
+maintained by the hed-standard group.</p>
+<p>You can override the default by providing a specific HED version number in the
+<code>dataset_description.json</code> file using the <code>HEDVersion</code> field.
+The preferred approach is to validate with the latest version (the default),
+but to use the <code>HEDVersion</code> field to specify which version was used for later reference.</p>
+<p>Example: The following <code>dataset_description.json</code> file specifies that
+<code>HED7.1.1.xml</code> from the <a href="https://github.com/hed-standard/hed-specification/tree/master/hedxml">hed-specification</a> repository
+should be used to validate the study event annotations.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;The mother of all experiments&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;BIDSVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.4.0&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;HEDVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;7.1.1&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+--><!-- Application footer -->
+<footer class="md-footer">
+
+  <!-- Link to previous and/or next page --><div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+
+        <!-- Link to previous page --><a href="02-licenses.html"
+              title="Licenses"
+              class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+              rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back
+                    md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">Previous</span>Licenses</span>
+            </div>
+          </a><!-- Link to next page --><a href="04-entity-table.html"
+              title="Entity table"
+              class="md-flex md-footer-nav__link md-footer-nav__link--next"
+              rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">Next</span>Entity table</span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward
+                    md-footer-nav__button"></i>
+            </div>
+          </a></nav>
+    </div><!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">See the source code and discussion page on
+        <a href="https://github.com/bids-standard/bids-specification">GitHub</a>
+      </div>
+
+      <!-- Social links --></div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.94ec81fe.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.48dfec6c.min.js"></script>
+      
+        <script src="../js/jquery-3.6.0.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1961 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://bids-specification.readthedocs.io/en/stable/02-common-principles.html">
+      
+      <link rel="icon" href="images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.8">
+    
+    
+      
+        <title>Common principles - Brain Imaging Data Structure v1.6.1-dev</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.92558b1b.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#common-principles" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Brain Imaging Data Structure v1.6.1-dev" class="md-header__button md-logo" aria-label="Brain Imaging Data Structure v1.6.1-dev" data-md-component="logo">
+      
+  <img src="images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Brain Imaging Data Structure v1.6.1-dev
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Common principles
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Brain Imaging Data Structure v1.6.1-dev" class="md-nav__button md-logo" aria-label="Brain Imaging Data Structure v1.6.1-dev" data-md-component="logo">
+      
+  <img src="images/logo.png" alt="logo">
+
+    </a>
+    Brain Imaging Data Structure v1.6.1-dev
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      <label class="md-nav__link" for="__nav_1">
+        The BIDS Specification
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The BIDS Specification" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          The BIDS Specification
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-introduction.html" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Common principles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="02-common-principles.html" class="md-nav__link md-nav__link--active">
+        Common principles
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definitions" class="md-nav__link">
+    Definitions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compulsory-optional-and-additional-data-and-metadata" class="md-nav__link">
+    Compulsory, optional, and additional data and metadata
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-name-structure" class="md-nav__link">
+    File name structure
+  </a>
+  
+    <nav class="md-nav" aria-label="File name structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entity-linked-file-collections" class="md-nav__link">
+    Entity-linked file collections
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-vs-raw-vs-derived-data" class="md-nav__link">
+    Source vs. raw vs. derived data
+  </a>
+  
+    <nav class="md-nav" aria-label="Source vs. raw vs. derived data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storage-of-derived-datasets" class="md-nav__link">
+    Storage of derived datasets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-compliant-derivatives" class="md-nav__link">
+    Non-compliant derivatives
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-inheritance-principle" class="md-nav__link">
+    The Inheritance Principle
+  </a>
+  
+    <nav class="md-nav" aria-label="The Inheritance Principle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#good-practice-recommendations" class="md-nav__link">
+    Good practice recommendations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-formation-specification" class="md-nav__link">
+    File Formation specification
+  </a>
+  
+    <nav class="md-nav" aria-label="File Formation specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imaging-files" class="md-nav__link">
+    Imaging files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabular-files" class="md-nav__link">
+    Tabular files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keyvalue-files-dictionaries" class="md-nav__link">
+    Key/value files (dictionaries)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#participant-names-and-other-labels" class="md-nav__link">
+    Participant names and other labels
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uniform-resource-indicator" class="md-nav__link">
+    Uniform Resource Indicator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#units" class="md-nav__link">
+    Units
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directory-structure" class="md-nav__link">
+    Directory structure
+  </a>
+  
+    <nav class="md-nav" aria-label="Directory structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-session-example" class="md-nav__link">
+    Single session example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unspecified-data" class="md-nav__link">
+    Unspecified data
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-modality-agnostic-files.html" class="md-nav__link">
+        Modality agnostic files
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      <label class="md-nav__link" for="__nav_1_4">
+        Modality specific files
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Modality specific files" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Modality specific files
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-modality-specific-files/01-magnetic-resonance-imaging-data.html" class="md-nav__link">
+        Magnetic Resonance Imaging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-modality-specific-files/02-magnetoencephalography.html" class="md-nav__link">
+        Magnetoencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-modality-specific-files/03-electroencephalography.html" class="md-nav__link">
+        Electroencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-modality-specific-files/04-intracranial-electroencephalography.html" class="md-nav__link">
+        Intracranial Electroencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-modality-specific-files/05-task-events.html" class="md-nav__link">
+        Task events
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-modality-specific-files/06-physiological-and-other-continuous-recordings.html" class="md-nav__link">
+        Physiological and other continuous recordings
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-modality-specific-files/07-behavioral-experiments.html" class="md-nav__link">
+        Behavioral experiments (with no neural recordings)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-modality-specific-files/08-genetic-descriptor.html" class="md-nav__link">
+        Genetic Descriptor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-modality-specific-files/09-positron-emission-tomography.html" class="md-nav__link">
+        Positron Emission Tomography
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" >
+      
+      <label class="md-nav__link" for="__nav_1_5">
+        Derivatives
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Derivatives" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Derivatives
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-derivatives/01-introduction.html" class="md-nav__link">
+        BIDS Derivatives
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-derivatives/02-common-data-types.html" class="md-nav__link">
+        Common data types and metadata
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-derivatives/03-imaging.html" class="md-nav__link">
+        Imaging data types
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-longitudinal-and-multi-site-studies.html" class="md-nav__link">
+        Longitudinal and multi-site studies
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-extensions.html" class="md-nav__link">
+        BIDS Extension Proposals
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_8" type="checkbox" id="__nav_1_8" >
+      
+      <label class="md-nav__link" for="__nav_1_8">
+        Appendix
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Appendix" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/01-contributors.html" class="md-nav__link">
+        Contributors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/02-licenses.html" class="md-nav__link">
+        Licenses
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/03-hed.html" class="md-nav__link">
+        Hierarchical Event Descriptors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/04-entity-table.html" class="md-nav__link">
+        Entity table
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/05-units.html" class="md-nav__link">
+        Units
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/06-meg-file-formats.html" class="md-nav__link">
+        MEG file formats
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/07-meg-systems.html" class="md-nav__link">
+        MEG systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/08-coordinate-systems.html" class="md-nav__link">
+        Coordinate systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/09-entities.html" class="md-nav__link">
+        Entities
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/10-file-collections.html" class="md-nav__link">
+        File collections
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/11-qmri.html" class="md-nav__link">
+        Quantitative MRI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/12-arterial-spin-labeling.html" class="md-nav__link">
+        Arterial Spin Labeling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/13-cross-modality-correspondence.html" class="md-nav__link">
+        Cross modality correspondence
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CHANGES.html" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        The BIDS Starter Kit
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The BIDS Starter Kit" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          The BIDS Starter Kit
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit" class="md-nav__link">
+        GitHub repository
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit/wiki/Tutorials" class="md-nav__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit/wiki" class="md-nav__link">
+        Wiki
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definitions" class="md-nav__link">
+    Definitions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compulsory-optional-and-additional-data-and-metadata" class="md-nav__link">
+    Compulsory, optional, and additional data and metadata
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-name-structure" class="md-nav__link">
+    File name structure
+  </a>
+  
+    <nav class="md-nav" aria-label="File name structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entity-linked-file-collections" class="md-nav__link">
+    Entity-linked file collections
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-vs-raw-vs-derived-data" class="md-nav__link">
+    Source vs. raw vs. derived data
+  </a>
+  
+    <nav class="md-nav" aria-label="Source vs. raw vs. derived data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storage-of-derived-datasets" class="md-nav__link">
+    Storage of derived datasets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-compliant-derivatives" class="md-nav__link">
+    Non-compliant derivatives
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-inheritance-principle" class="md-nav__link">
+    The Inheritance Principle
+  </a>
+  
+    <nav class="md-nav" aria-label="The Inheritance Principle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#good-practice-recommendations" class="md-nav__link">
+    Good practice recommendations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-formation-specification" class="md-nav__link">
+    File Formation specification
+  </a>
+  
+    <nav class="md-nav" aria-label="File Formation specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imaging-files" class="md-nav__link">
+    Imaging files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabular-files" class="md-nav__link">
+    Tabular files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keyvalue-files-dictionaries" class="md-nav__link">
+    Key/value files (dictionaries)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#participant-names-and-other-labels" class="md-nav__link">
+    Participant names and other labels
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uniform-resource-indicator" class="md-nav__link">
+    Uniform Resource Indicator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#units" class="md-nav__link">
+    Units
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directory-structure" class="md-nav__link">
+    Directory structure
+  </a>
+  
+    <nav class="md-nav" aria-label="Directory structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-session-example" class="md-nav__link">
+    Single session example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unspecified-data" class="md-nav__link">
+    Unspecified data
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="common-principles"><a class="toclink" href="#common-principles">Common principles</a></h1>
+<h2 id="definitions"><a class="toclink" href="#definitions">Definitions</a></h2>
+<p>The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
+interpreted as described in [<a href="https://www.ietf.org/rfc/rfc2119.txt">RFC2119</a>].</p>
+<p>Throughout this specification we use a list of terms and abbreviations. To avoid
+misunderstanding we clarify them here.</p>
+<ol>
+<li>
+<p><strong>Dataset</strong> - a set of neuroimaging and behavioral data acquired for a
+    purpose of a particular study. A dataset consists of data acquired from one
+    or more subjects, possibly from multiple sessions.</p>
+</li>
+<li>
+<p><strong>Subject</strong> - a person or animal participating in the study.  Used
+    interchangeably with term <strong>Participant</strong>.</p>
+</li>
+<li>
+<p><strong>Session</strong> - a logical grouping of neuroimaging and behavioral data
+    consistent across subjects. Session can (but doesn't have to) be synonymous
+    to a visit in a longitudinal study. In general, subjects will stay in the
+    scanner during one session. However, for example, if a subject has to leave
+    the scanner room and then be re-positioned on the scanner bed, the set of
+    MRI acquisitions will still be considered as a session and match sessions
+    acquired in other subjects. Similarly, in situations where different data
+    types are obtained over several visits (for example fMRI on one day followed
+    by DWI the day after) those can be grouped in one session. Defining multiple
+    sessions is appropriate when several identical or similar data acquisitions
+    are planned and performed on all -or most- subjects, often in the case of
+    some intervention between sessions (for example, training).
+    In the <a href="04-modality-specific-files/09-positron-emission-tomography.html">PET</a>
+    context, a session may also indicate a group of related scans,
+    taken in one or more visits.</p>
+</li>
+<li>
+<p><strong>Sample</strong> - a sample pertaining to a subject such as tissue, primary cell
+    or cell-free sample.
+    The <code>sample-&lt;label&gt;</code> key/value pair is used to distinguish between different
+    samples from the same subject.
+    The label MUST be unique per subject and is RECOMMENDED to be unique
+    throughout the dataset.</p>
+</li>
+<li>
+<p><strong>Data acquisition</strong> - a continuous uninterrupted block of time during which
+    a brain scanning instrument was acquiring data according to particular
+    scanning sequence/protocol.</p>
+</li>
+<li>
+<p><strong>Data type</strong> - a functional group of different types of data.
+    BIDS defines the following data types:</p>
+<ol>
+<li><code>func</code> (task based and resting state functional MRI)</li>
+<li><code>dwi</code> (diffusion weighted imaging)</li>
+<li><code>fmap</code> (field inhomogeneity mapping data such as field maps)</li>
+<li><code>anat</code> (structural imaging such as T1, T2, PD, and so on)</li>
+<li><code>perf</code> (perfusion)</li>
+<li><code>meg</code> (magnetoencephalography)</li>
+<li><code>eeg</code> (electroencephalography)</li>
+<li><code>ieeg</code> (intracranial electroencephalography)</li>
+<li><code>beh</code> (behavioral)</li>
+<li><code>pet</code> (positron emission tomography)</li>
+</ol>
+<p>Data files are contained in a directory named for the data type.
+In raw datasets, the data type directory is nested inside subject and
+(optionally) session directories.</p>
+</li>
+<li>
+<p><strong>Task</strong> - a set of structured activities performed by the participant.
+    Tasks are usually accompanied by stimuli and responses, and can greatly vary
+    in complexity. For the purpose of this specification we consider the so-called
+    "resting state" a task. In the context of brain scanning, a task is always
+    tied to one data acquisition. Therefore, even if during one acquisition the
+    subject performed multiple conceptually different behaviors (with different
+    sets of instructions) they will be considered one (combined) task.</p>
+</li>
+<li>
+<p><strong>Event</strong> - something that happens or may be perceived by a test subject as happening
+    at a particular instant during the recording.
+    Events are most commonly associated with on- or offset of stimulus presentations,
+    or with the distinct marker of on- or offset of a subject's response or motor action.
+    Other events may include unplanned incidents
+    (for example, sudden onset of noise and vibrations due to construction work,
+    laboratory device malfunction),
+    changes in task instructions (for example, switching the response hand),
+    or experiment control parameters (for example,
+    changing the stimulus presentation rate over experimental blocks),
+    and noted data feature occurrences (for example, a recording electrode producing noise).
+    In BIDS, each event has an onset time and duration.
+    Note that not all tasks will have recorded events (for example, "resting state").</p>
+</li>
+<li>
+<p><strong>Run</strong> - an uninterrupted repetition of data acquisition that has the same
+    acquisition parameters and task (however events can change from run to run
+    due to different subject response or randomized nature of the stimuli). Run
+    is a synonym of a data acquisition.
+    Note that "uninterrupted" may look different by modality due to the nature of the
+    recording.
+    For example, in <a href="04-modality-specific-files/01-magnetic-resonance-imaging-data.html">MRI</a>
+    or [MEG] (04-modality-specific-files/02-magnetoencephalography.md),
+    if a subject leaves the scanner, the acquisition must be restarted.
+    For some types of <a href="04-modality-specific-files/09-positron-emission-tomography.html">PET</a> acquisitions,
+    a subject may leave and re-enter the scanner without interrupting the scan.</p>
+</li>
+<li>
+<p><strong>Modality</strong> - the category of brain data recorded by a file.
+    For MRI data, different pulse sequences are considered distinct modalities,
+    such as <code>T1w</code>, <code>bold</code> or <code>dwi</code>.
+    For passive recording techniques, such as EEG, MEG or iEEG,
+    the technique is sufficiently uniform to define the modalities <code>eeg</code>,
+    <code>meg</code> and <code>ieeg</code>.
+    When applicable, the modality is indicated in the <strong>suffix</strong>.
+    The modality may overlap with, but should not be confused with
+    the <strong>data type</strong>.</p>
+</li>
+<li>
+<p><strong><code>&lt;index&gt;</code></strong> - a nonnegative integer, possibly prefixed with arbitrary number of
+    0s for consistent indentation, for example, it is <code>01</code> in <code>run-01</code> following
+    <code>run-&lt;index&gt;</code> specification.</p>
+</li>
+<li>
+<p><strong><code>&lt;label&gt;</code></strong> - an alphanumeric value, possibly prefixed with arbitrary
+    number of 0s for consistent indentation, for example, it is <code>rest</code> in <code>task-rest</code>
+    following <code>task-&lt;label&gt;</code> specification.</p>
+</li>
+<li>
+<p><strong><code>suffix</code></strong> - an alphanumeric value, located after the <code>key-value_</code> pairs (thus after
+    the final <code>_</code>), right before the <strong>File extension</strong>, for example, it is <code>eeg</code> in
+    <code>sub-05_task-matchingpennies_eeg.vhdr</code>.</p>
+</li>
+<li>
+<p><strong>File extension</strong> - a portion of the the file name after the left-most
+    period (<code>.</code>) preceded by any other alphanumeric. For example, <code>.gitignore</code> does
+    not have a file extension, but the file extension of <code>test.nii.gz</code> is <code>.nii.gz</code>.
+    Note that the left-most period is included in the file extension.</p>
+</li>
+<li>
+<p><strong>DEPRECATED</strong> - A "deprecated" entity or metadata field SHOULD NOT be used in the
+    generation of new datasets.
+    It remains in the standard in order to preserve the interpretability of existing datasets.
+    Validating software SHOULD warn when deprecated practices are detected and provide a
+    suggestion for updating the dataset to preserve the curator's intent.</p>
+</li>
+</ol>
+<h2 id="compulsory-optional-and-additional-data-and-metadata"><a class="toclink" href="#compulsory-optional-and-additional-data-and-metadata">Compulsory, optional, and additional data and metadata</a></h2>
+<p>The following standard describes a way of arranging data and writing down
+metadata for a subset of neuroimaging experiments. Some aspects of the standard
+are compulsory. For example a particular file name format is required when
+storing structural scans. Some aspects are regulated but optional. For example a
+T2 volume does not need to be included, but when it is available it should be
+saved under a particular file name specified in the standard. This standard
+aspires to describe a majority of datasets, but acknowledges that there will be
+cases that do not fit. In such cases one can include additional files and
+subfolders to the existing folder structure following common sense. For example
+one may want to include eye tracking data in a vendor specific format that is
+not covered by this standard. The most sensible place to put it is next to the
+continuous recording file with the same naming scheme but different extensions.
+The solutions will change from case to case and publicly available datasets will
+be reviewed to include common data types in the future releases of the BIDS
+specification.</p>
+<h2 id="file-name-structure"><a class="toclink" href="#file-name-structure">File name structure</a></h2>
+<p>A file name consists of a chain of <em>entities</em>, or key-value pairs, a <em>suffix</em> and an
+<em>extension</em>.
+Two prominent examples of entities are <code>subject</code> and <code>session</code>.</p>
+<p>For a data file that was collected in a given <code>session</code> from a given
+<code>subject</code>, the file name MUST begin with the string <code>sub-&lt;label&gt;_ses-&lt;label&gt;</code>.
+If the <code>session</code> level is omitted in the folder structure, the file name MUST begin
+with the string <code>sub-&lt;label&gt;</code>, without <code>ses-&lt;label&gt;</code>.</p>
+<p>Note that <code>sub-&lt;label&gt;</code> corresponds to the <code>subject</code> entity because it has
+the <code>sub-</code> "key" and<code>&lt;label&gt;</code> "value", where <code>&lt;label&gt;</code> would in a real data file
+correspond to a unique identifier of that subject, such as <code>01</code>.
+The same holds for the <code>session</code> entity with its <code>ses-</code> key and its <code>&lt;label&gt;</code>
+value.</p>
+<p>The extra session layer (at least one <code>/ses-&lt;label&gt;</code> subfolder) SHOULD
+be added for all subjects if at least one subject in the dataset has more than
+one session.
+If a <code>/ses-&lt;label&gt;</code> subfolder is included as part of the directory hierarchy,
+then the same <a href="99-appendices/09-entities.html#ses"><code>ses-&lt;label&gt;</code></a>
+key/value pair MUST also be included as part of the file names themselves.
+Acquisition time of session can
+be defined in the <a href="03-modality-agnostic-files.html#sessions-file">sessions file</a>.</p>
+<p>A chain of entities, followed by a suffix, connected by underscores (<code>_</code>)
+produces a human readable file name, such as <code>sub-01_task-rest_eeg.edf</code>.
+It is evident from the file name alone that the file contains resting state
+data from subject <code>01</code>.
+The suffix <code>eeg</code> and the extension <code>.edf</code> depend on the imaging modality and
+the data format and indicate further details of the file's contents.</p>
+<p>Entities within a file name MUST be unique.
+For example, the following file name is not valid because it uses the <code>acq</code>
+entity twice:
+<code>sub-01_acq-laser_acq-uneven_electrodes.tsv</code></p>
+<p>In cases where entities duplicate metadata,
+the presence of an entity should not be used as a replacement for
+the corresponding metadata field.
+For instance, in echo-planar imaging MRI,
+the <a href="99-appendices/09-entities.html#dir"><code>dir-&lt;label&gt;</code></a> entity MAY be used
+to distinguish files with different phase-encoding directions,
+but the file's <code>PhaseEncodingDirection</code> can only be specified as metadata.</p>
+<p>A summary of all entities in BIDS and the order in which they MUST be
+specified is available in the <a href="99-appendices/04-entity-table.html">entity table</a>
+in the appendix.</p>
+<h3 id="entity-linked-file-collections"><a class="toclink" href="#entity-linked-file-collections">Entity-linked file collections</a></h3>
+<p>An entity-linked file collection is a set of files that are related to each other
+based on a repetitive acquisition of sequential data
+by changing acquisition parameters one (or multiple) at a time
+or by being inherent components of the same data.
+Entity-linked collections are identified by a common suffix,
+indicating the group of files that should be considered a logical unit.
+Within each collection, files MUST be distinguished from each other by at least one
+entity (for example, <code>echo</code>) that corresponds to an altered acquisition parameter
+(<code>EchoTime</code>) or that defines a component relationship (for example, <code>part</code>).
+Note that these entities MUST be described by the specification and
+the parameter changes they declare MUST NOT invalidate the definition of the accompanying suffix.
+For example, the use of the <code>echo</code> entity along with the <code>T1w</code> suffix casts doubt on
+the validity of the identified contrast weighting.
+Provided the conditions above are satisfied,
+any suffix (such as <code>bold</code>) can identify an entity-linked file collection,
+although certain suffixes are exclusive for this purpose (for example, <code>MP2RAGE</code>).
+Use cases concerning this convention are compiled in the
+<a href="99-appendices/10-file-collections.html">file collections</a> appendix.
+This convention is mainly intended for but not limited to MRI modalities.</p>
+<h2 id="source-vs-raw-vs-derived-data"><a class="toclink" href="#source-vs-raw-vs-derived-data">Source vs. raw vs. derived data</a></h2>
+<p>BIDS was originally designed to describe and apply consistent naming conventions
+to raw (unprocessed or minimally processed due to file format conversion) data.
+During analysis such data will be transformed and partial as well as final results
+will be saved.
+Derivatives of the raw data (other than products of DICOM to NIfTI conversion)
+MUST be kept separate from the raw data. This way one can protect the raw data
+from accidental changes by file permissions. In addition it is easy to
+distinguish partial results from the raw data and share the latter.
+See <a href="#storage-of-derived-datasets">Storage of derived datasets</a> for more on
+organizing derivatives.</p>
+<p>Similar rules apply to source data, which is defined as data before
+harmonization, reconstruction, and/or file format conversion (for example, E-Prime event logs or DICOM files).
+Storing actual source files with the data is preferred over links to
+external source repositories to maximize long term preservation,
+which would suffer if an external repository would not be available anymore.
+This specification currently does not go into the details of
+recommending a particular naming scheme for including different types of
+source data (such as the raw event logs or parameter files, before conversion to BIDS).
+However, in the case that these data are to be included:</p>
+<ol>
+<li>
+<p>These data MUST be kept in separate <code>sourcedata</code> folder with a similar
+    folder structure as presented below for the BIDS-managed data. For example:
+    <code>sourcedata/sub-01/ses-pre/func/sub-01_ses-pre_task-rest_bold.dicom.tgz</code> or
+    <code>sourcedata/sub-01/ses-pre/func/MyEvent.sce</code>.</p>
+</li>
+<li>
+<p>A README file SHOULD be found at the root of the <code>sourcedata</code> folder or the
+    <code>derivatives</code> folder, or both.
+    This file should describe the nature of the raw data or the derived data.
+    We RECOMMEND including the PDF print-out with the actual sequence
+    parameters generated by the scanner in the <code>sourcedata</code>  folder.</p>
+</li>
+</ol>
+<p>Alternatively one can organize their data in the following way</p>
+<div class="highlight"><pre><span></span><code>└─ my_dataset-1/
+   ├─ sourcedata/
+   │  ├─ sub-01/
+   │  ├─ sub-02/
+   │  └─ ... 
+   ├─ ... 
+   └─ derivatives/
+      ├─ pipeline_1/
+      ├─ pipeline_2/
+      └─ ... 
+</code></pre></div>
+<p>In this example, where <code>sourcedata</code> and <code>derivatives</code> are not nested inside
+<code>rawdata</code>, <strong>only the <code>rawdata</code> subfolder</strong> needs to be a BIDS-compliant
+dataset.
+The subfolders of <code>derivatives</code> MAY be BIDS-compliant derivatives datasets
+(see <a href="#non-compliant-derivatives">Non-compliant derivatives</a> for further discussion).
+This specification does not prescribe anything about the contents of <code>sourcedata</code>
+folders in the above example - nor does it prescribe the <code>sourcedata</code>,
+<code>derivatives</code>, or <code>rawdata</code> folder names.
+The above example is just a convention that can be useful for organizing raw,
+source, and derived data while maintaining BIDS compliance of the raw data
+folder. When using this convention it is RECOMMENDED to set the <code>SourceDatasets</code>
+field in <code>dataset_description.json</code> of each subfolder of <code>derivatives</code> to:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;SourceDatasets&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">{</span><span class="nt">&quot;URL&quot;</span><span class="p">:</span> <span class="s2">&quot;file://../../rawdata/&quot;</span><span class="p">}</span> <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="storage-of-derived-datasets"><a class="toclink" href="#storage-of-derived-datasets">Storage of derived datasets</a></h3>
+<p>Derivatives can be stored/distributed in two ways:</p>
+<ol>
+<li>
+<p>Under a <code>derivatives/</code> subfolder in the root of the source BIDS dataset
+    folder to make a clear distinction between raw data and results of data
+    processing.
+    A data processing pipeline will typically have a dedicated directory
+    under which it stores all of its outputs.
+    Different components of a pipeline can, however, also be stored under different
+    subfolders.
+    There are few restrictions on the directory names;
+    it is RECOMMENDED to use the format <code>&lt;pipeline&gt;-&lt;variant&gt;</code> in cases where
+    it is anticipated that the same pipeline will output more than one variant
+    (for example, <code>AFNI-blurring</code> and <code>AFNI-noblurring</code>).
+    For the sake of consistency, the subfolder name SHOULD be
+    the <code>GeneratedBy.Name</code> field in <code>data_description.json</code>,
+    optionally followed by a hyphen and a suffix (see
+    <a href="03-modality-agnostic-files.html#derived-dataset-and-pipeline-description">Derived dataset and pipeline description</a>).</p>
+<p>Example of derivatives with one directory per pipeline:</p>
+<div class="highlight"><pre><span></span><code>&lt;dataset&gt;/derivatives/fmriprep-v1.4.1/sub-0001
+&lt;dataset&gt;/derivatives/spm/sub-0001
+&lt;dataset&gt;/derivatives/vbm/sub-0001
+</code></pre></div>
+<p>Example of a pipeline with split derivative directories:</p>
+<div class="highlight"><pre><span></span><code>&lt;dataset&gt;/derivatives/spm-preproc/sub-0001
+&lt;dataset&gt;/derivatives/spm-stats/sub-0001
+</code></pre></div>
+<p>Example of a pipeline with nested derivative directories:</p>
+<div class="highlight"><pre><span></span><code>&lt;dataset&gt;/derivatives/spm-preproc/sub-0001
+&lt;dataset&gt;/derivatives/spm-preproc/derivatives/spm-stats/sub-0001
+</code></pre></div>
+</li>
+<li>
+<p>As a standalone dataset independent of the source (raw or derived) BIDS
+    dataset.
+    This way of specifying derivatives is particularly useful when the source
+    dataset is provided with read-only access, for publishing derivatives as
+    independent bodies of work, or for describing derivatives that were created
+    from more than one source dataset.
+    The <code>sourcedata/</code> subdirectory MAY be used to include the source dataset(s)
+    that were used to generate the derivatives.
+    Likewise, any code used to generate the derivatives from the source data
+    MAY be included in the <code>code/</code> subdirectory.</p>
+<p>Example of a derivative dataset including the raw dataset as source:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code>└─ my_processed_data/
+   ├─ code/
+   │  ├─ processing_pipeline-1.0.0.img 
+   │  ├─ hpc_submitter.sh 
+   │  └─ ... 
+   ├─ sourcedata/
+   │  ├─ sub-01/
+   │  ├─ sub-02/
+   │  └─ ... 
+   ├─ sub-01/
+   ├─ sub-02/
+   └─ ... 
+</code></pre></div>
+<p>Throughout this specification, if a section applies particularly to derivatives,
+then Case 1 will be assumed for clarity in templates and examples, but removing
+<code>/derivatives/&lt;pipeline&gt;</code> from the template name will provide the equivalent for
+Case 2.
+In both cases, every derivatives dataset is considered a BIDS dataset and must
+include a <code>dataset_description.json</code> file at the root level (see
+<a href="03-modality-agnostic-files.html#dataset-description">Dataset description</a>).
+Consequently, files should be organized to comply with BIDS to the full extent
+possible (that is, unless explicitly contradicted for derivatives).
+Any subject-specific derivatives should be housed within each subject’s directory;
+if session-specific derivatives are generated, they should be deposited under a
+session subdirectory within the corresponding subject directory; and so on.</p>
+<h3 id="non-compliant-derivatives"><a class="toclink" href="#non-compliant-derivatives">Non-compliant derivatives</a></h3>
+<p>Nothing in this specification should be interpreted to disallow the
+storage/distribution of non-compliant derivatives of BIDS datasets.
+In particular, if a BIDS dataset contains a <code>derivatives/</code> sub-directory,
+the contents of that directory may be a heterogeneous mix of BIDS Derivatives
+datasets and non-compliant derivatives.</p>
+<h2 id="the-inheritance-principle"><a class="toclink" href="#the-inheritance-principle">The Inheritance Principle</a></h2>
+<p>Any metadata file (such as <code>.json</code>, <code>.bvec</code> or <code>.tsv</code>) may be defined at any
+directory level, but no more than one applicable file may be defined at a given
+level (Example 1). The values from the top level are inherited by all lower
+levels unless they are overridden by a file at the lower level. For example,
+<code>sub-*_task-rest_bold.json</code> may be specified at the participant level, setting
+TR to a specific value. If one of the runs has a different TR than the one
+specified in that file, another <code>sub-*_task-rest_bold.json</code> file can be placed
+within that specific series directory specifying the TR for that specific run.
+There is no notion of "unsetting" a key/value pair.
+Once a key/value pair is set in a given level in the dataset, lower down in
+the hierarchy that key/value pair will always have some assigned value.
+Files for a particular participant can exist only at participant level directory,
+that is, <code>/dataset/sub-*[/ses-*]/sub-*_T1w.json</code>. Similarly, any file that is not
+specific to a participant is to be declared only at top level of dataset for example:
+<code>task-sist_bold.json</code> must be placed under <code>/dataset/task-sist_bold.json</code></p>
+<p>Example 1: Two JSON files that are erroneously at the same level</p>
+<div class="highlight"><pre><span></span><code>└─ sub-01/
+   └─ ses-test/
+      ├─ sub-01_ses-test_task-overtverbgeneration_bold.json 
+      ├─ sub-01_ses-test_task-overtverbgeneration_run-2_bold.json 
+      ├─ anat/
+      │  └─ sub-01_ses-test_T1w.nii.gz 
+      └─ func/
+         ├─ sub-01_ses-test_task-overtverbgeneration_run-1_bold.nii.gz 
+         └─ sub-01_ses-test_task-overtverbgeneration_run-2_bold.nii.gz 
+</code></pre></div>
+<p>In the above example, two JSON files are listed under <code>sub-01/ses-test/</code>, which
+are each applicable to
+<code>sub-01_ses-test_task-overtverbgeneration_run-2_bold.nii.gz</code>, violating the
+constraint that no more than one file may be defined at a given level of the
+directory structure. Instead <code>sub-01_ses-test_task-overtverbgeneration_run-2_bold.json</code>
+should have been under <code>sub-01/ses-test/func/</code>.</p>
+<p>Example 2: Multiple <code>run</code>s and <code>rec</code>s with same acquisition (<code>acq</code>) parameters</p>
+<div class="highlight"><pre><span></span><code>└─ sub-01/
+   ├─ anat/
+   └─ func/
+      ├─ sub-01_task-xyz_acq-test1_run-1_bold.nii.gz 
+      ├─ sub-01_task-xyz_acq-test1_run-2_bold.nii.gz 
+      ├─ sub-01_task-xyz_acq-test1_rec-recon1_bold.nii.gz 
+      ├─ sub-01_task-xyz_acq-test1_rec-recon2_bold.nii.gz 
+      └─ sub-01_task-xyz_acq-test1_bold.json 
+</code></pre></div>
+<p>For the above example, all NIfTI files are acquired with same scanning
+parameters (<code>acq-test1</code>). Hence a JSON file describing the acq parameters will
+apply to different runs and rec files. Also if the JSON file
+(<code>task-xyz_acq-test1_bold.json</code>) is defined at dataset top level directory, it
+will be applicable to all task runs with <code>test1</code> acquisition parameter.</p>
+<p>Example 3: Multiple JSON files at different levels for same task and acquisition parameters</p>
+<div class="highlight"><pre><span></span><code>├─ task-xyz_acq-test1_bold.json 
+└─ sub-01/
+   ├─ anat/
+   └─ func/
+      ├─ sub-01_task-xyz_acq-test1_run-1_bold.nii.gz 
+      ├─ sub-01_task-xyz_acq-test1_rec-recon1_bold.nii.gz 
+      ├─ sub-01_task-xyz_acq-test1_rec-recon2_bold.nii.gz 
+      └─ sub-01_task-xyz_acq-test1_bold.json 
+</code></pre></div>
+<p>In the above example, the fields from the <code>task-xyz_acq-test1_bold.json</code> file
+at the top directory will apply to all bold runs. However, if there is a key
+with different value in the
+<code>sub-01/func/sub-01_task-xyz_acq-test1_bold.json</code> file defined at a
+deeper level, that value will be applicable for that particular run/task NIfTI
+file/s. In other words, the <code>.json</code> file at the deeper level overrides values
+that are potentially also defined in the <code>.json</code> at a more shallow level. If the
+<code>.json</code> file at the more shallow level contains key-value-pairs that are not
+present in the <code>.json</code> file at the deeper level, these key-value-pairs are
+inherited by the <code>.json</code> file at the deeper level (but NOT vice versa!).</p>
+<h3 id="good-practice-recommendations"><a class="toclink" href="#good-practice-recommendations">Good practice recommendations</a></h3>
+<p><strong>Try to avoid excessive amount of overrides.</strong>  Do not specify a field
+value in the upper levels if lower levels have more or less even
+distribution of multiple possible values. For example, if a field <code>X</code> has one
+value for all <code>ses-01/</code> and another for all <code>ses-02/</code> it better not to be
+defined at all in the <code>.json</code> at the upper level.</p>
+<h2 id="file-formation-specification"><a class="toclink" href="#file-formation-specification">File Formation specification</a></h2>
+<h3 id="imaging-files"><a class="toclink" href="#imaging-files">Imaging files</a></h3>
+<p>All imaging data MUST be stored using the NIfTI file format. We RECOMMEND using
+compressed NIfTI files (.nii.gz), either version 1.0 or 2.0. Imaging data SHOULD
+be converted to the NIfTI format using a tool that provides as much of the NIfTI
+header information (such as orientation and slice timing information) as
+possible. Since the NIfTI standard offers limited support for the various image
+acquisition parameters available in DICOM files, we RECOMMEND that users provide
+additional meta information extracted from DICOM files in a sidecar JSON file
+(with the same filename as the <code>.nii[.gz]</code> file, but with a <code>.json</code> extension).
+Extraction of BIDS compatible metadata can be performed using <a href="https://github.com/rordenlab/dcm2niix">dcm2niix</a>
+and <a href="https://www.mathworks.com/matlabcentral/fileexchange/42997-xiangruili-dicm2nii">dicm2nii</a>
+DICOM to NIfTI converters. The <a href="https://github.com/bids-standard/bids-validator">BIDS-validator</a>
+will check for conflicts between the JSON file and the data recorded in the
+NIfTI header.</p>
+<h3 id="tabular-files"><a class="toclink" href="#tabular-files">Tabular files</a></h3>
+<p>Tabular data MUST be saved as tab delimited values (<code>.tsv</code>) files, that is, CSV
+files where commas are replaced by tabs. Tabs MUST be true tab characters and
+MUST NOT be a series of space characters. Each TSV file MUST start with a header
+line listing the names of all columns (with the exception of
+<a href="04-modality-specific-files/06-physiological-and-other-continuous-recordings.html">physiological and other continuous recordings</a>).
+Names MUST be separated with tabs.
+It is RECOMMENDED that the column names in the header of the TSV file are
+written in <a href="https://en.wikipedia.org/wiki/Snake_case"><code>snake_case</code></a> with the
+first letter in lower case (for example, <code>variable_name</code>, not <code>Variable_name</code>).
+String values containing tabs MUST be escaped using double
+quotes. Missing and non-applicable values MUST be coded as <code>n/a</code>. Numerical
+values MUST employ the dot (<code>.</code>) as decimal separator and MAY be specified
+in scientific notation, using <code>e</code> or <code>E</code> to separate the significand from the
+exponent. TSV files MUST be in UTF-8 encoding.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code>onset   duration    response_time   correct stop_trial  go_trial
+200 200 0   n/a n/a n/a
+</code></pre></div>
+<p><strong>Note</strong>: The TSV examples in this document (like the one above this note)
+are occasionally formatted using space characters instead of tabs to improve
+human readability.
+Directly copying and then pasting these examples from the specification
+for use in new BIDS datasets can lead to errors and is discouraged.</p>
+<p>Tabular files MAY be optionally accompanied by a simple data dictionary
+in the form of a JSON <a href="https://www.json.org/json-en.html">object</a>
+within a JSON file.
+The JSON files containing the data dictionaries MUST have the same name as
+their corresponding tabular files but with <code>.json</code> extensions.
+If a data dictionary is provided,
+it MAY contain one or more fields describing the columns found in the TSV file
+(in addition to any other metadata one wishes to include that describe the file as a whole).
+Note that if a field name included in the data dictionary matches a column name in the TSV file,
+then that field MUST contain a description of the corresponding column,
+using an object containing the following fields:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LongName</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Long (unabbreviated) name of the column.</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Free-form natural language description.  The description of the column.</td>
+</tr>
+<tr>
+<td>Levels</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.json.org/json-en.html">object</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">strings</a></td>
+<td>For categorical variables: An object of possible values (keys) and their descriptions (values).</td>
+</tr>
+<tr>
+<td>Units</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Measurement units for the associated file. SI units in CMIXF formatting are RECOMMENDED (see <a href="/02-common-principles.html#units">Units</a>).</td>
+</tr>
+<tr>
+<td>TermURL</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>URL pointing to a formal definition of this type of data in an ontology available on the web.</td>
+</tr>
+<tr>
+<td>HED</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a> or <a href="https://www.json.org/json-en.html">object</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">strings</a></td>
+<td>Hierarchical Event Descriptor (HED) information, see: <a href="/99-appendices/03-hed.html">Appendix III</a> for details.</td>
+</tr>
+</tbody>
+</table>
+<p>Please note that while both <code>Units</code> and <code>Levels</code> are RECOMMENDED, typically only one
+of these two fields would be specified for describing a single TSV file column.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;test&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;LongName&quot;</span><span class="p">:</span> <span class="s2">&quot;Education level&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Education level, self-rated by participant&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Levels&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;1&quot;</span><span class="p">:</span> <span class="s2">&quot;Finished primary school&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;2&quot;</span><span class="p">:</span> <span class="s2">&quot;Finished secondary school&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;3&quot;</span><span class="p">:</span> <span class="s2">&quot;Student at university&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;4&quot;</span><span class="p">:</span> <span class="s2">&quot;Has degree from university&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;bmi&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;LongName&quot;</span><span class="p">:</span> <span class="s2">&quot;Body mass index&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Units&quot;</span><span class="p">:</span> <span class="s2">&quot;kg/m^2&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;TermURL&quot;</span><span class="p">:</span> <span class="s2">&quot;https://purl.bioontology.org/ontology/SNOMEDCT/60621009&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="keyvalue-files-dictionaries"><a class="toclink" href="#keyvalue-files-dictionaries">Key/value files (dictionaries)</a></h3>
+<p>JavaScript Object Notation (JSON) files MUST be used for storing key/value
+pairs. JSON files MUST be in UTF-8 encoding. Extensive documentation of the
+format can be found at <a href="https://www.json.org/">https://www.json.org/</a>,
+and at <a href="https://tools.ietf.org/html/std90">https://tools.ietf.org/html/std90</a>.
+Several editors have built-in support for JSON syntax highlighting that aids
+manual creation of such files.
+An online editor for JSON with built-in validation is available at
+<a href="https://jsoneditoronline.org">https://jsoneditoronline.org</a>.
+It is RECOMMENDED that keys in a JSON file are written in <a href="https://en.wikipedia.org/wiki/Camel_case">CamelCase</a>
+with the first letter in upper case (for example, <code>SamplingFrequency</code>, not
+<code>samplingFrequency</code>). Note however, when a JSON file is used as an accompanying
+sidecar file for a <a href="#tabular-files">TSV file</a>, the keys linking a TSV column
+with their description in the JSON file need to follow the exact formatting
+as in the TSV file.</p>
+<p>Example of a hypothetical <code>*_bold.json</code> file, accompanying a <code>*_bold.nii</code> file:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;RepetitionTime&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="nt">&quot;Instruction&quot;</span><span class="p">:</span> <span class="s2">&quot;Lie still and keep your eyes open&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Example of a hypothetical <code>*_events.json</code> file, accompanying an
+<code>*_events.tsv</code> file. Note that the JSON file contains a key describing an
+<em>arbitrary</em> column <code>stim_presentation_side</code> in the TSV file it accompanies.
+See <a href="04-modality-specific-files/05-task-events.html">task events section</a>
+for more information.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;stim_presentation_side&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;Levels&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;1&quot;</span><span class="p">:</span> <span class="s2">&quot;stimulus presented on LEFT side&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;2&quot;</span><span class="p">:</span> <span class="s2">&quot;stimulus presented on RIGHT side&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="participant-names-and-other-labels"><a class="toclink" href="#participant-names-and-other-labels">Participant names and other labels</a></h2>
+<p>BIDS allows for custom user-defined <code>&lt;label&gt;</code>s and <code>&lt;index&gt;</code>es for example,
+for naming of participants, sessions, acquisition schemes.
+Note that they MUST consist only of allowed characters as described in
+<a href="02-common-principles.html#definitions">Definitions</a> above.
+In <code>&lt;index&gt;</code>es we RECOMMEND using zero padding (for example, <code>01</code> instead of <code>1</code>
+if you have more than nine subjects) to make alphabetical sorting more intuitive.
+Note that zero padding SHOULD NOT be used to merely maintain uniqueness
+of <code>&lt;index&gt;</code>es.</p>
+<p>Please note that a given label or index is distinct from the "prefix"
+it refers to. For example <code>sub-01</code> refers to the <code>sub</code> entity (a
+subject) with the label <code>01</code>. The <code>sub-</code> prefix is not part of the subject
+label, but must be included in file names (similarly to other key names).</p>
+<h2 id="uniform-resource-indicator"><a class="toclink" href="#uniform-resource-indicator">Uniform Resource Indicator</a></h2>
+<p>A Uniform Resource Indicator (URI) is a string referring to a resource and SHOULD
+have the form <code>&lt;scheme&gt;:[//&lt;authority&gt;]&lt;path&gt;[?&lt;query&gt;][#&lt;fragment&gt;]</code>, as specified
+in <a href="https://tools.ietf.org/html/rfc3986">RFC 3986</a>.
+This applies to URLs and other common URIs, including Digital Object Identifiers (DOIs),
+which may be fully specified as <code>doi:&lt;path&gt;</code>,
+for example, <a href="https://doi.org/10.5281/zenodo.3686061">doi:10.5281/zenodo.3686061</a>.
+A given resource may have multiple URIs.
+When selecting URIs to add to dataset metadata, it is important to consider
+specificity and persistence.</p>
+<p>Several fields are designated for DOIs, for example, <code>DatasetDOI</code> in <code>dataset_description.json</code>.
+DOI values SHOULD be fully specified URIs such as <code>doi:10.18112/openneuro.ds000001.v1.0.0</code>.
+Bare DOIs such as <code>10.18112/openneuro.ds000001.v1.0.0</code> are <a href="02-common-principles.html#definitions">DEPRECATED</a>.</p>
+<h2 id="units"><a class="toclink" href="#units">Units</a></h2>
+<p>All units SHOULD be specified as per <a href="https://en.wikipedia.org/wiki/International_System_of_Units">International System of Units</a>
+(abbreviated as SI, from the French Système international (d'unités)) and can
+be SI units or <a href="https://en.wikipedia.org/wiki/SI_derived_unit">SI derived units</a>.
+In case there are valid reasons to deviate from SI units or SI derived units,
+the units MUST be specified in the sidecar JSON file.
+In case data is expressed in SI units or SI derived units, the units MAY be
+specified in the sidecar JSON file.
+In case non-standard prefixes are added to SI or non-SI units, these
+non-standard prefixed units MUST be specified in the JSON file.
+See <a href="99-appendices/05-units.html">Appendix V</a> for a list of standard units and
+prefixes.
+Note also that for the <em>formatting</em> of SI units, the <a href="https://people.csail.mit.edu/jaffer/MIXF/CMIXF-12">CMIXF-12</a>
+convention for encoding units is RECOMMENDED.
+CMIXF provides a consistent system for all units and prefix symbols with only basic
+characters, avoiding symbols that can cause text encoding problems; for example the
+CMIXF formatting for "micro volts" is <code>uV</code>, "degrees Celsius" is <code>oC</code> and "Ohm" is <code>Ohm</code>.
+See <a href="99-appendices/05-units.html">Appendix V</a> for more information.</p>
+<p>For additional rules, see below:</p>
+<ul>
+<li>
+<p>Elapsed time SHOULD be expressed in seconds. Please note that some DICOM
+    parameters have been traditionally expressed in milliseconds. Those need to
+    be converted to seconds.</p>
+</li>
+<li>
+<p>Frequency SHOULD be expressed in Hertz.</p>
+</li>
+<li>
+<p>Arbitrary units SHOULD be indicated with the string <code>"arbitrary"</code>.</p>
+</li>
+</ul>
+<p>Describing dates and timestamps:</p>
+<ul>
+<li>
+<p>Date time information MUST be expressed in the following format
+    <code>YYYY-MM-DDThh:mm:ss[.000000][Z]</code> (year, month, day, hour (24h), minute,
+    second, optional fractional seconds, and optional UTC time indicator).
+    This is almost equivalent to the <a href="https://tools.ietf.org/html/rfc3339">RFC3339</a>
+    "date-time" format, with the exception that UTC indicator <code>Z</code> is optional and
+    non-zero UTC offsets are not indicated.
+    If <code>Z</code> is not indicated, time zone is always assumed to be the local time of the
+    dataset viewer.
+    No specific precision is required for fractional seconds, but the precision
+    SHOULD be consistent across the dataset.
+    For example <code>2009-06-15T13:45:30</code>.</p>
+</li>
+<li>
+<p>Time stamp information MUST be expressed in the following format:
+    <code>hh:mm:ss[.000000]</code>
+    For example <code>13:45:30</code>.</p>
+</li>
+<li>
+<p>Note that, depending on local ethics board policy, date time information may not
+    need to be fully detailed.
+    For example, it is permissible to set the time to <code>00:00:00</code> if reporting the
+    exact recording time is undesirable.
+    However, for privacy protection reasons, it is RECOMMENDED to shift dates, as
+    described below, without completely removing time information, as time information
+    can be useful for research purposes.</p>
+</li>
+<li>
+<p>Dates can be shifted by a random number of days for privacy protection
+    reasons.
+    To distinguish real dates from shifted dates, always use year 1925
+    or earlier when including shifted years.
+    For longitudinal studies dates MUST be shifted by the same number of days
+    within each subject to maintain the interval information.
+    For example: <code>1867-06-15T13:45:30</code></p>
+</li>
+<li>
+<p>WARNING: The Neuromag/Elekta/MEGIN file format for MEG (<code>.fif</code>) does <em>not</em>
+    support recording dates earlier than <code>1902</code> roughly.
+    Some analysis software packages (for example, MNE-Python) handle their data as <code>.fif</code>
+    internally and will break if recording dates are specified prior to <code>1902</code>,
+    even if the original data format is not <code>.fif</code>.
+    See <a href="99-appendices/06-meg-file-formats.html#recording-dates-in-fif-files">MEG-file-formats</a>
+    for more information.</p>
+</li>
+<li>
+<p>Age SHOULD be given as the number of years since birth at the time of
+    scanning (or first scan in case of multi session datasets). Using higher
+    accuracy (weeks) should in general be avoided due to privacy protection,
+    unless when appropriate given the study goals, for example, when scanning babies.</p>
+</li>
+</ul>
+<h2 id="directory-structure"><a class="toclink" href="#directory-structure">Directory structure</a></h2>
+<h3 id="single-session-example"><a class="toclink" href="#single-session-example">Single session example</a></h3>
+<p>This is an example of the folder and file structure. Because there is only one
+session, the session level is not required by the format. For details on
+individual files see descriptions in the next section:</p>
+<div class="highlight"><pre><span></span><code>├─ sub-control01/
+│  ├─ anat/
+│  │  ├─ sub-control01_T1w.nii.gz 
+│  │  ├─ sub-control01_T1w.json 
+│  │  ├─ sub-control01_T2w.nii.gz 
+│  │  └─ sub-control01_T2w.json 
+│  ├─ func/
+│  │  ├─ sub-control01_task-nback_bold.nii.gz 
+│  │  ├─ sub-control01_task-nback_bold.json 
+│  │  ├─ sub-control01_task-nback_events.tsv 
+│  │  ├─ sub-control01_task-nback_physio.tsv.gz 
+│  │  ├─ sub-control01_task-nback_physio.json 
+│  │  └─ sub-control01_task-nback_sbref.nii.gz 
+│  ├─ dwi/
+│  │  ├─ sub-control01_dwi.nii.gz 
+│  │  ├─ sub-control01_dwi.bval 
+│  │  └─ sub-control01_dwi.bvec 
+│  └─ fmap/
+│     ├─ sub-control01_phasediff.nii.gz 
+│     ├─ sub-control01_phasediff.json 
+│     └─ sub-control01_magnitude1.nii.gz 
+├─ code/
+│  └─ deface.py 
+├─ derivatives/
+├─ README 
+├─ participants.tsv 
+├─ dataset_description.json 
+└─ CHANGES 
+</code></pre></div>
+<h2 id="unspecified-data"><a class="toclink" href="#unspecified-data">Unspecified data</a></h2>
+<p>Additional files and folders containing raw data MAY be added as needed for
+special cases.
+All non-standard file entities SHOULD conform to BIDS-style naming conventions, including
+alphabetic entities and suffixes and alphanumeric labels/indices.
+Non-standard suffixes SHOULD reflect the nature of the data, and existing
+entities SHOULD be used when appropriate.
+For example, an ASSET calibration scan might be named
+<code>sub-01_acq-ASSET_calibration.nii.gz</code>.</p>
+<p>Non-standard files and directories should be named with care.
+Future BIDS efforts may standardize new entities and suffixes, changing the
+meaning of file names and setting requirements on their contents or metadata.
+Validation and parsing tools MAY treat the presence of non-standard files and
+directories as an error, so consult the details of these tools for mechanisms
+to suppress warnings or provide interpretations of your file names.</p>
+<!-- Link Definitions -->
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+--><!-- Application footer -->
+<footer class="md-footer">
+
+  <!-- Link to previous and/or next page --><div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+
+        <!-- Link to previous page --><a href="01-introduction.html"
+              title="Introduction"
+              class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+              rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back
+                    md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">Previous</span>Introduction</span>
+            </div>
+          </a><!-- Link to next page --><a href="03-modality-agnostic-files.html"
+              title="Modality agnostic files"
+              class="md-flex md-footer-nav__link md-footer-nav__link--next"
+              rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">Next</span>Modality agnostic files</span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward
+                    md-footer-nav__button"></i>
+            </div>
+          </a></nav>
+    </div><!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">See the source code and discussion page on
+        <a href="https://github.com/bids-standard/bids-specification">GitHub</a>
+      </div>
+
+      <!-- Social links --></div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.94ec81fe.min.js", "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.48dfec6c.min.js"></script>
+      
+        <script src="js/jquery-3.6.0.min.js"></script>
+      
+    
+  </body>
+</html>

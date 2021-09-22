@@ -1,0 +1,1969 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/09-positron-emission-tomography.html">
+      
+      <link rel="icon" href="../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.8">
+    
+    
+      
+        <title>Positron Emission Tomography - Brain Imaging Data Structure v1.6.1-dev</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.92558b1b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#positron-emission-tomography" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Brain Imaging Data Structure v1.6.1-dev" class="md-header__button md-logo" aria-label="Brain Imaging Data Structure v1.6.1-dev" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Brain Imaging Data Structure v1.6.1-dev
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Positron Emission Tomography
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Brain Imaging Data Structure v1.6.1-dev" class="md-nav__button md-logo" aria-label="Brain Imaging Data Structure v1.6.1-dev" data-md-component="logo">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    Brain Imaging Data Structure v1.6.1-dev
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      <label class="md-nav__link" for="__nav_1">
+        The BIDS Specification
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The BIDS Specification" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          The BIDS Specification
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-introduction.html" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-common-principles.html" class="md-nav__link">
+        Common principles
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-modality-agnostic-files.html" class="md-nav__link">
+        Modality agnostic files
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" checked>
+      
+      <label class="md-nav__link" for="__nav_1_4">
+        Modality specific files
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Modality specific files" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Modality specific files
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-magnetic-resonance-imaging-data.html" class="md-nav__link">
+        Magnetic Resonance Imaging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-magnetoencephalography.html" class="md-nav__link">
+        Magnetoencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-electroencephalography.html" class="md-nav__link">
+        Electroencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-intracranial-electroencephalography.html" class="md-nav__link">
+        Intracranial Electroencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-task-events.html" class="md-nav__link">
+        Task events
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-physiological-and-other-continuous-recordings.html" class="md-nav__link">
+        Physiological and other continuous recordings
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-behavioral-experiments.html" class="md-nav__link">
+        Behavioral experiments (with no neural recordings)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-genetic-descriptor.html" class="md-nav__link">
+        Genetic Descriptor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Positron Emission Tomography
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="09-positron-emission-tomography.html" class="md-nav__link md-nav__link--active">
+        Positron Emission Tomography
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#terminology-and-conventions" class="md-nav__link">
+    Terminology and conventions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pet-recording-data" class="md-nav__link">
+    PET recording data
+  </a>
+  
+    <nav class="md-nav" aria-label="PET recording data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shared-mri-data-along-with-pet" class="md-nav__link">
+    Shared MRI data along with PET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pet-metadata" class="md-nav__link">
+    PET metadata
+  </a>
+  
+    <nav class="md-nav" aria-label="PET metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scanner-hardware" class="md-nav__link">
+    Scanner Hardware
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#radiochemistry" class="md-nav__link">
+    Radiochemistry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pharmaceuticals" class="md-nav__link">
+    Pharmaceuticals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time" class="md-nav__link">
+    Time
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reconstruction" class="md-nav__link">
+    Reconstruction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-_petjson" class="md-nav__link">
+    Example (*_pet.json)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-patient-data" class="md-nav__link">
+    Recommended patient data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blood-recording-data" class="md-nav__link">
+    Blood recording data
+  </a>
+  
+    <nav class="md-nav" aria-label="Blood recording data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-blood-data" class="md-nav__link">
+    Example blood data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" >
+      
+      <label class="md-nav__link" for="__nav_1_5">
+        Derivatives
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Derivatives" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Derivatives
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/01-introduction.html" class="md-nav__link">
+        BIDS Derivatives
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/02-common-data-types.html" class="md-nav__link">
+        Common data types and metadata
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-derivatives/03-imaging.html" class="md-nav__link">
+        Imaging data types
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-longitudinal-and-multi-site-studies.html" class="md-nav__link">
+        Longitudinal and multi-site studies
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-extensions.html" class="md-nav__link">
+        BIDS Extension Proposals
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_8" type="checkbox" id="__nav_1_8" >
+      
+      <label class="md-nav__link" for="__nav_1_8">
+        Appendix
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Appendix" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/01-contributors.html" class="md-nav__link">
+        Contributors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/02-licenses.html" class="md-nav__link">
+        Licenses
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/03-hed.html" class="md-nav__link">
+        Hierarchical Event Descriptors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/04-entity-table.html" class="md-nav__link">
+        Entity table
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/05-units.html" class="md-nav__link">
+        Units
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/06-meg-file-formats.html" class="md-nav__link">
+        MEG file formats
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/07-meg-systems.html" class="md-nav__link">
+        MEG systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/08-coordinate-systems.html" class="md-nav__link">
+        Coordinate systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/09-entities.html" class="md-nav__link">
+        Entities
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/10-file-collections.html" class="md-nav__link">
+        File collections
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/11-qmri.html" class="md-nav__link">
+        Quantitative MRI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/12-arterial-spin-labeling.html" class="md-nav__link">
+        Arterial Spin Labeling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99-appendices/13-cross-modality-correspondence.html" class="md-nav__link">
+        Cross modality correspondence
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGES.html" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        The BIDS Starter Kit
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The BIDS Starter Kit" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          The BIDS Starter Kit
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit" class="md-nav__link">
+        GitHub repository
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit/wiki/Tutorials" class="md-nav__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit/wiki" class="md-nav__link">
+        Wiki
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#terminology-and-conventions" class="md-nav__link">
+    Terminology and conventions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pet-recording-data" class="md-nav__link">
+    PET recording data
+  </a>
+  
+    <nav class="md-nav" aria-label="PET recording data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shared-mri-data-along-with-pet" class="md-nav__link">
+    Shared MRI data along with PET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pet-metadata" class="md-nav__link">
+    PET metadata
+  </a>
+  
+    <nav class="md-nav" aria-label="PET metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scanner-hardware" class="md-nav__link">
+    Scanner Hardware
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#radiochemistry" class="md-nav__link">
+    Radiochemistry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pharmaceuticals" class="md-nav__link">
+    Pharmaceuticals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time" class="md-nav__link">
+    Time
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reconstruction" class="md-nav__link">
+    Reconstruction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-_petjson" class="md-nav__link">
+    Example (*_pet.json)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-patient-data" class="md-nav__link">
+    Recommended patient data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blood-recording-data" class="md-nav__link">
+    Blood recording data
+  </a>
+  
+    <nav class="md-nav" aria-label="Blood recording data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-blood-data" class="md-nav__link">
+    Example blood data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="positron-emission-tomography"><a class="toclink" href="#positron-emission-tomography">Positron Emission Tomography</a></h1>
+<p>Support for Positron Emission Tomography (PET) was developed as a
+<a href="../07-extensions.html#bids-extension-proposals">BIDS Extension Proposal</a>.
+Please see <a href="../01-introduction.html#citing-bids">Citing BIDS</a>
+on how to appropriately credit this extension when referring to it in the
+context of the academic literature.</p>
+<p>Several <a href="https://github.com/bids-standard/bids-examples">example PET datasets</a> have been formatted using this specification
+and can be used for practical guidance when curating a new dataset.</p>
+<p>Further PET datasets are available from <a href="https://openneuro.org">OpenNeuro</a>.</p>
+<h2 id="terminology-and-conventions"><a class="toclink" href="#terminology-and-conventions">Terminology and conventions</a></h2>
+<p>PET-BIDS is fully consistent with the BIDS specification as a whole.
+However, BIDS was initially developed in the context of MRI,
+so some terminology may be unfamiliar to researchers from each field.
+This section adds clarifications to
+<a href="../02-common-principles.html#definitions">Common Principles - Definitions</a>
+for the PET context, and introduces the term "time zero" which is currently
+specific to PET.</p>
+<ol>
+<li>
+<p><strong>Session</strong> - In most cases, a new session with respect to PET corresponds
+    to a visit to the scanning site, and starts with a new injection.
+    In situations where different data types are obtained over several visits
+    (for example, FDG PET on one day followed by amyloid PET a couple days after)
+    these scans may be grouped into the same session.
+    In other datasets, a subject leaving the scanner and returning under the same
+    injection may be considered separate sessions.</p>
+</li>
+<li>
+<p><strong>Run</strong> - In PET, subjects may have to leave the scanner to use the bathroom.
+    While leaving the scanner would interrupt an MR acquisition, in PET this
+    disruption is more appropriately considered missing data during a run.</p>
+</li>
+<li>
+<p><strong>Time zero</strong> - A reference point in time, to which all timestamps pertaining
+    to a recording are relative.
+    Time zero will most commonly be the time of injection of a radioisotope, or
+    the time at which the first scan of an acquisition is begun.
+    If a pharmacological within-scan challenge is performed,
+    another time zero may be more convenient.</p>
+</li>
+</ol>
+<p>An overview of a common PET experiment (with blood data) can be seen in Figure 1,
+defined on a single time scale relative to a predefined "time zero".</p>
+<p><img alt="Figure 1" src="images/PET_scan_overview.png" title="Overview of PET recording data" /></p>
+<p>Figure 1: Overview of a common PET experiment, including blood measurements,
+and defined on a common time scale.
+Note, "time zero" is often defined as time of injection or scan start,
+but if a pharmaceutical challenge is carried out during the scan,
+this time point may also be chosen as time zero.
+The injected dose, the PET data, and blood data should all be decay-corrected to time zero,
+but because the time of injection does not always coincide with scan start,
+the PET data may not always be decay-corrected to the time of injection.
+If this is not the case, this may be indicated in the reconstruction section
+(<code>ImageDecayCorrected</code> and <code>ImageDecayCorrectionTime</code>).
+In this example, tracer injection coincides with scan start.</p>
+<h2 id="pet-recording-data"><a class="toclink" href="#pet-recording-data">PET recording data</a></h2>
+<p>Template:
+<div class="highlight"><pre><span></span><code>sub-&lt;label&gt;/
+    [ses-&lt;label&gt;/]
+        pet/
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_task-&lt;label&gt;][_trc-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_pet.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_task-&lt;label&gt;][_trc-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_pet.nii[.gz]
+            sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_trc-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_events.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;]_task-&lt;label&gt;[_trc-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_events.tsv
+</code></pre></div></p>
+<p>PET data MUST be stored in the <code>pet</code> directory.
+PET imaging data SHOULD be stored in 4D (or 3D, if only one volume was acquired)
+NIfTI files with the <code>_pet</code> suffix.
+Volumes MUST be stored in chronological order (the order they were acquired in).</p>
+<p>The OPTIONAL <a href="../99-appendices/09-entities.html#task"><code>task-&lt;label&gt;</code></a> is used to
+indicate a task subjects were asked to perform in the scanner.
+Those labels MUST be consistent across subjects and sessions.
+For task based PET, a corresponding <a href="05-task-events.html"><code>task events</code></a> file MUST be provided
+(please note that this file is not necessary for resting scans).</p>
+<p>The <a href="../99-appendices/09-entities.html#trc"><code>trc-&lt;label&gt;</code></a> entity is used to
+indicate the tracer used.
+This entity is OPTIONAL if only one tracer is used in the study,
+but REQUIRED to distinguish between tracers if multiple are used.
+The label used is arbitrary and each file requires a separate JSON sidecar
+with details of the tracer used (see below).
+Examples are <code>trc-18FFDG</code> for fludeoxyglucose or <code>trc-11CPIB</code> for Pittsburgh compound B.
+Other labels are permitted, as long as they are consistent across subjects and sessions
+and consist only of the legal label characters.</p>
+<p>If more than one run of the same task and acquisition (tracer) are acquired during
+the same session, the <a href="../99-appendices/09-entities.html#run"><code>run-&lt;index&gt;</code></a> entity MUST be used:
+<code>_run-1</code>, <code>_run-2</code>, <code>_run-3</code>, and so on.
+If only one run was acquired the <code>run-&lt;index&gt;</code> can be omitted.</p>
+<p>The OPTIONAL <a href="../99-appendices/09-entities.html#rec"><code>rec-&lt;label&gt;</code></a> entity
+is used to indicate the reconstruction method used for the image,
+with four reserved values:</p>
+<ul>
+<li><code>acdyn</code>, for reconstructions with attenuation correction of dynamic data;</li>
+<li><code>acstat</code>, for reconstructions with attenuation correction of static data;</li>
+<li><code>nacdyn</code>, for reconstructions without attenuation correction of dynamic data;</li>
+<li><code>nacstat</code>, for reconstructions without attenuation correction of static data.</li>
+</ul>
+<p>Further details regarding reconstruction are in the <code>_pet.json</code> file.
+If multiple reconstructions of the data are made with the same type of reconstruction,
+a number MAY be appended to the label,
+for example <code>rec-acdyn1</code> and <code>rec-acdyn2</code>.</p>
+<h3 id="shared-mri-data-along-with-pet"><a class="toclink" href="#shared-mri-data-along-with-pet">Shared MRI data along with PET</a></h3>
+<p>PET and MRI images may be aggregated in the same dataset.
+When analyzing MRI and PET data together,
+it is essential to specify whether MR images have been corrected for gradient non-linearities,
+using the <code>NonLinearGradientCorrection</code> metadata field
+(see <a href="01-magnetic-resonance-imaging-data.html#sequence-specifics">Sequence Specifics</a>),
+which is REQUIRED for all MR data if PET data is also present in the dataset
+(see also <a href="../99-appendices/13-cross-modality-correspondence.html#pet-mri-correspondence">PET-MRI correspondence</a>).
+In the case of studies using combined PET/fMRI,
+subject-specific tasks may be carried out during the acquisition within the same session.
+If the same task is recorded with both modalities,
+the same <a href="../99-appendices/09-entities.html#task"><code>task-&lt;label&gt;</code></a> entity SHOULD be used.
+For further details, see
+<a href="01-magnetic-resonance-imaging-data.html#task-including-resting-state-imaging-data">Task (including resting state) imaging data</a>.</p>
+<p>In addition to the imaging data (<code>*.nii</code>) a <code>_pet.json</code> sidecar file MUST be provided.
+The included metadata are divided into sections described below.</p>
+<h3 id="pet-metadata"><a class="toclink" href="#pet-metadata">PET metadata</a></h3>
+<p>PET data MUST be described by metadata fields, stored in sidecar JSON files.
+These fields are derived from the recommendations in
+Knudsen et al. 2020, <a href="https://doi.org/10.1177/0271678X20905433">doi:10.1177/0271678X20905433</a>,
+which we divide into several categories:</p>
+<h4 id="scanner-hardware"><a class="toclink" href="#scanner-hardware">Scanner Hardware</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Manufacturer</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Manufacturer of the equipment that produced the measurements.  Corresponds to DICOM Tag 0008, 0070 <code>Manufacturer</code>.</td>
+</tr>
+<tr>
+<td>ManufacturersModelName</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Manufacturer's model name of the equipment that produced the measurements.  Corresponds to DICOM Tag 0008, 1090 <code>Manufacturers Model Name</code>.</td>
+</tr>
+<tr>
+<td>Units</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Measurement units for the associated file. SI units in CMIXF formatting are RECOMMENDED (see <a href="/02-common-principles.html#units">Units</a>).  SI unit for radioactivity (Becquerel) should be used (for example, <code>"Bq/mL"</code>). Corresponds to DICOM Tag 0054, 1001 <code>Units</code>.</td>
+</tr>
+<tr>
+<td>InstitutionName</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>The name of the institution in charge of the equipment that produced the measurements.  Corresponds to DICOM Tag 0008, 0080 <code>InstitutionName</code>.</td>
+</tr>
+<tr>
+<td>InstitutionAddress</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>The address of the institution in charge of the equipment that produced the measurements.  Corresponds to DICOM Tag 0008, 0081 <code>InstitutionAddress</code>.</td>
+</tr>
+<tr>
+<td>InstitutionalDepartmentName</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>The department in the institution in charge of the equipment that produced the measurements.  Corresponds to DICOM Tag 0008, 1040 <code>Institutional Department Name</code>.</td>
+</tr>
+<tr>
+<td>BodyPart</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Body part of the organ / body region scanned. Corresponds to DICOM Tag 0018, 0015 <code>Body Part Examined</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="radiochemistry"><a class="toclink" href="#radiochemistry">Radiochemistry</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TracerName</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Name of the tracer compound used (for example, <code>"CIMBI-36"</code>)</td>
+</tr>
+<tr>
+<td>TracerRadionuclide</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Radioisotope labelling tracer (for example, <code>"C11"</code>).</td>
+</tr>
+<tr>
+<td>InjectedRadioactivity</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Total amount of radioactivity injected into the patient (for example, 400). For bolus-infusion experiments, this value should be the sum of all injected radioactivity originating from both bolus and infusion. Corresponds to DICOM Tag 0018, 1074 <code>Radionuclide Total Dose</code>.</td>
+</tr>
+<tr>
+<td>InjectedRadioactivityUnits</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Unit format of the specified injected radioactivity (for example, <code>"MBq"</code>).</td>
+</tr>
+<tr>
+<td>InjectedMass</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a> or <code>"n/a"</code></td>
+<td>Total mass of radiolabeled compound injected into subject (for example, 10). This can be derived as the ratio of the <code>InjectedRadioactivity</code> and <code>MolarRadioactivity</code>. <strong>For those tracers in which injected mass is not available (for example FDG) can be set to <code>"n/a"</code>)</strong>.</td>
+</tr>
+<tr>
+<td>InjectedMassUnits</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a> or <code>"n/a"</code></td>
+<td>Unit format of the mass of compound injected (for example, <code>"ug"</code> or <code>"umol"</code>). <strong>Note this is not required for an FDG acquisition, since it is not available, and SHOULD be set to <code>"n/a"</code></strong>.</td>
+</tr>
+<tr>
+<td>SpecificRadioactivity</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a> or <code>"n/a"</code></td>
+<td>Specific activity of compound injected. <strong>Note this is not required for an FDG acquisition, since it is not available, and SHOULD be set to <code>"n/a"</code></strong>.</td>
+</tr>
+<tr>
+<td>SpecificRadioactivityUnits</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a> or <code>"n/a"</code></td>
+<td>Unit format of specified specific radioactivity (for example, <code>"Bq/g"</code>). <strong>Note this is not required for an FDG acquisition, since it is not available, and SHOULD be set to <code>"n/a"</code></strong>.</td>
+</tr>
+<tr>
+<td>ModeOfAdministration</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Mode of administration of the injection (for example, <code>"bolus"</code>, <code>"infusion"</code>, or <code>"bolus-infusion"</code>).</td>
+</tr>
+<tr>
+<td>TracerRadLex</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>ID of the tracer compound from the RadLex Ontology.</td>
+</tr>
+<tr>
+<td>TracerSNOMED</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>ID of the tracer compound from the SNOMED Ontology (subclass of Radioactive isotope).</td>
+</tr>
+<tr>
+<td>TracerMolecularWeight</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Accurate molecular weight of the tracer used.</td>
+</tr>
+<tr>
+<td>TracerMolecularWeightUnits</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Unit of the molecular weights measurement (for example, <code>"g/mol"</code>).</td>
+</tr>
+<tr>
+<td>InjectedMassPerWeight</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Injected mass per kilogram bodyweight.</td>
+</tr>
+<tr>
+<td>InjectedMassPerWeightUnits</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Unit format of the injected mass per kilogram bodyweight (for example, <code>"ug/kg"</code>).</td>
+</tr>
+<tr>
+<td>SpecificRadioactivityMeasTime</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Time to which specific radioactivity measurement above applies in the default unit <code>"hh:mm:ss"</code>.</td>
+</tr>
+<tr>
+<td>MolarActivity</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Molar activity of compound injected. Corresponds to DICOM Tag 0018, 1077 <code>Radiopharmaceutical Specific Activity</code>.</td>
+</tr>
+<tr>
+<td>MolarActivityUnits</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Unit of the specified molar radioactivity (for example, <code>"GBq/umol"</code>).</td>
+</tr>
+<tr>
+<td>MolarActivityMeasTime</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Time to which molar radioactivity measurement above applies in the default unit <code>"hh:mm:ss"</code>.</td>
+</tr>
+<tr>
+<td>InfusionRadioactivity</td>
+<td>RECOMMENDED, but REQUIRED if <code>ModeOfAdministration</code>  is <code>bolus-infusion</code></td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Amount of radioactivity infused into the patient. This value must be less than or equal to the total injected radioactivity (<code>InjectedRadioactivity</code>). Units should be the same as <code>InjectedRadioactivityUnits</code>.</td>
+</tr>
+<tr>
+<td>InfusionStart</td>
+<td>RECOMMENDED, but REQUIRED if <code>ModeOfAdministration</code>  is <code>bolus-infusion</code></td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Time of start of infusion with respect to <code>TimeZero</code> in the default unit seconds.</td>
+</tr>
+<tr>
+<td>InfusionSpeed</td>
+<td>RECOMMENDED, but REQUIRED if <code>ModeOfAdministration</code>  is <code>bolus-infusion</code></td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>If given, infusion speed.</td>
+</tr>
+<tr>
+<td>InfusionSpeedUnits</td>
+<td>RECOMMENDED, but REQUIRED if <code>ModeOfAdministration</code>  is <code>bolus-infusion</code></td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Unit of infusion speed (for example, <code>"mL/s"</code>).</td>
+</tr>
+<tr>
+<td>InjectedVolume</td>
+<td>RECOMMENDED, but REQUIRED if <code>ModeOfAdministration</code>  is <code>bolus-infusion</code></td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Injected volume of the radiotracer in the unit <code>"mL"</code>.</td>
+</tr>
+<tr>
+<td>Purity</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Purity of the radiolabeled compound (between 0 and 100%).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="pharmaceuticals"><a class="toclink" href="#pharmaceuticals">Pharmaceuticals</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PharmaceuticalName</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Name of pharmaceutical coadministered with tracer.</td>
+</tr>
+<tr>
+<td>PharmaceuticalDoseAmount</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a> or <a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">numbers</a></td>
+<td>Dose amount of pharmaceutical coadministered with tracer.</td>
+</tr>
+<tr>
+<td>PharmaceuticalDoseUnits</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Unit format relating to pharmaceutical dose (for example, <code>"mg"</code> or <code>"mg/kg"</code>).</td>
+</tr>
+<tr>
+<td>PharmaceuticalDoseRegimen</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Details of the pharmaceutical dose regimen. Either adequate description or short-code relating to regimen documented elsewhere (for example, <code>"single oral bolus"</code>).</td>
+</tr>
+<tr>
+<td>PharmaceuticalDoseTime</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a> or <a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">numbers</a></td>
+<td>Time of administration of pharmaceutical dose, relative to time zero. For an infusion, this should be a vector with two elements specifying the start and end of the infusion period. For more complex dose regimens, the regimen description should be complete enough to enable unambiguous interpretation of <code>PharmaceuticalDoseTime</code>. Unit format of the specified pharmaceutical dose time MUST be seconds.</td>
+</tr>
+<tr>
+<td>Anaesthesia</td>
+<td>OPTIONAL</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Details of anaesthesia used, if any.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="time"><a class="toclink" href="#time">Time</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TimeZero</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Time zero to which all scan and/or blood measurements have been adjusted to, in the unit "hh:mm:ss". This should be equal to <code>InjectionStart</code> or <code>ScanStart</code>.</td>
+</tr>
+<tr>
+<td>ScanStart</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Time of start of scan with respect to <code>TimeZero</code> in the default unit seconds.</td>
+</tr>
+<tr>
+<td>InjectionStart</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Time of start of injection with respect to <code>TimeZero</code> in the default unit seconds. This corresponds to DICOM Tag 0018, 1042 <code>Contrast/Bolus Start Time</code> converted to seconds relative to <code>TimeZero</code>.</td>
+</tr>
+<tr>
+<td>FrameTimesStart</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">numbers</a></td>
+<td>Start times for all frames relative to <code>TimeZero</code> in default unit seconds.</td>
+</tr>
+<tr>
+<td>FrameDuration</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">numbers</a></td>
+<td>Time duration of each frame in default unit seconds. This corresponds to DICOM Tag 0018, 1242 <code>Actual Frame Duration</code> converted to seconds.</td>
+</tr>
+<tr>
+<td>InjectionEnd</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Time of end of injection with respect to <code>TimeZero</code> in the default unit seconds.</td>
+</tr>
+<tr>
+<td>ScanDate</td>
+<td><a href="/02-common-principles.html#definitions">DEPRECATED</a></td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Date of scan in the format <code>"YYYY-MM-DD[Z]"</code>. This field is DEPRECATED, and this metadata SHOULD be recorded in the <code>acq_time</code> column of the corresponding <a href="/03-modality-agnostic-files.html#scans-file">Scans file</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>We refer to the common principles for the standards for describing dates and timestamps, including possibilities for anonymization (see <a href="../02-common-principles.html#units">Units</a>).</p>
+<h4 id="reconstruction"><a class="toclink" href="#reconstruction">Reconstruction</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AcquisitionMode</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Type of acquisition of the PET data (for example, <code>"list mode"</code>).</td>
+</tr>
+<tr>
+<td>ImageDecayCorrected</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">boolean</a></td>
+<td>Boolean flag specifying whether the image data have been decay-corrected.</td>
+</tr>
+<tr>
+<td>ImageDecayCorrectionTime</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Point in time from which the decay correction was applied with respect to TimeZero in the default unit seconds.</td>
+</tr>
+<tr>
+<td>ReconMethodName</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Reconstruction method or algorithm (for example, <code>"3d-op-osem"</code>).</td>
+</tr>
+<tr>
+<td>ReconMethodParameterLabels</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">strings</a></td>
+<td>Names of reconstruction parameters (for example, <code>["subsets", "iterations"]</code>).</td>
+</tr>
+<tr>
+<td>ReconMethodParameterUnits</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">strings</a></td>
+<td>Unit of reconstruction parameters (for example, <code>["none", "none"]</code>).</td>
+</tr>
+<tr>
+<td>ReconMethodParameterValues</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">numbers</a></td>
+<td>Values of reconstruction parameters (for example, <code>[21, 3]</code>).</td>
+</tr>
+<tr>
+<td>ReconFilterType</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a> or <a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">strings</a></td>
+<td>Type of post-recon smoothing (for example, <code>["Shepp"]</code>).</td>
+</tr>
+<tr>
+<td>ReconFilterSize</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a> or <a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">numbers</a></td>
+<td>Kernel size of post-recon filter (FWHM) in default units <code>"mm"</code>.</td>
+</tr>
+<tr>
+<td>AttenuationCorrection</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Short description of the attenuation correction method used.</td>
+</tr>
+<tr>
+<td>ReconMethodImplementationVersion</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Identification for the software used, such as name and version.</td>
+</tr>
+<tr>
+<td>AttenuationCorrectionMethodReference</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Reference paper for the attenuation correction method used.</td>
+</tr>
+<tr>
+<td>ScaleFactor</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">numbers</a></td>
+<td>Scale factor for each frame.</td>
+</tr>
+<tr>
+<td>ScatterFraction</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">numbers</a></td>
+<td>Scatter fraction for each frame (Units: 0-100%).</td>
+</tr>
+<tr>
+<td>DecayCorrectionFactor</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">numbers</a></td>
+<td>Decay correction factor for each frame.</td>
+</tr>
+<tr>
+<td>DoseCalibrationFactor</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Multiplication factor used to transform raw data (in counts/sec) to meaningful unit (Bq/ml). Corresponds to DICOM Tag 0054, 1322 <code>Dose Calibration Factor</code>.</td>
+</tr>
+<tr>
+<td>PromptRate</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">numbers</a></td>
+<td>Prompt rate for each frame (same units as <code>Units</code>, for example, <code>"Bq/mL"</code>).</td>
+</tr>
+<tr>
+<td>RandomRate</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">numbers</a></td>
+<td>Random rate for each frame (same units as <code>Units</code>, for example, <code>"Bq/mL"</code>).</td>
+</tr>
+<tr>
+<td>SinglesRate</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_arrays.asp">array</a> of <a href="https://www.w3schools.com/js/js_json_datatypes.asp">numbers</a></td>
+<td>Singles rate for each frame (same units as <code>Units</code>, for example, <code>"Bq/mL"</code>).</td>
+</tr>
+</tbody>
+</table>
+<p>All reconstruction-specific parameters that are not specified, but one wants to include, should go into the <code>ReconMethodParameterValues</code> field.</p>
+<h4 id="example-_petjson"><a class="toclink" href="#example-_petjson">Example (<code>*_pet.json</code>)</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;Manufacturer&quot;</span><span class="p">:</span> <span class="s2">&quot;Siemens&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;ManufacturersModelName&quot;</span><span class="p">:</span> <span class="s2">&quot;High-Resolution Research Tomograph (HRRT, CTI/Siemens)&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;BodyPart&quot;</span><span class="p">:</span> <span class="s2">&quot;Brain&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;Units&quot;</span><span class="p">:</span> <span class="s2">&quot;Bq/mL&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;TracerName&quot;</span><span class="p">:</span> <span class="s2">&quot;CIMBI-36&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;TracerRadionuclide&quot;</span><span class="p">:</span> <span class="s2">&quot;C11&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;TracerMolecularWeight&quot;</span><span class="p">:</span> <span class="mf">380.28</span><span class="p">,</span>
+  <span class="nt">&quot;TracerMolecularWeightUnits&quot;</span><span class="p">:</span> <span class="s2">&quot;g/mol&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;InjectedRadioactivity&quot;</span><span class="p">:</span> <span class="mi">573</span><span class="p">,</span>
+  <span class="nt">&quot;InjectedRadioActivityUnits&quot;</span><span class="p">:</span> <span class="s2">&quot;MBq&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;InjectedMass&quot;</span><span class="p">:</span> <span class="mf">0.62</span><span class="p">,</span>
+  <span class="nt">&quot;InjectedMassUnits&quot;</span><span class="p">:</span> <span class="s2">&quot;ug&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;SpecificRadioactivity&quot;</span><span class="p">:</span> <span class="mf">929.6</span><span class="p">,</span>
+  <span class="nt">&quot;SpecificRadioactivityUnits&quot;</span><span class="p">:</span> <span class="s2">&quot;MBq/ug&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;ModeOfAdministration&quot;</span><span class="p">:</span> <span class="s2">&quot;bolus&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;MolarActivity&quot;</span><span class="p">:</span> <span class="mf">353.51</span><span class="p">,</span>
+  <span class="nt">&quot;MolarActivityUnits&quot;</span><span class="p">:</span> <span class="s2">&quot;GBq/umol&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;MolarActivityMeasTime&quot;</span><span class="p">:</span> <span class="s2">&quot;13:04:42&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;TimeZero&quot;</span><span class="p">:</span> <span class="s2">&quot;13:04:42&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;ScanStart&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nt">&quot;InjectionStart&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nt">&quot;FrameTimesStart&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">420</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="mi">540</span><span class="p">,</span> <span class="mi">660</span><span class="p">,</span> <span class="mi">780</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">1020</span><span class="p">,</span> <span class="mi">1140</span><span class="p">,</span> <span class="mi">1260</span><span class="p">,</span> <span class="mi">1380</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">1800</span><span class="p">,</span> <span class="mi">2100</span><span class="p">,</span> <span class="mi">2400</span><span class="p">,</span> <span class="mi">2700</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">3300</span><span class="p">,</span> <span class="mi">3600</span><span class="p">,</span> <span class="mi">3900</span><span class="p">,</span> <span class="mi">4200</span><span class="p">,</span> <span class="mi">4500</span><span class="p">,</span> <span class="mi">4800</span><span class="p">,</span> <span class="mi">5100</span><span class="p">,</span> <span class="mi">5400</span><span class="p">,</span> <span class="mi">5700</span><span class="p">,</span> <span class="mi">6000</span><span class="p">,</span> <span class="mi">6300</span><span class="p">,</span> <span class="mi">6600</span><span class="p">,</span> <span class="mi">6900</span><span class="p">],</span>
+  <span class="nt">&quot;FrameDuration&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">],</span>
+  <span class="nt">&quot;AcquisitionMode&quot;</span><span class="p">:</span> <span class="s2">&quot;list mode&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;ImageDecayCorrected&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;ImageDecayCorrectionTime&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nt">&quot;ReconMethodName&quot;</span><span class="p">:</span> <span class="s2">&quot;3D-OSEM-PSF&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;ReconMethodParameterLabels&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;subsets&quot;</span><span class="p">,</span><span class="s2">&quot;iterations&quot;</span><span class="p">],</span>
+  <span class="nt">&quot;ReconMethodParameterUnits&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;none&quot;</span><span class="p">,</span><span class="s2">&quot;none&quot;</span><span class="p">],</span>
+  <span class="nt">&quot;ReconMethodParameterValues&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span>
+  <span class="nt">&quot;ReconFilterType&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;AttenuationCorrection&quot;</span><span class="p">:</span> <span class="s2">&quot;[137Cs]transmission scan-based&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="recommended-patient-data"><a class="toclink" href="#recommended-patient-data">Recommended patient data</a></h3>
+<p>Knudsen et al. 2020
+(<a href="https://doi.org/10.1177/0271678X20905433">doi:10.1177/0271678X20905433</a>)
+recommends recording participant body weight.
+If recorded once per participant, these data SHOULD be included in the
+<a href="../03-modality-agnostic-files.html#participants-file">Participants file</a> or as
+<a href="../03-modality-agnostic-files.html#phenotypic-and-assessment-data">Phenotypic and assessment data</a>.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>participant_id body_weight
+sub-01 58
+sub-02 96
+sub-03 72
+</code></pre></div>
+<p>If multiple measurements are made, these data SHOULD be included in the
+<a href="../03-modality-agnostic-files.html#sessions-file">Sessions file</a>.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>session_id body_weight
+ses-01 58
+ses-02 59
+</code></pre></div>
+<h2 id="blood-recording-data"><a class="toclink" href="#blood-recording-data">Blood recording data</a></h2>
+<p>Template:
+<div class="highlight"><pre><span></span><code>sub-&lt;label&gt;/
+    [ses-&lt;label&gt;/]
+        pet/
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_task-&lt;label&gt;][_trc-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_recording-&lt;label&gt;_blood.json
+            sub-&lt;label&gt;[_ses-&lt;label&gt;][_task-&lt;label&gt;][_trc-&lt;label&gt;][_rec-&lt;label&gt;][_run-&lt;index&gt;]_recording-&lt;label&gt;_blood.tsv
+</code></pre></div></p>
+<p>If collected, blood measurements of radioactivity are be stored in
+<a href="../02-common-principles.html#tabular-files">Tabular files</a> and located in
+the <code>pet/</code> directory along with the corresponding PET data.</p>
+<p>The OPTIONAL <code>recording</code> entity is used to distinguish sampling methods.
+For example, if an autosampler is used to record continuous blood samples,
+and manual measurements are also taken,
+then the files may have recording labels <code>autosampler</code> and <code>manual</code>,
+respectively.
+If multiple recording methods are used on the same PET acquisition,
+the <code>recording</code> entity MUST be used to distinguish them.
+All blood measurements should be reported according to a single time-scale
+in relation to time zero defined by the PET data (Figure 1).
+All definitions used below are in accordance with
+Innis et al. 2007 (<a href="https://doi.org/10.1038/sj.jcbfm.9600493">doi:10.1038/sj.jcbfm.9600493</a>).</p>
+<p>Some metadata about the recording MUST be provided in an additional JSON
+file.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PlasmaAvail</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">boolean</a></td>
+<td>Boolean that specifies if plasma measurements are available.</td>
+</tr>
+<tr>
+<td>MetaboliteAvail</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">boolean</a></td>
+<td>Boolean that specifies if metabolite measurements are available. If <code>true</code>, the <code>metabolite_parent_fraction</code> column MUST be present in the corresponding <code>*_blood.tsv</code> file.</td>
+</tr>
+<tr>
+<td>WholeBloodAvail</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">boolean</a></td>
+<td>Boolean that specifies if whole blood measurements are available. If <code>true</code>, the <code>whole_blood_radioactivity</code> column MUST be present in the corresponding <code>*_blood.tsv</code> file.</td>
+</tr>
+<tr>
+<td>DispersionCorrected</td>
+<td>REQUIRED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">boolean</a></td>
+<td>Boolean flag specifying whether the blood data have been dispersion-corrected. NOTE: not customary for manual samples, and hence should be set to <code>false</code>.</td>
+</tr>
+<tr>
+<td>WithdrawalRate</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>The rate at which the blood was withdrawn from the subject. The unit of the specified withdrawal rate should be in <code>"mL/s"</code>.</td>
+</tr>
+<tr>
+<td>TubingType</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Description of the type of tubing used, ideally including the material and (internal) diameter.</td>
+</tr>
+<tr>
+<td>TubingLength</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>The length of the blood tubing, from the subject to the detector in meters.</td>
+</tr>
+<tr>
+<td>DispersionConstant</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>External dispersion time constant resulting from tubing in default unit seconds.</td>
+</tr>
+<tr>
+<td>Haematocrit</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Measured haematocrit, meaning the volume of erythrocytes divided by the volume of whole blood.</td>
+</tr>
+<tr>
+<td>BloodDensity</td>
+<td>RECOMMENDED</td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Measured blood density. Unit of blood density should be in <code>"g/mL"</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>The following metadata SHOULD or MUST be provided if corresponding flags are <code>true</code>.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key name</strong></th>
+<th><strong>Requirement Level</strong></th>
+<th><strong>Data type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PlasmaFreeFraction</td>
+<td>RECOMMENDED if <code>PlasmaAvail</code> is <code>true</code></td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">number</a></td>
+<td>Measured free fraction in plasma, meaning the concentration of free compound in plasma divided by total concentration of compound in plasma (Units: 0-100%).</td>
+</tr>
+<tr>
+<td>PlasmaFreeFractionMethod</td>
+<td>RECOMMENDED if <code>PlasmaAvail</code> is <code>true</code></td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Method used to estimate free fraction.</td>
+</tr>
+<tr>
+<td>MetaboliteMethod</td>
+<td>REQUIRED if <code>MetaboliteAvail</code> is <code>true</code></td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">string</a></td>
+<td>Method used to measure metabolites.</td>
+</tr>
+<tr>
+<td>MetaboliteRecoveryCorrectionApplied</td>
+<td>REQUIRED if <code>MetaboliteAvail</code> is <code>true</code></td>
+<td><a href="https://www.w3schools.com/js/js_json_datatypes.asp">boolean</a></td>
+<td>Metabolite recovery correction from the HPLC, for tracers where it changes with time postinjection. If <code>true</code>, the <code>hplc_recovery_fractions</code> column MUST be present in the corresponding <code>*_blood.tsv</code> file.</td>
+</tr>
+</tbody>
+</table>
+<p>The following columns are defined for <code>_blood.tsv</code> files.
+The <code>time</code> column MUST always be the first column.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Column name</strong></th>
+<th><strong>Requirement level</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Units</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>time</code></td>
+<td>REQUIRED</td>
+<td>Time in relation to <code>TimeZero</code> defined by the <code>*_pet.json</code>. (for example, 5)</td>
+<td>Seconds</td>
+</tr>
+<tr>
+<td><code>plasma_radioactivity</code></td>
+<td>REQUIRED if <code>PlasmaAvail</code> is <code>true</code></td>
+<td>Radioactivity in plasma</td>
+<td>Unit of plasma radioactivity (for example, <code>"kBq/mL"</code>)</td>
+</tr>
+<tr>
+<td><code>metabolite_parent_fraction</code></td>
+<td>REQUIRED if <code>MetaboliteAvail</code> is <code>true</code></td>
+<td>Parent fraction of the radiotracer (0-1)</td>
+<td>Unit of parent fraction (for example, <code>"unitless"</code>)</td>
+</tr>
+<tr>
+<td><code>metabolite_polar_fraction</code></td>
+<td>RECOMMENDED if <code>MetaboliteAvail</code> is <code>true</code></td>
+<td>Polar metabolite fraction of the radiotracer (0-1)</td>
+<td>Unit of polar metabolite fraction (for example, <code>"unitless"</code>)</td>
+</tr>
+<tr>
+<td><code>hplc_recovery_fractions</code></td>
+<td>REQUIRED if <code>MetaboliteRecoveryCorrectionApplied</code> is <code>true</code></td>
+<td>HPLC recovery fractions (the fraction of activity that gets loaded onto the HPLC)</td>
+<td>Unit of recovery fractions (for example, <code>"unitless"</code>)</td>
+</tr>
+<tr>
+<td><code>whole_blood_radioactivity</code></td>
+<td>REQUIRED if <code>WholeBloodAvail</code> is <code>true</code></td>
+<td>Radioactivity in whole blood samples</td>
+<td>Unit of radioactivity measurements in whole blood samples (for example, <code>"kBq/mL"</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>As with all <a href="../02-common-principles.html#tabular-files">tabular files</a>,
+additional columns MAY be defined in <code>_blood.json</code>.
+For clarity, it is RECOMMENDED to include the above column definitions in <code>_blood.json</code>,
+as shown in the following example.</p>
+<h3 id="example-blood-data"><a class="toclink" href="#example-blood-data">Example blood data</a></h3>
+<p><strong><code>*_recording-manual_blood.json</code></strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;PlasmaAvail&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;WholeBloodAvail&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;MetaboliteAvail&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;MetaboliteMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;HPLC&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;MetaboliteRecoveryCorrectionApplied&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;DispersionCorrected&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;time&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Time in relation to time zero defined by the _pet.json&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Units&quot;</span><span class="p">:</span> <span class="s2">&quot;s&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;plasma_radioactivity&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Radioactivity in plasma samples. Measured using COBRA counter.&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Units&quot;</span><span class="p">:</span> <span class="s2">&quot;kBq/mL&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;whole_blood_radioactivity&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Radioactivity in whole blood samples. Measured using COBRA counter.&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Units&quot;</span><span class="p">:</span> <span class="s2">&quot;kBq/mL&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;metabolite_parent_fraction&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Parent fraction of the radiotracer.&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Units&quot;</span><span class="p">:</span> <span class="s2">&quot;arbitrary&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;metabolite_polar_fraction&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Polar metabolite fraction of the radiotracer.&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Units&quot;</span><span class="p">:</span> <span class="s2">&quot;arbitrary&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;metabolite_lipophilic_fraction&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Lipophilic metabolite fraction of the radiotracer.&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Units&quot;</span><span class="p">:</span> <span class="s2">&quot;arbitrary&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong><code>*_recording-manual_blood.tsv</code></strong>:</p>
+<div class="highlight"><pre><span></span><code>time plasma_radioactivity whole_blood_radioactivity metabolite_parent_fraction metabolite_polar_fraction
+0    0    0    1    0
+145    43.31    33.79    0.5749    0.1336
+292    48.96    37.42    0.3149    0.2746
+602    39.84    32.05    0.1469    0.3548
+1248    37.38    31.52    0.073    0.444
+1785    36.40    28.83    0.078    0.429
+2390    33.13    26.32    0.061    0.453
+3059    30.83    25.22    0.049    0.473
+4196    27.28    21.98    0.036    0.503
+5407    22.70    19.49    0.032    0.523
+7193    19.71    15.70    0.02    0.559
+</code></pre></div>
+<!-- Link Definitions -->
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+--><!-- Application footer -->
+<footer class="md-footer">
+
+  <!-- Link to previous and/or next page --><div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+
+        <!-- Link to previous page --><a href="08-genetic-descriptor.html"
+              title="Genetic Descriptor"
+              class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+              rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back
+                    md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">Previous</span>Genetic Descriptor</span>
+            </div>
+          </a><!-- Link to next page --><a href="../05-derivatives/01-introduction.html"
+              title="BIDS Derivatives"
+              class="md-flex md-footer-nav__link md-footer-nav__link--next"
+              rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch
+                  md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">Next</span>BIDS Derivatives</span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward
+                    md-footer-nav__button"></i>
+            </div>
+          </a></nav>
+    </div><!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">See the source code and discussion page on
+        <a href="https://github.com/bids-standard/bids-specification">GitHub</a>
+      </div>
+
+      <!-- Social links --></div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.94ec81fe.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.48dfec6c.min.js"></script>
+      
+        <script src="../js/jquery-3.6.0.min.js"></script>
+      
+    
+  </body>
+</html>

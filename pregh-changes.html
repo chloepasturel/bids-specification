@@ -1,0 +1,975 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://bids-specification.readthedocs.io/en/stable/pregh-changes.html">
+      
+      <link rel="icon" href="images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.8">
+    
+    
+      
+        <title>Pregh changes - Brain Imaging Data Structure v1.6.1-dev</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.92558b1b.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#111-2018-06-06" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Brain Imaging Data Structure v1.6.1-dev" class="md-header__button md-logo" aria-label="Brain Imaging Data Structure v1.6.1-dev" data-md-component="logo">
+      
+  <img src="images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Brain Imaging Data Structure v1.6.1-dev
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pregh changes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Brain Imaging Data Structure v1.6.1-dev" class="md-nav__button md-logo" aria-label="Brain Imaging Data Structure v1.6.1-dev" data-md-component="logo">
+      
+  <img src="images/logo.png" alt="logo">
+
+    </a>
+    Brain Imaging Data Structure v1.6.1-dev
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        The BIDS Specification
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The BIDS Specification" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          The BIDS Specification
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-introduction.html" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-common-principles.html" class="md-nav__link">
+        Common principles
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-modality-agnostic-files.html" class="md-nav__link">
+        Modality agnostic files
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_4" type="checkbox" id="__nav_1_4" >
+      
+      <label class="md-nav__link" for="__nav_1_4">
+        Modality specific files
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Modality specific files" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Modality specific files
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-modality-specific-files/01-magnetic-resonance-imaging-data.html" class="md-nav__link">
+        Magnetic Resonance Imaging
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-modality-specific-files/02-magnetoencephalography.html" class="md-nav__link">
+        Magnetoencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-modality-specific-files/03-electroencephalography.html" class="md-nav__link">
+        Electroencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-modality-specific-files/04-intracranial-electroencephalography.html" class="md-nav__link">
+        Intracranial Electroencephalography
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-modality-specific-files/05-task-events.html" class="md-nav__link">
+        Task events
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-modality-specific-files/06-physiological-and-other-continuous-recordings.html" class="md-nav__link">
+        Physiological and other continuous recordings
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-modality-specific-files/07-behavioral-experiments.html" class="md-nav__link">
+        Behavioral experiments (with no neural recordings)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-modality-specific-files/08-genetic-descriptor.html" class="md-nav__link">
+        Genetic Descriptor
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-modality-specific-files/09-positron-emission-tomography.html" class="md-nav__link">
+        Positron Emission Tomography
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_5" type="checkbox" id="__nav_1_5" >
+      
+      <label class="md-nav__link" for="__nav_1_5">
+        Derivatives
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Derivatives" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Derivatives
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-derivatives/01-introduction.html" class="md-nav__link">
+        BIDS Derivatives
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-derivatives/02-common-data-types.html" class="md-nav__link">
+        Common data types and metadata
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-derivatives/03-imaging.html" class="md-nav__link">
+        Imaging data types
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-longitudinal-and-multi-site-studies.html" class="md-nav__link">
+        Longitudinal and multi-site studies
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-extensions.html" class="md-nav__link">
+        BIDS Extension Proposals
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_8" type="checkbox" id="__nav_1_8" >
+      
+      <label class="md-nav__link" for="__nav_1_8">
+        Appendix
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Appendix" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/01-contributors.html" class="md-nav__link">
+        Contributors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/02-licenses.html" class="md-nav__link">
+        Licenses
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/03-hed.html" class="md-nav__link">
+        Hierarchical Event Descriptors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/04-entity-table.html" class="md-nav__link">
+        Entity table
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/05-units.html" class="md-nav__link">
+        Units
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/06-meg-file-formats.html" class="md-nav__link">
+        MEG file formats
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/07-meg-systems.html" class="md-nav__link">
+        MEG systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/08-coordinate-systems.html" class="md-nav__link">
+        Coordinate systems
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/09-entities.html" class="md-nav__link">
+        Entities
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/10-file-collections.html" class="md-nav__link">
+        File collections
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/11-qmri.html" class="md-nav__link">
+        Quantitative MRI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/12-arterial-spin-labeling.html" class="md-nav__link">
+        Arterial Spin Labeling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="99-appendices/13-cross-modality-correspondence.html" class="md-nav__link">
+        Cross modality correspondence
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CHANGES.html" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        The BIDS Starter Kit
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="The BIDS Starter Kit" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          The BIDS Starter Kit
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit" class="md-nav__link">
+        GitHub repository
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit/wiki/Tutorials" class="md-nav__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bids-standard/bids-starter-kit/wiki" class="md-nav__link">
+        Wiki
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#111-2018-06-06" class="md-nav__link">
+    1.1.1 (2018-06-06)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#110-2018-04-19" class="md-nav__link">
+    1.1.0 (2018-04-19)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102-2017-07-18" class="md-nav__link">
+    1.0.2 (2017-07-18)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#101-2017-03-13" class="md-nav__link">
+    1.0.1 (2017-03-13)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#101-rc1" class="md-nav__link">
+    1.0.1-rc1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100-2016-06-23" class="md-nav__link">
+    1.0.0 (2016-06-23)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100-rc4" class="md-nav__link">
+    1.0.0-rc4
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100-rc3" class="md-nav__link">
+    1.0.0-rc3
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100-rc2" class="md-nav__link">
+    1.0.0-rc2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100-rc1" class="md-nav__link">
+    1.0.0-rc1
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Pregh changes</h1>
+                
+                <h2 id="111-2018-06-06"><a class="toclink" href="#111-2018-06-06"><a href="https://doi.org/10.5281/zenodo.3759805">1.1.1</a> (2018-06-06)</a></h2>
+<ul>
+<li>Improved the MEG landmark coordinates description.</li>
+<li>Replaced <code>ManufacturersCapModelName</code> in <code>meg.json</code> with <code>CapManufacturer</code> and <code>CapManufacturersModelName</code>.</li>
+<li>Remove <code>EEGSamplingFrequency</code> and <code>ManufacturersAmplifierModelName</code> from the <code>meg.json.</code></li>
+<li>Improved the behavioral data description.</li>
+</ul>
+<h2 id="110-2018-04-19"><a class="toclink" href="#110-2018-04-19"><a href="https://doi.org/10.5281/zenodo.3759802">1.1.0</a> (2018-04-19)</a></h2>
+<ul>
+<li>Added support for MEG data (merged BEP008)</li>
+<li>Added <code>SequenceName</code> field.</li>
+<li>Added support for describing events with Hierarchical Event Descriptors [<a href="04-modality-specific-files/05-task-events.html">4.3 Task events</a>].</li>
+<li>Added <code>VolumeTiming</code> and <code>AcquisitionDuration</code> fields [<a href="04-modality-specific-files/01-magnetic-resonance-imaging-data.html#task-including-resting-state-imaging-data">4.1 Task (including resting state) imaging data</a>].</li>
+<li>Added <code>DwellTime</code> field.</li>
+</ul>
+<h2 id="102-2017-07-18"><a class="toclink" href="#102-2017-07-18"><a href="https://doi.org/10.5281/zenodo.3759801">1.0.2</a> (2017-07-18)</a></h2>
+<ul>
+<li>Added support for high resolution (anatomical) T2star images [<a href="04-modality-specific-files/01-magnetic-resonance-imaging-data.html#anatomy-imaging-data">4.1 Anatomy imaging data</a>].</li>
+<li>Added support for multiple defacing masks [<a href="04-modality-specific-files/01-magnetic-resonance-imaging-data.html#anatomy-imaging-data">4.1 Anatomy imaging data</a>].</li>
+<li>Added optional key and metadata field for contrast enhanced structural scans [<a href="04-modality-specific-files/01-magnetic-resonance-imaging-data.html#anatomy-imaging-data">4.1 Anatomy imaging data</a>]</li>
+<li>Added <code>DelayTime</code> field [<a href="04-modality-specific-files/01-magnetic-resonance-imaging-data.html#task-including-resting-state-imaging-data">4.1 Task (including resting state) imaging data</a>].</li>
+<li>Added support for multi echo BOLD data [<a href="04-modality-specific-files/01-magnetic-resonance-imaging-data.html#task-including-resting-state-imaging-data">4.1 Task (including resting state) imaging data</a>].</li>
+</ul>
+<h2 id="101-2017-03-13"><a class="toclink" href="#101-2017-03-13"><a href="https://doi.org/10.5281/zenodo.3759788">1.0.1</a> (2017-03-13)</a></h2>
+<ul>
+<li>Added <code>InstitutionName</code> field [<a href="04-modality-specific-files/01-magnetic-resonance-imaging-data.html#task-including-resting-state-imaging-data">4.1 Task (including resting state) imaging data</a>].</li>
+<li>Added <code>InstitutionAddress</code> field [<a href="04-modality-specific-files/01-magnetic-resonance-imaging-data.html#task-including-resting-state-imaging-data">4.1 Task (including resting state) imaging data</a>].</li>
+<li>Added <code>DeviceSerialNumber</code> field [<a href="04-modality-specific-files/01-magnetic-resonance-imaging-data.html#task-including-resting-state-imaging-data">4.1 Task (including resting state) imaging data</a>].</li>
+<li>Added <code>NumberOfVolumesDiscardedByUser</code> and <code>NumberOfVolumesDiscardedByScanner</code> field [<a href="04-modality-specific-files/01-magnetic-resonance-imaging-data.html#task-including-resting-state-imaging-data">4.1 Task (including resting state) imaging data</a>].</li>
+<li>Added <code>TotalReadoutTime to</code> functional images metadata list [<a href="04-modality-specific-files/01-magnetic-resonance-imaging-data.html#task-including-resting-state-imaging-data">4.1 Task (including resting state) imaging data</a>].</li>
+</ul>
+<h2 id="101-rc1"><a class="toclink" href="#101-rc1">1.0.1-rc1</a></h2>
+<ul>
+<li>Added T1 Rho maps [<a href="04-modality-specific-files/01-magnetic-resonance-imaging-data.html#anatomy-imaging-data">4.1 Anatomy imaging data</a>].</li>
+<li>Added support for phenotypic information split into multiple files [<a href="03-modality-agnostic-files.html#participants-file">3.2 Participant key file</a>].</li>
+<li>Added recommendations for multi site datasets</li>
+<li>Added <code>SoftwareVersions</code></li>
+<li>Added <code>run-&lt;run_index&gt;</code> to the phase encoding maps. Improved the description.</li>
+<li>Added <code>InversionTime</code> metadata key.</li>
+<li>Clarification on the source vs raw language.</li>
+<li>Added <code>trial_type</code> column to the event files.</li>
+<li>Added missing <code>sub-&lt;participant_label&gt;</code> in behavioral data file names</li>
+<li>Added ability to store stimuli files.</li>
+<li>Clarified the language describing allowed subject labels.</li>
+<li>Added quantitative proton density maps.</li>
+</ul>
+<h2 id="100-2016-06-23"><a class="toclink" href="#100-2016-06-23"><a href="https://doi.org/10.5281/zenodo.3686062">1.0.0</a> (2016-06-23)</a></h2>
+<ul>
+<li>Added ability to specify fieldmaps acquired with multiple parameter sets.</li>
+<li>Added ability to have multiple runs of the same fieldmap.</li>
+<li>Added FLASH anatomical images.</li>
+</ul>
+<h2 id="100-rc4"><a class="toclink" href="#100-rc4">1.0.0-rc4</a></h2>
+<ul>
+<li>Replaced links to neurolex with explicit DICOM Tags.</li>
+<li>Added sourcedata.</li>
+<li>Added data dictionaries.</li>
+<li>Be more explicit about contents of JSON files for structural (anatomical) scans.</li>
+</ul>
+<h2 id="100-rc3"><a class="toclink" href="#100-rc3">1.0.0-rc3</a></h2>
+<ul>
+<li>Renamed <code>PhaseEncodingDirection</code> values from "x", "y", "z" to "i", "j", "k" to avoid confusion with FSL parameters</li>
+<li>Renamed <code>SliceEncodingDirection</code> values from "x", "y", "z" to "i", "j", "k"</li>
+</ul>
+<h2 id="100-rc2"><a class="toclink" href="#100-rc2">1.0.0-rc2</a></h2>
+<ul>
+<li>Removed the requirement that TSV files cannot include more than two consecutive spaces.</li>
+<li>Refactor of the definitions sections (copied from the manuscript)</li>
+<li>Make support for uncompressed <code>.nii</code> files more explicit.</li>
+<li>Added <code>BIDSVersion</code> to <code>dataset.json</code></li>
+<li>Remove the statement that <code>SliceEncodingDirection</code> is necessary for slice time correction</li>
+<li>Change dicom converter recommendation from dcmstack to dcm2nii and dicm2nii following interactions with the community (see <a href="https://github.com/moloney/dcmstack/issues/39">https://github.com/moloney/dcmstack/issues/39</a> and <a href="https://github.com/neurolabusc/dcm2niix/issues/4">https://github.com/neurolabusc/dcm2niix/issues/4</a>).</li>
+<li>Added section on behavioral experiments with no accompanying MRI acquisition</li>
+<li>Add <code>_magnitude.nii[.gz]</code> image for GE type fieldmaps.</li>
+<li>Replaced EchoTimeDifference with EchoTime1 and EchoTime2 (SPM toolbox requires this input).</li>
+<li>Added support for single band reference image for DWI.</li>
+<li>Added DatasetDOI field in the dataset description.</li>
+<li>Added description of more metadata fields relevant to DWI fieldmap correction.</li>
+<li>PhaseEncodingDirection is now expressed in "x", "y" etc. instead of "PA" "RL" for DWI scans (so it's the same as BOLD scans)</li>
+<li>Added <code>rec-&lt;label&gt;</code> flag to BOLD files to distinguish between different reconstruction algorithms (analogous to anatomical scans).</li>
+<li>Added recommendation to use <code>_physio</code> suffix for continuous recordings of motion parameters obtained by the scanner side reconstruction algorithms.</li>
+</ul>
+<h2 id="100-rc1"><a class="toclink" href="#100-rc1">1.0.0-rc1</a></h2>
+<ul>
+<li>Initial release</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+--><!-- Application footer -->
+<footer class="md-footer">
+
+  <!-- Link to previous and/or next page --><!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">See the source code and discussion page on
+        <a href="https://github.com/bids-standard/bids-specification">GitHub</a>
+      </div>
+
+      <!-- Social links --></div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.94ec81fe.min.js", "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.48dfec6c.min.js"></script>
+      
+        <script src="js/jquery-3.6.0.min.js"></script>
+      
+    
+  </body>
+</html>
